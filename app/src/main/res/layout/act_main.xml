@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.imalljoy.insights.mvps.main.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#00ff00"
+        app:layout_constraintBottom_toTopOf="@android:id/tabhost"
+        app:layout_constraintTop_toTopOf="@+id/root_view">
+
+    </FrameLayout>
+
+    <com.imalljoy.insights.widgets.FragmentTabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff0000"
+        app:layout_constraintBottom_toBottomOf="@id/root_view">
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0" />
+
+    </com.imalljoy.insights.widgets.FragmentTabHost>
+
+</android.support.constraint.ConstraintLayout>
