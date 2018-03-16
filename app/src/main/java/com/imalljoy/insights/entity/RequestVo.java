@@ -17,17 +17,7 @@ public class RequestVo {
     private int status;     //状态,如:待接收,已被接受,已完成
     private UserVo user;        //发起请求的用户
 
-    public RequestVo(Long id, String name, double reward, int platform, String demand, Timestamp startTime, Timestamp endTime, int status, UserVo user) {
-        this.id = id;
-        this.name = name;
-        this.reward = reward;
-        this.platform = platform;
-        this.demand = demand;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.status = status;
-        this.user = user;
-    }
+
 
     public Long getId() {
         return id;

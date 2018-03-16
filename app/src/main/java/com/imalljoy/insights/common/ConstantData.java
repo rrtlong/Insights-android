@@ -94,6 +94,42 @@ public class ConstantData {
         questionnaireVo.setPersonas(new PersonasVo(24, 1, "北京"));
         questionnaireVos.add(questionnaireVo);
         Log.e("questionnaireVos",questionnaireVos.toString());
+
+        RequestVo requestVo = new RequestVo();
+        requestVo.setId(1l);
+        requestVo.setUser(userVos.get(new Random().nextInt(5)));
+        requestVo.setName("名称");
+        requestVo.setPlatform(0);
+        requestVo.setReward(33);
+        requestVo.setStatus(1);//未接受
+        requestVo.setDemand("要求被调查者都是年轻人");
+        requestVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
+        requestVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
+        requestVos.add(requestVo);
+
+        requestVo = new RequestVo();
+        requestVo.setId(2l);
+        requestVo.setUser(userVos.get(new Random().nextInt(5)));
+        requestVo.setName("名称");
+        requestVo.setPlatform(1);
+        requestVo.setDemand("2天之内给出结果");
+        requestVo.setReward(66);
+        requestVo.setStatus(2);//已接受
+        requestVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
+        requestVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
+        requestVos.add(requestVo);
+
+        requestVo = new RequestVo();
+        requestVo.setId(1l);
+        requestVo.setUser(userVos.get(new Random().nextInt(5)));
+        requestVo.setName("名称");
+        requestVo.setPlatform(0);
+        requestVo.setDemand("调查要详细");
+        requestVo.setReward(99);
+        requestVo.setStatus(3);//已完成
+        requestVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
+        requestVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
+        requestVos.add(requestVo);
     }
 
 }

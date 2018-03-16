@@ -1,5 +1,7 @@
 package com.imalljoy.insights.mvps.research;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -50,6 +52,7 @@ public class QuestionnaireFragment extends BaseFragment implements SwipeRefreshL
         return mRootView;
     }
 
+    @SuppressLint("ResourceAsColor")
     private void initView() {
         mAdapter = new QuestionnaireRecyclerAdapter(this.getContext(), ConstantData.questionnaireVos);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
@@ -59,6 +62,8 @@ public class QuestionnaireFragment extends BaseFragment implements SwipeRefreshL
         mRecyclerview.setLayoutManager(linearLayoutManager);
         mRecyclerview.addItemDecoration(divider);
         mRecyclerview.setAdapter(mAdapter);
+        //mSwiperRefreshLayout.setColorSchemeColors(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        mSwiperRefreshLayout.setColorSchemeColors(Color.parseColor("#d7a101"),Color.parseColor("#54c745"),Color.parseColor("#f16161"),Color.BLUE,Color.YELLOW);
         mSwiperRefreshLayout.setOnRefreshListener(this);
 
 
