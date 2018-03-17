@@ -1,12 +1,13 @@
 package com.imalljoy.insights.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by lijilong on 03/16.
  */
 
-public class RequestVo {
+public class RequestVo implements Serializable{
     private Long id;        //请求的id
     private String name;    //请求的名称
     private double reward;  //完成该请求后的奖励
@@ -16,7 +17,7 @@ public class RequestVo {
     private Timestamp endTime;      //请求有效期结束时间
     private int status;     //状态,如:待接收,已被接受,已完成
     private UserVo user;        //发起请求的用户
-
+    private CoinVo coin;    //数币名
 
 
     public Long getId() {
@@ -91,6 +92,14 @@ public class RequestVo {
         this.user = user;
     }
 
+    public CoinVo getCoin() {
+        return coin;
+    }
+
+    public void setCoin(CoinVo coin) {
+        this.coin = coin;
+    }
+
     @Override
     public String toString() {
         return "RequestVo{" +
@@ -103,6 +112,7 @@ public class RequestVo {
                 ", endTime=" + endTime +
                 ", status=" + status +
                 ", user=" + user +
+                ", coin=" + coin +
                 '}';
     }
 }

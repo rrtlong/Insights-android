@@ -15,7 +15,12 @@ import android.view.ViewGroup;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
+import com.imalljoy.insights.bus.JumpFragment;
 import com.imalljoy.insights.common.ConstantData;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +51,7 @@ public class RequireFragment extends BaseFragment implements SwipeRefreshLayout.
         }
         unbinder = ButterKnife.bind(this, mRootView);
         initView();
+        EventBus.getDefault().register(this);
         return mRootView;
     }
 
@@ -60,8 +66,12 @@ public class RequireFragment extends BaseFragment implements SwipeRefreshLayout.
         mRecyclerview.addItemDecoration(divider);
         mRecyclerview.setAdapter(mAdapter);
         mSwiperRefreshLayout.setOnRefreshListener(this);
-//        mSwiperRefreshLayout.setColorSchemeColors(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
-        mSwiperRefreshLayout.setColorSchemeColors(Color.parseColor("#d7a101"),Color.parseColor("#54c745"),Color.parseColor("#f16161"),Color.BLUE,Color.YELLOW);
+//        mSwiperRefreshLayout.setColorSchemeColors(android.R.color.holo_blue_bright, android.R.color.holo_green_light,  android.R.color.holo_orange_light,android.R.color.holo_purple android.R.color.holo_red_light);
+        mSwiperRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this.getContext(),R.color.holo_blue_bright),
+                ContextCompat.getColor(this.getContext(),R.color.holo_green_light),
+                ContextCompat.getColor(this.getContext(),R.color.holo_orange_light),
+                ContextCompat.getColor(this.getContext(),R.color.holo_purple),
+                ContextCompat.getColor(this.getContext(),R.color.holo_red_light));
     }
 
     public static RequireFragment newInstance(){
@@ -69,10 +79,19 @@ public class RequireFragment extends BaseFragment implements SwipeRefreshLayout.
         return fragment;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(JumpFragment jumpFragment){
+        if(jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.getIndex() == 2 && jumpFragment.isRefresh()){
+                mAdapter.setData(ConstantData.requestVos);
+
+        }
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override

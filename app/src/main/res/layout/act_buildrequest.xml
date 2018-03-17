@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/root_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/f1f1f1"
+        android:orientation="vertical">
+
+        <com.imalljoy.insights.widgets.TopBarCommon
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        </com.imalljoy.insights.widgets.TopBarCommon>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="#f1f1f1" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:background="@color/white"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:text="数币"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/coin_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@null"
+                        android:gravity="center_vertical|right"
+                        android:text="engine"
+                        android:textColor="#7b7b7b"
+                        android:textSize="11sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/coin_name"
+                        android:src="@mipmap/coin_logo" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#f1f1f1" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:background="@color/white"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <TextView
+                        android:id="@+id/require_name_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:text="名称"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/require_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/require_name_text"
+                        android:background="@null"
+                        android:gravity="center_vertical|right"
+                        android:text="投资喜好调查"
+                        android:textColor="#7b7b7b"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#f1f1f1" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:background="@color/white"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <TextView
+                        android:id="@+id/reward_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:text="奖励"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/reward"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@+id/INB"
+                        android:layout_toRightOf="@+id/reward_text"
+                        android:background="@null"
+                        android:gravity="center_vertical|right"
+                        android:text="100"
+                        android:textColor="#7b7b7b"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/INB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_vertical|right"
+                        android:text="INB"
+                        android:textColor="#7b7b7b"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#f1f1f1" />
+
+                <RelativeLayout
+                    android:id="@+id/start_time_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:background="@color/white"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <TextView
+                        android:id="@+id/start_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:text="开始时间"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/start_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/start_time_text"
+                        android:gravity="center_vertical|right"
+                        android:text="2018-03-09 14:30"
+                        android:textColor="#7b7b7b"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#f1f1f1" />
+
+                <RelativeLayout
+                    android:id="@+id/end_time_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:background="@color/white"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <TextView
+                        android:id="@+id/end_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:text="结束时间"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/end_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/end_time_text"
+                        android:gravity="center_vertical|right"
+                        android:text="2018-03-20 9:30"
+                        android:textColor="#7b7b7b"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="#f1f1f1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="14dp"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="43dp"
+                        android:gravity="center_vertical"
+                        android:text="描述:"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/intro"
+                        android:layout_width="match_parent"
+                        android:layout_height="267dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="50dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/bg_radius_5dp"
+                        android:gravity="left|top"
+                        android:hint="请输入要求!"
+                        android:textColor="#7b7b7b"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_process"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text="接受请求"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold">
+
+    </Button>
+</RelativeLayout>

@@ -14,7 +14,9 @@ import android.widget.PopupWindow;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
+import com.imalljoy.insights.bus.JumpFragment;
 import com.imalljoy.insights.mvps.adapter.CommonFragmentAdapter;
+import com.imalljoy.insights.mvps.research.BuildRequestActivity;
 import com.imalljoy.insights.mvps.research.QuestionnaireFragment;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.mvps.research.RequireFragment;
@@ -22,6 +24,10 @@ import com.imalljoy.insights.utils.ScreenUtils;
 import com.imalljoy.insights.widgets.CustomPopupWindow;
 import com.imalljoy.insights.widgets.TopBarCommon;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +68,7 @@ public class ResearchFragment extends BaseFragment {
             initTopBar();
             initFragmentPager();
         }
+        EventBus.getDefault().register(this);
 
         return mRootView;
     }
@@ -85,6 +92,7 @@ public class ResearchFragment extends BaseFragment {
                             switch (v.getId()) {
                                 case R.id.request_layout:
                                     Log.e("onclick","request_layout");
+                                    BuildRequestActivity.toActivity(ResearchFragment.this.getActivity(), null, 0);
                                     mPopupWindow.dismiss();
                                     break;
                                 case R.id.questionnaire_layout:
@@ -150,9 +158,17 @@ public class ResearchFragment extends BaseFragment {
 
 
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(JumpFragment jumpFragment){
+        if(jumpFragment.getType() == JumpFragment.Type.Research){
+            mViewpager.setCurrentItem(jumpFragment.getIndex());
+
+        }
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 }

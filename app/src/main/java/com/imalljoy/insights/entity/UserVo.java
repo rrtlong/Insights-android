@@ -2,6 +2,7 @@ package com.imalljoy.insights.entity;
 
 import com.imalljoy.insights.greendao.bean.Question;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +23,20 @@ public class UserVo {
     private List<RequestVo> accepRequests;      //接受的调查任务
     private List<QuestionVo> questions;     //发布过的调查问卷
     private List<QuestionVo> accepQuestions;        //参与过的调查问卷
+
+    public void addRequest(RequestVo vo, boolean isOwnRequest){
+        if(isOwnRequest){
+            if(requests ==null){
+                requests = new ArrayList<>();
+            }
+            requests.add(vo);
+        }else{
+            if(accepRequests == null){
+                accepRequests = new ArrayList<>();
+            }
+            accepRequests.add(vo);
+        }
+    }
 
     public long getUserId() {
         return userId;
@@ -96,6 +111,9 @@ public class UserVo {
     }
 
     public List<RequestVo> getRequests() {
+        if(requests == null){
+            requests = new ArrayList<>();
+        }
         return requests;
     }
 
@@ -104,6 +122,8 @@ public class UserVo {
     }
 
     public List<RequestVo> getAccepRequests() {
+        if(accepRequests == null)
+            accepRequests = new ArrayList<>();
         return accepRequests;
     }
 

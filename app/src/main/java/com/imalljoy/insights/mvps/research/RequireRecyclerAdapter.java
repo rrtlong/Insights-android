@@ -2,6 +2,7 @@ package com.imalljoy.insights.mvps.research;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,7 +62,7 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
     }
 
     @Override
-    public void onBindViewHolder(RequireRecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(RequireRecyclerAdapter.ViewHolder holder, final int position) {
         RequestVo vo = listData.get(position);
         Glide.with(mContext).load(vo.getUser().getHeadPic()).into(holder.headPic);
         holder.name.setText(vo.getName());
@@ -98,6 +99,12 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
             holder.startTime.setTextColor(Color.parseColor("#cccccc"));
             holder.endTime.setTextColor(Color.parseColor("#cccccc"));
         }
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BuildRequestActivity.toActivity(mContext, listData.get(position), listData.get(position).getStatus());
+            }
+        });
         Log.e("time", "startTime=" + vo.getStartTime().getTime() + ",system.time=" + System.currentTimeMillis() + ",endTime=" + vo.getEndTime().getTime());
 
     }
@@ -108,6 +115,8 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.root_view)
+        ConstraintLayout rootView;
         @BindView(R.id.head_pic)
         ImageView headPic;
         @BindView(R.id.name)

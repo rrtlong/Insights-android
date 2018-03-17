@@ -129,6 +129,24 @@ public class DateUtils {
     }
 
     /**
+     * 将一个日期字符串转换成Data对象
+     *
+     * @param dateString 日期字符串
+     * @param patternStr    转换格式字符串
+     * @return 返回转换后的日期对象
+     */
+    public static Date stringToDate(String dateString, String patternStr){
+        Date date = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(patternStr);
+        try{
+            date = sdf.parse(dateString);
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    /**
      * 将date转换成字符串
      *
      * @param date    日期
@@ -140,6 +158,17 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat(pattern.getValue(), Locale.CHINA);
         string = sdf.format(date);
         return string;
+    }
+
+    /**
+     * 将date转换成字符串
+     * @param date  日期
+     * @param pattern   日期格式字符串 如yyyy年MM月dd日 HH:mm
+     * @return
+     */
+    public static String dateToString(Date date, String pattern){
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.CHINA);
+        return sdf.format(date);
     }
 
     /**

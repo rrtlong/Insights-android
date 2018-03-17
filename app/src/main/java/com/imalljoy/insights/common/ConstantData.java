@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.imalljoy.insights.entity.PersonasVo;
 import com.imalljoy.insights.entity.QuestionnaireVo;
+import com.imalljoy.insights.entity.ReportVo;
 import com.imalljoy.insights.entity.RequestVo;
 import com.imalljoy.insights.entity.UserVo;
 
@@ -20,6 +21,8 @@ public class ConstantData {
     public static List<UserVo> userVos = new ArrayList<>();
     public static List<QuestionnaireVo> questionnaireVos = new ArrayList<>();
     public static List<RequestVo> requestVos = new ArrayList<>();
+    public static List<ReportVo> reportVos = new ArrayList<>();
+    public static UserVo mUserVo;
 
     static {
         UserVo userVo = new UserVo();
@@ -57,6 +60,8 @@ public class ConstantData {
         userVo.setGender(1);
         userVos.add(userVo);
         Log.e("userVos" , userVos.toString());
+
+        mUserVo = userVos.get(new Random().nextInt(5));
 
         QuestionnaireVo questionnaireVo = new QuestionnaireVo();
         questionnaireVo.setUserVo(userVos.get(new Random().nextInt(5)));
@@ -130,6 +135,56 @@ public class ConstantData {
         requestVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
         requestVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
         requestVos.add(requestVo);
+
+        ReportVo reportVo = new ReportVo();
+        reportVo.setId(1l);
+        reportVo.setUser(userVos.get(new Random().nextInt(5)));
+        reportVo.setName("名称");
+        reportVo.setContent("内容内容内容内容内容内容内容内容");
+        reportVo.setPublishTime(new Timestamp(1520843100000l));
+        reportVo.setReward(33);
+        reportVo.setScore(100);
+        reportVos.add(reportVo);
+
+        reportVo = new ReportVo();
+        reportVo.setId(2l);
+        reportVo.setUser(userVos.get(new Random().nextInt(5)));
+        reportVo.setName("名称");
+        reportVo.setContent("内容内容内容内容内容内容内容内容");
+        reportVo.setPublishTime(new Timestamp(1520843100000l));
+        reportVo.setReward(66);
+        reportVo.setScore(80);
+        reportVos.add(reportVo);
+
+        reportVo = new ReportVo();
+        reportVo.setId(3l);
+        reportVo.setUser(userVos.get(new Random().nextInt(5)));
+        reportVo.setName("名称");
+        reportVo.setContent("内容内容内容内容内容内容内容内容");
+        reportVo.setPublishTime(new Timestamp(1520843100000l));
+        reportVo.setReward(99);
+        reportVo.setScore(60);
+        reportVos.add(reportVo);
+
+        reportVo = new ReportVo();
+        reportVo.setId(4l);
+        reportVo.setUser(userVos.get(new Random().nextInt(5)));
+        reportVo.setName("名称");
+        reportVo.setContent("内容内容内容内容内容内容内容内容");
+        reportVo.setPublishTime(new Timestamp(1520843100000l));
+        reportVo.setReward(110);
+        reportVo.setScore(40);
+        reportVos.add(reportVo);
+
+        reportVo = new ReportVo();
+        reportVo.setId(5l);
+        reportVo.setUser(userVos.get(new Random().nextInt(5)));
+        reportVo.setName("名称");
+        reportVo.setContent("内容内容内容内容内容内容内容内容");
+        reportVo.setPublishTime(new Timestamp(1520843100000l));
+        reportVo.setReward(33);
+        reportVo.setScore(30);
+        reportVos.add(reportVo);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.imalljoy.insights.entity;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -17,6 +18,8 @@ public class ReportVo {
     private double cost;        //查看报告需要的费用
     private UserVo user;        //分析师
     private RateVo rating;      //评级
+    private int score;          //报告分数 100分
+    private Timestamp publishTime;//报告发布日期
 
     public long getId() {
         return id;
@@ -90,6 +93,22 @@ public class ReportVo {
         this.rating = rating;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public Timestamp getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Timestamp publishTime) {
+        this.publishTime = publishTime;
+    }
+
     @Override
     public String toString() {
         return "ReportVo{" +
@@ -102,6 +121,8 @@ public class ReportVo {
                 ", cost=" + cost +
                 ", user=" + user +
                 ", rating=" + rating +
+                ", score=" + score +
+                ", publishTime=" + publishTime +
                 '}';
     }
 }
