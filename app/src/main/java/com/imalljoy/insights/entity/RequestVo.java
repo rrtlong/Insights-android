@@ -18,6 +18,7 @@ public class RequestVo implements Serializable{
     private int status;     //状态,如:待接收,已被接受,已完成
     private UserVo user;        //发起请求的用户
     private CoinVo coin;    //数币名
+    private UserVo acceptUser; //接受请求的用户
 
 
     public Long getId() {
@@ -100,6 +101,14 @@ public class RequestVo implements Serializable{
         this.coin = coin;
     }
 
+    public UserVo getAcceptUser() {
+        return acceptUser;
+    }
+
+    public void setAcceptUser(UserVo acceptUser) {
+        this.acceptUser = acceptUser;
+    }
+
     @Override
     public String toString() {
         return "RequestVo{" +
@@ -113,6 +122,7 @@ public class RequestVo implements Serializable{
                 ", status=" + status +
                 ", user=" + user +
                 ", coin=" + coin +
+                ", acceptUser=" + acceptUser +
                 '}';
     }
 }

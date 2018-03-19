@@ -2,6 +2,7 @@ package com.imalljoy.insights.entity;
 
 import com.imalljoy.insights.greendao.bean.Question;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by lijilong on 03/16.
  */
 
-public class UserVo {
+public class UserVo implements Serializable{
     private long userId;        //用户id
     private String name;        //用户名称
     private String headPic;
@@ -24,8 +25,13 @@ public class UserVo {
     private List<QuestionVo> questions;     //发布过的调查问卷
     private List<QuestionVo> accepQuestions;        //参与过的调查问卷
 
-    public void addRequest(RequestVo vo, boolean isOwnRequest){
-        if(isOwnRequest){
+    /**
+     *
+     * @param vo    请求实体
+     * @param isBuildRequest  是否是自己新建请求,还是接受请求
+     */
+    public void addRequest(RequestVo vo, boolean isBuildRequest){
+        if(isBuildRequest){
             if(requests ==null){
                 requests = new ArrayList<>();
             }

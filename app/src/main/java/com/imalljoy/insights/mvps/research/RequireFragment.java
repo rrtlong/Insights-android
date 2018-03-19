@@ -100,7 +100,16 @@ public class RequireFragment extends BaseFragment implements SwipeRefreshLayout.
             @Override
             public void run() {
                 mSwiperRefreshLayout.setRefreshing(false);
+                mAdapter.setData(ConstantData.requestVos);
             }
         }, 2000);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser && mRootView != null){
+                mAdapter.setData(ConstantData.requestVos);
+        }
     }
 }

@@ -1,11 +1,13 @@
 package com.imalljoy.insights.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by lijilong on 03/16.
  *评价
  */
 
-public class RateVo {
+public class RateVo implements Serializable{
     private int project;        //项目评分
     private int team;       //团队评分
     private int technology;     //技术评分
@@ -15,18 +17,17 @@ public class RateVo {
     private int law;        //法律评分
     private int influence;      //影响力评分
     private int userResearch;       //用户调查评分
-
-    public RateVo(int project, int team, int technology, int business, int capital, int coin, int law, int influence, int userResearch) {
-        this.project = project;
-        this.team = team;
-        this.technology = technology;
-        this.business = business;
-        this.capital = capital;
-        this.coin = coin;
-        this.law = law;
-        this.influence = influence;
-        this.userResearch = userResearch;
-    }
+    private int enterpriseInfo;      //企业问询
+    private String projectIntro;    //项目评分描述
+    private String teamIntro;
+    private String technologyIntro;
+    private String businessIntro;
+    private String capitalIntro;
+    private String coinIntro;
+    private String lawIntro;
+    private String influenceIntro;
+    private String userResearchIntro;
+    private String enterpriseInfoIntro;
 
     public int getProject() {
         return project;
@@ -100,6 +101,94 @@ public class RateVo {
         this.userResearch = userResearch;
     }
 
+    public int getEnterpriseInfo() {
+        return enterpriseInfo;
+    }
+
+    public void setEnterpriseInfo(int enterpriseInfo) {
+        this.enterpriseInfo = enterpriseInfo;
+    }
+
+    public String getProjectIntro() {
+        return projectIntro;
+    }
+
+    public void setProjectIntro(String projectIntro) {
+        this.projectIntro = projectIntro;
+    }
+
+    public String getTeamIntro() {
+        return teamIntro;
+    }
+
+    public void setTeamIntro(String teamIntro) {
+        this.teamIntro = teamIntro;
+    }
+
+    public String getTechnologyIntro() {
+        return technologyIntro;
+    }
+
+    public void setTechnologyIntro(String technologyIntro) {
+        this.technologyIntro = technologyIntro;
+    }
+
+    public String getBusinessIntro() {
+        return businessIntro;
+    }
+
+    public void setBusinessIntro(String businessIntro) {
+        this.businessIntro = businessIntro;
+    }
+
+    public String getCapitalIntro() {
+        return capitalIntro;
+    }
+
+    public void setCapitalIntro(String capitalIntro) {
+        this.capitalIntro = capitalIntro;
+    }
+
+    public String getCoinIntro() {
+        return coinIntro;
+    }
+
+    public void setCoinIntro(String coinIntro) {
+        this.coinIntro = coinIntro;
+    }
+
+    public String getLawIntro() {
+        return lawIntro;
+    }
+
+    public void setLawIntro(String lawIntro) {
+        this.lawIntro = lawIntro;
+    }
+
+    public String getInfluenceIntro() {
+        return influenceIntro;
+    }
+
+    public void setInfluenceIntro(String influenceIntro) {
+        this.influenceIntro = influenceIntro;
+    }
+
+    public String getUserResearchIntro() {
+        return userResearchIntro;
+    }
+
+    public void setUserResearchIntro(String userResearchIntro) {
+        this.userResearchIntro = userResearchIntro;
+    }
+
+    public String getEnterpriseInfoIntro() {
+        return enterpriseInfoIntro;
+    }
+
+    public void setEnterpriseInfoIntro(String enterpriseInfoIntro) {
+        this.enterpriseInfoIntro = enterpriseInfoIntro;
+    }
+
     @Override
     public String toString() {
         return "RateVo{" +
@@ -112,6 +201,17 @@ public class RateVo {
                 ", law=" + law +
                 ", influence=" + influence +
                 ", userResearch=" + userResearch +
+                ", enterpriseInfo=" + enterpriseInfo +
+                ", projectIntro='" + projectIntro + '\'' +
+                ", teamIntro='" + teamIntro + '\'' +
+                ", technologyIntro='" + technologyIntro + '\'' +
+                ", businessIntro='" + businessIntro + '\'' +
+                ", capitalIntro='" + capitalIntro + '\'' +
+                ", coinIntro='" + coinIntro + '\'' +
+                ", lawIntro='" + lawIntro + '\'' +
+                ", influenceIntro='" + influenceIntro + '\'' +
+                ", userResearchIntro='" + userResearchIntro + '\'' +
+                ", enterpriseInfoIntro='" + enterpriseInfoIntro + '\'' +
                 '}';
     }
 }

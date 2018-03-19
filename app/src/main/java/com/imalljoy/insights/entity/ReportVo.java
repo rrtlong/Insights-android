@@ -1,5 +1,6 @@
 package com.imalljoy.insights.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * 调研报告
  */
 
-public class ReportVo {
+public class ReportVo implements Serializable{
     private long id;        //调研报告的id
     private String name;        //调研报告名称
     private String content;     //调研报告内容
@@ -18,9 +19,33 @@ public class ReportVo {
     private double cost;        //查看报告需要的费用
     private UserVo user;        //分析师
     private RateVo rating;      //评级
-    private int score;          //报告分数 100分
     private Timestamp publishTime;//报告发布日期
+    private RequestVo request;    //报告对应的请求
+    private int status;           //状态 -1:新建报告 0未购买 1已购买
+    private CoinVo coin;
+    private String coinLevel;       //数币评级 如A+,A-,B+....
+    public void setCoinLevel(String coinLevel){
+        this.coinLevel = coinLevel;
+    }
+    public String getCoinLevel(){
+        return coinLevel;
+    }
+    public void setCoin(CoinVo coinVo){
+        this.coin = coinVo;
+    }
+    public CoinVo getCoin(){
+        if(coin == null){
+            coin = new CoinVo();
+        }
+        return coin;
+    }
 
+    public int getStatus(){
+        return status;
+    }
+    public void setStatus(int status){
+        this.status = status;
+    }
     public long getId() {
         return id;
     }
@@ -86,6 +111,9 @@ public class ReportVo {
     }
 
     public RateVo getRating() {
+        if(rating == null){
+            rating = new RateVo();
+        }
         return rating;
     }
 
@@ -93,13 +121,7 @@ public class ReportVo {
         this.rating = rating;
     }
 
-    public int getScore() {
-        return score;
-    }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
 
     public Timestamp getPublishTime() {
         return publishTime;
@@ -107,6 +129,14 @@ public class ReportVo {
 
     public void setPublishTime(Timestamp publishTime) {
         this.publishTime = publishTime;
+    }
+    public void setRequest(RequestVo vo){
+        this.request = vo;
+    }
+    public RequestVo getRequest(){
+        if(request == null)
+            request = new RequestVo();
+        return request;
     }
 
     @Override
@@ -121,7 +151,6 @@ public class ReportVo {
                 ", cost=" + cost +
                 ", user=" + user +
                 ", rating=" + rating +
-                ", score=" + score +
                 ", publishTime=" + publishTime +
                 '}';
     }

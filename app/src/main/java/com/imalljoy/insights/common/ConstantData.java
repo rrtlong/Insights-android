@@ -1,7 +1,9 @@
 package com.imalljoy.insights.common;
 
 import android.util.Log;
+import android.view.accessibility.AccessibilityNodeInfo;
 
+import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.entity.PersonasVo;
 import com.imalljoy.insights.entity.QuestionnaireVo;
 import com.imalljoy.insights.entity.ReportVo;
@@ -103,6 +105,9 @@ public class ConstantData {
         RequestVo requestVo = new RequestVo();
         requestVo.setId(1l);
         requestVo.setUser(userVos.get(new Random().nextInt(5)));
+        CoinVo coinVo = new CoinVo();
+        coinVo.setName("比特币");
+        requestVo.setCoin(coinVo);
         requestVo.setName("名称");
         requestVo.setPlatform(0);
         requestVo.setReward(33);
@@ -115,6 +120,9 @@ public class ConstantData {
         requestVo = new RequestVo();
         requestVo.setId(2l);
         requestVo.setUser(userVos.get(new Random().nextInt(5)));
+        coinVo = new CoinVo();
+        coinVo.setName("猫币");
+        requestVo.setCoin(coinVo);
         requestVo.setName("名称");
         requestVo.setPlatform(1);
         requestVo.setDemand("2天之内给出结果");
@@ -125,8 +133,11 @@ public class ConstantData {
         requestVos.add(requestVo);
 
         requestVo = new RequestVo();
-        requestVo.setId(1l);
+        requestVo.setId(3l);
         requestVo.setUser(userVos.get(new Random().nextInt(5)));
+        coinVo = new CoinVo();
+        coinVo.setName("狗币");
+        requestVo.setCoin(coinVo);
         requestVo.setName("名称");
         requestVo.setPlatform(0);
         requestVo.setDemand("调查要详细");
@@ -143,7 +154,14 @@ public class ConstantData {
         reportVo.setContent("内容内容内容内容内容内容内容内容");
         reportVo.setPublishTime(new Timestamp(1520843100000l));
         reportVo.setReward(33);
-        reportVo.setScore(100);
+        reportVo.setGrade(100);
+        requestVo = new RequestVo();
+        requestVo.setName("请求名");
+        coinVo = new CoinVo();
+        coinVo.setName("猫币");
+        requestVo.setCoin(coinVo);
+        reportVo.setRequest(requestVo);
+        reportVo.setStatus(1);
         reportVos.add(reportVo);
 
         reportVo = new ReportVo();
@@ -153,7 +171,14 @@ public class ConstantData {
         reportVo.setContent("内容内容内容内容内容内容内容内容");
         reportVo.setPublishTime(new Timestamp(1520843100000l));
         reportVo.setReward(66);
-        reportVo.setScore(80);
+        reportVo.setGrade(80);
+        requestVo = new RequestVo();
+        requestVo.setName("请求名");
+        coinVo = new CoinVo();
+        coinVo.setName("猫币");
+        requestVo.setCoin(coinVo);
+        reportVo.setRequest(requestVo);
+        reportVo.setStatus(2);
         reportVos.add(reportVo);
 
         reportVo = new ReportVo();
@@ -163,7 +188,14 @@ public class ConstantData {
         reportVo.setContent("内容内容内容内容内容内容内容内容");
         reportVo.setPublishTime(new Timestamp(1520843100000l));
         reportVo.setReward(99);
-        reportVo.setScore(60);
+        reportVo.setGrade(60);
+        requestVo = new RequestVo();
+        requestVo.setName("请求名");
+        coinVo = new CoinVo();
+        coinVo.setName("猫币");
+        requestVo.setCoin(coinVo);
+        reportVo.setRequest(requestVo);
+        reportVo.setStatus(3);
         reportVos.add(reportVo);
 
         reportVo = new ReportVo();
@@ -173,7 +205,14 @@ public class ConstantData {
         reportVo.setContent("内容内容内容内容内容内容内容内容");
         reportVo.setPublishTime(new Timestamp(1520843100000l));
         reportVo.setReward(110);
-        reportVo.setScore(40);
+        reportVo.setGrade(40);
+        requestVo = new RequestVo();
+        requestVo.setName("请求名");
+        coinVo = new CoinVo();
+        coinVo.setName("猫币");
+        requestVo.setCoin(coinVo);
+        reportVo.setRequest(requestVo);
+        reportVo.setStatus(1);
         reportVos.add(reportVo);
 
         reportVo = new ReportVo();
@@ -183,7 +222,14 @@ public class ConstantData {
         reportVo.setContent("内容内容内容内容内容内容内容内容");
         reportVo.setPublishTime(new Timestamp(1520843100000l));
         reportVo.setReward(33);
-        reportVo.setScore(30);
+        reportVo.setGrade(30);
+        requestVo = new RequestVo();
+        requestVo.setName("请求名");
+        coinVo = new CoinVo();
+        coinVo.setName("猫币");
+        requestVo.setCoin(coinVo);
+        reportVo.setRequest(requestVo);
+        reportVo.setStatus(1);
         reportVos.add(reportVo);
     }
 

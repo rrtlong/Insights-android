@@ -13,7 +13,11 @@ import android.view.ViewGroup;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
+import com.imalljoy.insights.bus.JumpFragment;
 import com.imalljoy.insights.common.ConstantData;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,6 +74,13 @@ public class ReportFragment extends BaseFragment implements SwipeRefreshLayout.O
         return fragment;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(JumpFragment jumpFragment){
+        if(jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.getIndex() ==1 && jumpFragment.isRefresh()){
+            mAdapter.setData(ConstantData.reportVos);
+        }
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -82,6 +93,7 @@ public class ReportFragment extends BaseFragment implements SwipeRefreshLayout.O
             @Override
             public void run() {
                 mSwiperRefreshLayout.setRefreshing(false);
+                mAdapter.setData(ConstantData.reportVos);
             }
         },3000);
     }

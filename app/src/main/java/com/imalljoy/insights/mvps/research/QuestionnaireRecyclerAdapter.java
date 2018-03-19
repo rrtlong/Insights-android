@@ -47,7 +47,6 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
 
     public void setData(List<QuestionnaireVo> list) {
         if (list != null && list.size() > 0) {
-            listData.clear();
             listData = list;
             notifyDataSetChanged();
         }

@@ -92,7 +92,7 @@ public class ResearchFragment extends BaseFragment {
                             switch (v.getId()) {
                                 case R.id.request_layout:
                                     Log.e("onclick","request_layout");
-                                    BuildRequestActivity.toActivity(ResearchFragment.this.getActivity(), null, 0);
+                                    BuildRequestActivity.toActivity(ResearchFragment.this.getActivity(), null, -1);
                                     mPopupWindow.dismiss();
                                     break;
                                 case R.id.questionnaire_layout:
@@ -160,9 +160,8 @@ public class ResearchFragment extends BaseFragment {
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(JumpFragment jumpFragment){
-        if(jumpFragment.getType() == JumpFragment.Type.Research){
+        if(jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.isJump()){
             mViewpager.setCurrentItem(jumpFragment.getIndex());
-
         }
     }
 

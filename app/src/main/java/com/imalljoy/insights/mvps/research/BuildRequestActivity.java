@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -70,6 +71,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.act_buildrequest);
         ButterKnife.bind(this);
         mIntro.setPadding(ScreenUtils.sp2px(this, 10), ScreenUtils.sp2px(this, 10), ScreenUtils.sp2px(this, 10), ScreenUtils.sp2px(this, 10));
+        CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
         initDate();
 
 
@@ -77,7 +79,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
 
     private void initDate() {
         Bundle bundle = getIntent().getExtras();
-        mVo = (RequestVo) bundle.get("vo");
+        mVo = (RequestVo) getIntent().getSerializableExtra("vo");
         mStatus = bundle.getInt("status", -1);
         if (mStatus == 0) {
             //新建一个请求
@@ -87,14 +89,12 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             //未接受
             initwithData("请求", "接受请求");
 
-        } else if (mStatus == 1) {
-            //已接收
-            initwithData("请求", "已接受");
         } else if (mStatus == 2) {
+            //已接收
+            initwithData("请求", "撰写报告");
+        } else if (mStatus == 3) {
             //已完成
             initwithData("请求", "已完成");
-        } else if (mStatus == -1) {
-            //获取不到status
         }
 
     }
@@ -125,7 +125,10 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             mIntro.setText(mVo.getDemand());
             mBtnProcess.setText(buttonText);
             mBtnProcess.setVisibility(View.VISIBLE);
-            if (mStatus == 2 || mStatus == 3) {
+            if(mStatus == 1 || mStatus ==2){
+                //接受请求,撰写报告
+                mBtnProcess.setOnClickListener(this);
+            }else if (mStatus == 3) {
                 mBtnProcess.setBackgroundColor(Color.parseColor("#cccccc"));
                 mBtnProcess.setEnabled(false);
             } else {
@@ -141,7 +144,6 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         mTopBar.top_bar_left_layout.setOnClickListener(this);
         mTopBar.setRightView("发布", 0);
         mTopBar.top_bar_right_layout.setOnClickListener(this);
-        CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
         mStartTimeLayout.setOnClickListener(this);
         mEndTimeLayout.setOnClickListener(this);
         mBtnProcess.setVisibility(View.GONE);
@@ -151,7 +153,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         Intent it = new Intent(context, BuildRequestActivity.class);
         Bundle bundle = new Bundle();
         if (vo != null) {
-            bundle.putSerializable("vo", vo);
+            it.putExtra("vo",vo);
         }
         bundle.putInt("status", status);
         it.putExtras(bundle);
@@ -176,6 +178,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 CoinVo coin = new CoinVo();
                 coin.setName(mCoinName.getText().toString());
                 vo.setId((long) (ConstantData.requestVos.size() + 1));
+                vo.setStatus(1);
                 vo.setUser(ConstantData.userVos.get(0));
                 vo.setCoin(coin);
                 vo.setName(mRequireName.getText().toString());
@@ -184,15 +187,23 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 vo.setEndTime(new Timestamp(DateUtils.stringToDate(mEndTime.getText().toString(), "yyyy-MM-dd HH:mm").getTime()));
                 vo.setDemand(mIntro.getText().toString());
                 ConstantData.requestVos.add(vo);
-                EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true));
+                EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true,true));
                 finish();
                 break;
             case R.id.btn_process:
                 if (mStatus == 1) {
+                    //接受请求
                     ConstantData.mUserVo.addRequest(mVo, false);
-                    updateStatus(mVo.getId(), 1);
-                    EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true));
+                    updateStatus(mVo.getId(), 2);
+                    EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true,true));
                     finish();
+                }else if(mStatus ==2){
+                    //撰写报告
+                    BuildReportActivity.toActivity(this, mVo, null, 0);
+                    updateStatus(mVo.getId(),3);
+                    finish();
+                }else if(mStatus ==3){
+                    //已完成
                 }
                 break;
         }
@@ -201,6 +212,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
     public void updateStatus(long id, int status) {
         for (int i = 0; i < ConstantData.requestVos.size(); i++) {
             if (ConstantData.requestVos.get(i).getId() == id) {
+                Log.e("updateStatus","i=" +i);
                 ConstantData.requestVos.get(i).setStatus(status);
             }
         }

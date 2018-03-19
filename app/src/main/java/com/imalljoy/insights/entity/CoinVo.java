@@ -1,12 +1,13 @@
 package com.imalljoy.insights.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lijilong on 03/16.
  */
 
-public class CoinVo {
+public class CoinVo implements Serializable {
     private long id;        //数币id
     private String name;        //数币名称
     private String intro;       //数币企业介绍

@@ -2,6 +2,7 @@ package com.imalljoy.insights.mvps.research;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,7 +47,6 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
 
     public void setData(List<ReportVo> list) {
         if (list != null && list.size() > 0) {
-            listData.clear();
             listData = list;
             notifyDataSetChanged();
         }
@@ -60,34 +60,40 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
     }
 
     @Override
-    public void onBindViewHolder(ReportRecyclerAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ReportRecyclerAdapter.ViewHolder holder, final int position) {
         ReportVo vo = listData.get(position);
         Glide.with(mContext).load(vo.getUser().getHeadPic()).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.content.setText(vo.getContent());
         holder.publishTime.setText(DateUtils.dateToString(new Date(vo.getPublishTime().getTime()), "yyyy年MM月dd日 HH:mm"));
         holder.reward.setText("INB: " + vo.getReward() + "");
-        if (vo.getScore() <= 20) {
+        if (vo.getGrade() <= 20) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getScore() <= 40) {
+        } else if (vo.getGrade() <= 40) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getScore() <= 60) {
+        } else if (vo.getGrade() <= 60) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
             holder.star3.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getScore() <= 80) {
+        } else if (vo.getGrade() <= 80) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
             holder.star3.setImageResource(R.mipmap.icon_star_yes);
             holder.star4.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getScore() <= 100) {
+        } else if (vo.getGrade() <= 100) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
             holder.star3.setImageResource(R.mipmap.icon_star_yes);
             holder.star4.setImageResource(R.mipmap.icon_star_yes);
             holder.star5.setImageResource(R.mipmap.icon_star_yes);
         }
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BuildReportActivity.toActivity(mContext,listData.get(position).getRequest(),listData.get(position), listData.get(position).getStatus());
+            }
+        });
 
 
     }
@@ -98,6 +104,8 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.root_view)
+        ConstraintLayout rootView;
         @BindView(R.id.head_pic)
         ImageView headPic;
         @BindView(R.id.name)

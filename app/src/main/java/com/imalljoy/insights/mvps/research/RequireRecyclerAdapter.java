@@ -47,8 +47,9 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
     }
 
     public void setData(List<RequestVo> list) {
+
         if (list != null && list.size() > 0) {
-            listData.clear();
+            listData = null;
             listData = list;
             notifyDataSetChanged();
         }
