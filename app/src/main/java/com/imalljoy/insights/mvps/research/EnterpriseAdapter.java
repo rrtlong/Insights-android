@@ -3,22 +3,19 @@ package com.imalljoy.insights.mvps.research;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.entity.QuestionnaireVo;
-import com.imalljoy.insights.greendao.bean.Question;
 import com.imalljoy.insights.utils.DateUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,32 +23,20 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by lijilong on 03/10.
+ * Created by lijilong on 03/20.
  */
 
-public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<QuestionnaireRecyclerAdapter.ViewHolder> {
+public class EnterpriseAdapter extends RecyclerView.Adapter<EnterpriseAdapter.ViewHolder> {
     List<QuestionnaireVo> listData = null;
-    Context mContext = null;
+    Context mContext;
+    int mType;
+    int mStatus;
 
-    QuestionnaireRecyclerAdapter(Context context, List<QuestionnaireVo> listData) {
-        mContext = context;
-        this.listData = new ArrayList<>();
-        this.listData = listData;
-    }
-
-    public void addData(QuestionnaireVo vo) {
-        if (listData != null) {
-            listData.add(vo);
-            notifyDataSetChanged();
-        }
-    }
-
-    public void setData(List<QuestionnaireVo> list) {
-        if (list != null && list.size() > 0) {
-            listData = list;
-            notifyDataSetChanged();
-        }
-
+    EnterpriseAdapter(Context context, List<QuestionnaireVo> data, int type, int status) {
+        this.mContext = context;
+        this.listData = data;
+        this.mType = type;
+        this.mStatus = status;
     }
 
     @Override
@@ -61,19 +46,26 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         QuestionnaireVo vo = listData.get(position);
         Glide.with(mContext).load(vo.getUserVo().getHeadPic()).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.intro.setText(vo.getContent());
         holder.reward.setText("INB: " + vo.getReward() + "");
         holder.surplus.setText("剩余数量" + (vo.getTotalNumber() - vo.getFinishedNumber()));
-        if (vo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < vo.getEndTime().getTime()) {
+        if (vo.getStatus() == 3) {
+            //已完成
+            holder.startTime.setVisibility(View.GONE);
+            holder.endTime.setVisibility(View.GONE);
+            holder.status.setText("已完成");
+            holder.status.setVisibility(View.VISIBLE);
+        } else if (vo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < vo.getEndTime().getTime()) {
             //在活动期
             holder.startTime.setText(DateUtils.dateToString(new Date(vo.getStartTime().getTime()), DateUtils.DatePattern.ONLY_DAY));
             holder.endTime.setText(DateUtils.dateToString(new Date(vo.getEndTime().getTime()), DateUtils.DatePattern.ONLY_DAY));
             holder.startTime.setTextColor(Color.parseColor("#72d2d6"));
             holder.endTime.setTextColor(Color.parseColor("#72d2d6"));
+
         } else if (System.currentTimeMillis() < vo.getStartTime().getTime()) {
             //活动未开始
             holder.startTime.setText(DateUtils.dateToString(new Date(vo.getStartTime().getTime()), DateUtils.DatePattern.ONLY_DAY));
@@ -90,23 +82,29 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuildQuestionnaireActivity.toActivity(mContext, listData.get(position), listData.get(position).getStatus());
+                UserListActivity.toActivity(mContext,mType);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
-        return listData == null ? 0 : listData.size();
+        return listData == null ? 0:listData.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.root_view)
-        ConstraintLayout rootView;
         @BindView(R.id.head_pic)
         ImageView headPic;
+        @BindView(R.id.more)
+        ImageView more;
+        @BindView(R.id.start_time)
+        TextView startTime;
+        @BindView(R.id.end_time)
+        TextView endTime;
+        @BindView(R.id.status)
+        TextView status;
+        @BindView(R.id.right_layout)
+        LinearLayout rightLayout;
         @BindView(R.id.name)
         TextView name;
         @BindView(R.id.intro)
@@ -115,14 +113,14 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
         TextView reward;
         @BindView(R.id.surplus)
         TextView surplus;
-        @BindView(R.id.start_time)
-        TextView startTime;
-        @BindView(R.id.end_time)
-        TextView endTime;
+        @BindView(R.id.middle_layout)
+        LinearLayout middleLayout;
+        @BindView(R.id.root_view)
+        ConstraintLayout rootView;
 
-        public ViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+        ViewHolder(View rootView) {
+            super(rootView);
+            ButterKnife.bind(this, rootView);
         }
     }
 }

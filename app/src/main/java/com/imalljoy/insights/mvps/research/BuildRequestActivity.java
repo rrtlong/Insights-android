@@ -3,6 +3,7 @@ package com.imalljoy.insights.mvps.research;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
@@ -11,10 +12,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.bus.JumpFragment;
@@ -42,8 +45,12 @@ import butterknife.ButterKnife;
 public class BuildRequestActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.top_bar)
     TopBarCommon mTopBar;
+    @BindView(R.id.coin_name_layout)
+    RelativeLayout mCoinNameLayout;
+    @BindView(R.id.coin_logo)
+    ImageView mCoinLogo;
     @BindView(R.id.coin_name)
-    EditText mCoinName;
+    TextView mCoinName;
     @BindView(R.id.require_name)
     EditText mRequireName;
     @BindView(R.id.reward)
@@ -80,7 +87,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
     private void initDate() {
         Bundle bundle = getIntent().getExtras();
         mVo = (RequestVo) getIntent().getSerializableExtra("vo");
-        mStatus = bundle.getInt("status", -1);
+        mStatus = bundle.getInt("status", 0);
         if (mStatus == 0) {
             //新建一个请求
             initwithoutData();
@@ -96,12 +103,15 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             //已完成
             initwithData("请求", "已完成");
         }
+        mCoinNameLayout.setOnClickListener(this);
+        if(mVo == null){
+            mVo = new RequestVo();
+            mVo.setId(System.currentTimeMillis()/1000);
+        }
 
     }
 
     public void disableEdit() {
-        mCoinName.setEnabled(false);
-        mCoinName.setFocusable(false);
         mRequireName.setEnabled(false);
         mRequireName.setFocusable(false);
         mReward.setEnabled(false);
@@ -125,10 +135,10 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             mIntro.setText(mVo.getDemand());
             mBtnProcess.setText(buttonText);
             mBtnProcess.setVisibility(View.VISIBLE);
-            if(mStatus == 1 || mStatus ==2){
+            if (mStatus == 1 || mStatus == 2) {
                 //接受请求,撰写报告
                 mBtnProcess.setOnClickListener(this);
-            }else if (mStatus == 3) {
+            } else if (mStatus == 3) {
                 mBtnProcess.setBackgroundColor(Color.parseColor("#cccccc"));
                 mBtnProcess.setEnabled(false);
             } else {
@@ -153,7 +163,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         Intent it = new Intent(context, BuildRequestActivity.class);
         Bundle bundle = new Bundle();
         if (vo != null) {
-            it.putExtra("vo",vo);
+            it.putExtra("vo", vo);
         }
         bundle.putInt("status", status);
         it.putExtras(bundle);
@@ -174,20 +184,24 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 showTimePickerView(false);
                 break;
             case R.id.top_bar_right_layout:
-                RequestVo vo = new RequestVo();
-                CoinVo coin = new CoinVo();
+                CoinVo coin = null;
+                if(mVo.getCoin() == null){
+                    coin = new CoinVo();
+                }else {
+                    coin = mVo.getCoin();
+                }
                 coin.setName(mCoinName.getText().toString());
-                vo.setId((long) (ConstantData.requestVos.size() + 1));
-                vo.setStatus(1);
-                vo.setUser(ConstantData.userVos.get(0));
-                vo.setCoin(coin);
-                vo.setName(mRequireName.getText().toString());
-                vo.setReward(Double.parseDouble(mReward.getText().toString().trim()));
-                vo.setStartTime(new Timestamp(DateUtils.stringToDate(mStartTime.getText().toString(), "yyyy-MM-dd HH:mm").getTime()));
-                vo.setEndTime(new Timestamp(DateUtils.stringToDate(mEndTime.getText().toString(), "yyyy-MM-dd HH:mm").getTime()));
-                vo.setDemand(mIntro.getText().toString());
-                ConstantData.requestVos.add(vo);
-                EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true,true));
+                mVo.setId((long) (ConstantData.requestVos.size() + 1));
+                mVo.setStatus(1);
+                mVo.setUser(ConstantData.userVos.get(0));
+                mVo.setCoin(coin);
+                mVo.setName(mRequireName.getText().toString());
+                mVo.setReward(Double.parseDouble(mReward.getText().toString().trim()));
+                mVo.setStartTime(new Timestamp(DateUtils.stringToDate(mStartTime.getText().toString(), "yyyy-MM-dd HH:mm").getTime()));
+                mVo.setEndTime(new Timestamp(DateUtils.stringToDate(mEndTime.getText().toString(), "yyyy-MM-dd HH:mm").getTime()));
+                mVo.setDemand(mIntro.getText().toString());
+                ConstantData.requestVos.add(mVo);
+                EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true, true));
                 finish();
                 break;
             case R.id.btn_process:
@@ -195,16 +209,22 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                     //接受请求
                     ConstantData.mUserVo.addRequest(mVo, false);
                     updateStatus(mVo.getId(), 2);
-                    EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true,true));
+                    EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true, true));
                     finish();
-                }else if(mStatus ==2){
+                } else if (mStatus == 2) {
                     //撰写报告
                     BuildReportActivity.toActivity(this, mVo, null, 0);
-                    updateStatus(mVo.getId(),3);
+                    updateStatus(mVo.getId(), 3);
                     finish();
-                }else if(mStatus ==3){
+                } else if (mStatus == 3) {
                     //已完成
                 }
+                break;
+            case R.id.coin_name_layout:
+                if (mVo == null) {
+                    mVo = new RequestVo();
+                }
+                BuildCoinInfoActivity.toActivityForResult(this, mVo.getCoin(), mStatus, 0);
                 break;
         }
     }
@@ -212,7 +232,6 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
     public void updateStatus(long id, int status) {
         for (int i = 0; i < ConstantData.requestVos.size(); i++) {
             if (ConstantData.requestVos.get(i).getId() == id) {
-                Log.e("updateStatus","i=" +i);
                 ConstantData.requestVos.get(i).setStatus(status);
             }
         }
@@ -256,6 +275,21 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         pvTime.show();
     }
 
+    private static final String TAG = "BuildRequestActivity";
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == 2) {
+            CoinVo coinVo = (CoinVo) data.getSerializableExtra("coinVo");
+            mVo.setCoin(null);
+            mVo.setCoin(coinVo);
+            mCoinName.setText(mVo.getCoin().getName());
+            if (!TextUtils.isEmpty(mVo.getCoin().getLogoUrl())) {
+                Glide.with(this).load(mVo.getCoin().getLogoUrl()).into(mCoinLogo);
+            }
+        }
+    }
+
     public void hideSoftInputMethod() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         //获取键盘显示状态
@@ -264,13 +298,13 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             imm.hideSoftInputFromWindow(BuildRequestActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
         // 如果软键盘已经显示，则隐藏，反之则显示
-//        imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-// 隐藏软键盘
-//        imm.hideSoftInputFromWindow(view, InputMethodManager.HIDE_NOT_ALWAYS);
-// 强制显示软键盘
-//        imm.showSoftInput(view,InputMethodManager.SHOW_FORCED);
-// 强制隐藏软键盘
-//        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        //imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+        // 隐藏软键盘
+        //imm.hideSoftInputFromWindow(view, InputMethodManager.HIDE_NOT_ALWAYS);
+        // 强制显示软键盘
+        //imm.showSoftInput(view,InputMethodManager.SHOW_FORCED);
+        // 强制隐藏软键盘
+        //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
 
     }

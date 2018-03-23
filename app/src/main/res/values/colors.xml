@@ -20,4 +20,24 @@
     <color name="holo_orange_light">#ffffbb33</color>
     <color name="holo_purple">#ffaa66cc</color>
     <color name="holo_red_light">#ffff4444</color>
+    <color name="cccccc">#cccccc</color>
+    <color name="c333333">#333333</color>
+    <color name="c_7b7b7b">#7b7b7b</color>
+    <color name="c_ffd55c">#ffd55c</color>
+    <color name="c_ff6d3b">#ff6d3b</color>
+    <color name="c_2b4457">#2b4457</color>
+    <color name="c_dd6e48">#dd6e48</color>
+    <color name="c_5ab67d">#5ab67d</color>
+    <color name="c_a">#5d813e</color>
+    <color name="c_a_subtract">#5d8041</color>
+    <color name="c_b_add">#cadfb5</color>
+    <color name="c_b">#cadfb9</color>
+    <color name="c_b_subtract">#cadfb7</color>
+    <color name="c_c_add">#fbe69d</color>
+    <color name="c_c">#fbe7a3</color>
+    <color name="c_d_add">#f5c544</color>
+    <color name="c_d">#f4c242</color>
+    <color name="c_e">#e53422</color>
+    <color name="c_e_subtract">#e53422</color>
+
 </resources>

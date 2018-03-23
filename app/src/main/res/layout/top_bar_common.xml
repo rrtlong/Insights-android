@@ -44,14 +44,14 @@
 
     <LinearLayout
         android:id="@+id/top_bar_right_layout"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:gravity="center_vertical|right"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="14dp">
+        android:paddingRight="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
 
         <ImageView
             android:id="@+id/top_bar_right_image"

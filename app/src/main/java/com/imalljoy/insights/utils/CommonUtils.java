@@ -7,6 +7,8 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.imalljoy.insights.R;
+
 /**
  * Created by lijilong on 03/09.
  */
@@ -50,5 +52,30 @@ public class CommonUtils {
             statusBarView.setBackgroundColor(color);
             decorView.addView(statusBarView, lp);
         }
+    }
+    public static int getColorResourceFromStrg(String level){
+        int color = R.color.c_e;
+        if(level == null || level.length()>2 ||level.length()==0){
+            return color;
+        }else if(level.length() == 1){
+            switch (level.substring(0,1)){
+                case "A":
+                    color = R.color.c_a;
+                    break;
+                case "B":
+                    color = R.color.c_b;
+                    break;
+                case "C":
+                    color = R.color.c_c;
+                    break;
+                case "D":
+                    color = R.color.c_d;
+                    break;
+                case "E":
+                    color = R.color.c_e;
+                    break;
+            }
+        }
+        return color;
     }
 }

@@ -17,6 +17,7 @@ import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.bus.EditReturnData;
 import com.imalljoy.insights.bus.JumpFragment;
 import com.imalljoy.insights.common.ConstantData;
+import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.entity.ReportVo;
 import com.imalljoy.insights.entity.RequestVo;
 import com.imalljoy.insights.utils.CommonUtils;
@@ -169,6 +170,7 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
         }
 
         mStatus = getIntent().getIntExtra("status", 0);
+        Log.e(TAG,"mstatus=" +mStatus);
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
         mTopBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         mTopBar.top_bar_left_layout.setOnClickListener(this);
@@ -221,12 +223,14 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
             mEnterpriseInfo.setVisibility(View.INVISIBLE);
             mContent.setText("***");
             mContent.setEnabled(false);
+            mReportName.setEnabled(false);
 
         } else if (mStatus == 2) {
             mTopBar.setRightView(null, 0);
             mBtnProcess.setText("已购买");
             mBtnProcess.setBackgroundColor(Color.parseColor("#cccccc"));
             mContent.setEnabled(false);
+            mReportName.setEnabled(false);
             mAnalystLayout.setVisibility(View.VISIBLE);
             mAnalystLayout.setOnClickListener(this);
             mAnalyst.setText(mReportVo.getUser().getName());
@@ -237,8 +241,9 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
             mPlatformIndexLayout.setVisibility(View.VISIBLE);
             mPlatformIndex.setVisibility(View.VISIBLE);
             mPlatformIndexImg.setVisibility(View.INVISIBLE);
+
         }
-        mCoinName.setText(mReportVo.getCoin().getName());
+        mCoinName.setText(mReportVo.getRequest().getCoin().getName());
         mReportName.setText(mReportVo.getName());
         mCost.setText(mReportVo.getCost()+"");
         mCoinRating.setText(mReportVo.getCoinLevel());
@@ -264,6 +269,7 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
             mStart4.setImageResource(R.mipmap.icon_star_yes);
             mStart5.setImageResource(R.mipmap.icon_star_yes);
         }
+        mCoinNameLayout.setOnClickListener(this);
         mCoinLayout.setOnClickListener(this);
         mProjectLayout.setOnClickListener(this);
         mTeamLayout.setOnClickListener(this);
@@ -279,10 +285,12 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
 
 
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.coin_name_layout:
+                BuildCoinInfoActivity.toActivityForResult(this, mReportVo.getRequest().getCoin(),mStatus,1);
+                break;
             case R.id.coin_rating_layout:
                 if (mStatus ==0 || mStatus ==2){
                     BuildCoinLevelActivity.toActivity(this, mCoinRating.getText().toString(), mStatus);
@@ -346,17 +354,14 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
                 }
                 break;
             case R.id.userResearch_layout:
-                if(mStatus ==0){
-                    EditType1Activity.toActivity(this,EditReturnData.USERRESEARCH,"用户调查");
-                }else if(mStatus ==2){
-                    EditType1Activity.toActivity(this, -1,"用户调查");
+                if(mStatus ==0 || mStatus ==2){
+                    EnterpriseActivity.toActivity(this, 1,mStatus);
                 }
+
                 break;
             case R.id.enterpriseInfo_layout:
-                if(mStatus ==0){
-                    EditType1Activity.toActivity(this,EditReturnData.COIN_RATING,"企业问询");
-                }else if(mStatus ==2){
-                    EditType1Activity.toActivity(this,-1,"企业问询");
+                if(mStatus ==0 || mStatus ==2){
+                    EnterpriseActivity.toActivity(this, 0,mStatus);
                 }
                 break;
             case R.id.top_bar_left_layout:
@@ -421,6 +426,15 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
         }else if(editReturnData.getFlag() == EditReturnData.EDIT_COIN_LEVEL){
             mReportVo.setCoinLevel(editReturnData.getScoreIntro());
             mCoinRating.setText(editReturnData.getScoreIntro());
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1 && resultCode ==2){
+            mReportVo.getRequest().setCoin((CoinVo) data.getSerializableExtra("coinVo"));
+            mCoinName.setText(mReportVo.getRequest().getCoin().getName()+"");
         }
     }
 

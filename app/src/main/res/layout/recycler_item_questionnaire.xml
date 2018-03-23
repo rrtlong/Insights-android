@@ -67,6 +67,16 @@
             android:textColor="#72d2d6"
             android:textSize="11sp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="#72d2d6"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:text="已接受"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout

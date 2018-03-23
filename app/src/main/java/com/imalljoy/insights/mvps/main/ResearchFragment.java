@@ -16,6 +16,7 @@ import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.bus.JumpFragment;
 import com.imalljoy.insights.mvps.adapter.CommonFragmentAdapter;
+import com.imalljoy.insights.mvps.research.BuildQuestionnaireActivity;
 import com.imalljoy.insights.mvps.research.BuildRequestActivity;
 import com.imalljoy.insights.mvps.research.QuestionnaireFragment;
 import com.imalljoy.insights.mvps.research.ReportFragment;
@@ -91,12 +92,11 @@ public class ResearchFragment extends BaseFragment {
                         public void onClick(View v) {
                             switch (v.getId()) {
                                 case R.id.request_layout:
-                                    Log.e("onclick","request_layout");
-                                    BuildRequestActivity.toActivity(ResearchFragment.this.getActivity(), null, -1);
+                                    BuildRequestActivity.toActivity(ResearchFragment.this.getActivity(), null, 0);
                                     mPopupWindow.dismiss();
                                     break;
                                 case R.id.questionnaire_layout:
-                                    Log.e("onclick","requestionnaire_layout");
+                                    BuildQuestionnaireActivity.toActivity(ResearchFragment.this.getContext(), null, 0);
                                     mPopupWindow.dismiss();
                                     break;
                                 case R.id.root_view:

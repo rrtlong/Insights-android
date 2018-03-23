@@ -75,6 +75,7 @@ public class ConstantData {
         questionnaireVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
         questionnaireVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
         questionnaireVo.setPersonas(new PersonasVo(24, 1, "北京"));
+        questionnaireVo.setStatus(1);
         questionnaireVos.add(questionnaireVo);
 
         questionnaireVo = new QuestionnaireVo();
@@ -87,6 +88,7 @@ public class ConstantData {
         questionnaireVo.setStartTime(new Timestamp(1521043200000l));//2018-3-15
         questionnaireVo.setEndTime(new Timestamp(1521216000000l));//2018-3-17
         questionnaireVo.setPersonas(new PersonasVo(21, 0, "上海"));
+        questionnaireVo.setStatus(2);
         questionnaireVos.add(questionnaireVo);
 
         questionnaireVo = new QuestionnaireVo();
@@ -99,6 +101,7 @@ public class ConstantData {
         questionnaireVo.setStartTime(new Timestamp(1521216000000l));//2018-3-17
         questionnaireVo.setEndTime(new Timestamp(1521475200000l));//2018-2-20
         questionnaireVo.setPersonas(new PersonasVo(24, 1, "北京"));
+        questionnaireVo.setStatus(1);
         questionnaireVos.add(questionnaireVo);
         Log.e("questionnaireVos",questionnaireVos.toString());
 
@@ -195,7 +198,7 @@ public class ConstantData {
         coinVo.setName("猫币");
         requestVo.setCoin(coinVo);
         reportVo.setRequest(requestVo);
-        reportVo.setStatus(3);
+        reportVo.setStatus(1);
         reportVos.add(reportVo);
 
         reportVo = new ReportVo();
@@ -212,7 +215,7 @@ public class ConstantData {
         coinVo.setName("猫币");
         requestVo.setCoin(coinVo);
         reportVo.setRequest(requestVo);
-        reportVo.setStatus(1);
+        reportVo.setStatus(2);
         reportVos.add(reportVo);
 
         reportVo = new ReportVo();

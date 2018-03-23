@@ -16,8 +16,13 @@ import android.view.ViewGroup;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
+import com.imalljoy.insights.bus.JumpFragment;
 import com.imalljoy.insights.common.ConstantData;
 import com.imalljoy.insights.greendao.bean.Question;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +53,7 @@ public class QuestionnaireFragment extends BaseFragment implements SwipeRefreshL
             mRootView = inflater.inflate(R.layout.fra_questionnaire, container, false);
         }
         unbinder = ButterKnife.bind(this, mRootView);
+        EventBus.getDefault().register(this);
         initView();
         return mRootView;
     }
@@ -83,6 +89,7 @@ public class QuestionnaireFragment extends BaseFragment implements SwipeRefreshL
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -94,4 +101,12 @@ public class QuestionnaireFragment extends BaseFragment implements SwipeRefreshL
             }
         }, 2000);
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(JumpFragment jumpFragment){
+        if(jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.getIndex() ==0 && jumpFragment.isRefresh()){
+            mAdapter.setData(ConstantData.questionnaireVos);
+        }
+    }
+
 }

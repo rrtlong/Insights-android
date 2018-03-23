@@ -24,14 +24,23 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".mvps.research.EditType1Activity"
-            android:configChanges="orientation|keyboard"/>
+        <activity
+            android:name=".mvps.research.EditType1Activity"
+            android:configChanges="orientation|keyboard" />
         <activity
             android:name=".mvps.research.BuildReportActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".mvps.research.BuildCoinLevelActivity"/>
+        <activity android:name=".mvps.research.BuildCoinLevelActivity" />
+        <activity android:name=".mvps.research.BuildCoinInfoActivity" />
+        <activity android:name=".mvps.research.EnterpriseActivity" />
+        <activity android:name=".mvps.research.UserListActivity" />
+        <activity
+            android:name=".mvps.research.BuildQuestionnaireActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".mvps.research.BuildQuestionActivity"/>
+        <activity android:name=".mvps.research.TotalPieListActivity"/>
     </application>
 
 </manifest>

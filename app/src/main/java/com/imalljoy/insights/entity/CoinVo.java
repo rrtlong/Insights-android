@@ -1,6 +1,7 @@
 package com.imalljoy.insights.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -10,6 +11,14 @@ import java.util.List;
 public class CoinVo implements Serializable {
     private long id;        //数币id
     private String name;        //数币名称
+    private String logoUrl;     //logo地址
+    private String websiteUrl;      //官方网站
+    private Timestamp icoTime;      //ico时间2017年08月08日
+    private Timestamp onlineExchangeTime;       //上线交易时间2017年10月20日
+    private String onlineExchange;      //上线交易所:OKEX
+    private String location;        //所在国家  新加坡
+    private String telegraphGroup;   //电报群:15000人
+    private String twitterFans;     //Twitter粉丝:18000人
     private String intro;       //数币企业介绍
     private List<String> exchanges;     //数币所在的交易所
     private float price;        //数币的价格,根据交易所变化
@@ -31,6 +40,70 @@ public class CoinVo implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public String getWebsiteUrl() {
+        return websiteUrl;
+    }
+
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
+    }
+
+    public Timestamp getIcoTime() {
+        return icoTime;
+    }
+
+    public void setIcoTime(Timestamp icoTime) {
+        this.icoTime = icoTime;
+    }
+
+    public Timestamp getOnlineExchangeTime() {
+        return onlineExchangeTime;
+    }
+
+    public void setOnlineExchangeTime(Timestamp onlineExchangeTime) {
+        this.onlineExchangeTime = onlineExchangeTime;
+    }
+
+    public String getOnlineExchange() {
+        return onlineExchange;
+    }
+
+    public void setOnlineExchange(String onlineExchange) {
+        this.onlineExchange = onlineExchange;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getTelegraphGroup() {
+        return telegraphGroup;
+    }
+
+    public void setTelegraphGroup(String telegraphGroup) {
+        this.telegraphGroup = telegraphGroup;
+    }
+
+    public String getTwitterFans() {
+        return twitterFans;
+    }
+
+    public void setTwitterFans(String twitterFans) {
+        this.twitterFans = twitterFans;
     }
 
     public String getIntro() {
@@ -86,6 +159,14 @@ public class CoinVo implements Serializable {
         return "CoinVo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
+                ", websiteUrl='" + websiteUrl + '\'' +
+                ", icoTime=" + icoTime +
+                ", onlineExchangeTime=" + onlineExchangeTime +
+                ", onlineExchange='" + onlineExchange + '\'' +
+                ", location='" + location + '\'' +
+                ", telegraphGroup='" + telegraphGroup + '\'' +
+                ", twitterFans='" + twitterFans + '\'' +
                 ", intro='" + intro + '\'' +
                 ", exchanges=" + exchanges +
                 ", price=" + price +

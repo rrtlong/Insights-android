@@ -1,5 +1,6 @@
 package com.imalljoy.insights.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * 问题
  */
 
-public class QuestionVo {
+public class QuestionVo implements Serializable {
     private long id;        //问题id
     private String name;        //问题名称
     private int type;       //问题类型;如单选,多选,填空
