@@ -35,8 +35,8 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical|right"
-            android:text="80"
-            android:hint="engine"
+            android:hint="输入名字"
+            android:text="engine"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
 
@@ -67,10 +67,10 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/coin_logo" />
+            android:src="@mipmap/dog_logo" />
 
     </LinearLayout>
 
@@ -103,8 +103,8 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical|right"
+            android:hint="输入官网地址"
             android:text="https://www.egcchain.com/"
-            android:hint="https://www.egcchain.com/"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
 
@@ -175,7 +175,6 @@
             android:background="@null"
             android:gravity="center_vertical|right"
             android:text="2017年10月20日"
-            android:hint="2017年10月20日"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
 
@@ -210,8 +209,8 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical|right"
+            android:hint="输入交易所"
             android:text="OKEX"
-            android:hint="OKEX"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
 
@@ -246,8 +245,8 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical|right"
+            android:hint="输入所在国家"
             android:text="新加坡"
-            android:hint="新加坡"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
 
@@ -283,7 +282,6 @@
             android:background="@null"
             android:gravity="center_vertical|right"
             android:text="15000人"
-            android:hint="15000人"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
 
@@ -318,7 +316,6 @@
             android:layout_weight="1"
             android:background="@null"
             android:gravity="center_vertical|right"
-            android:hint="18000人"
             android:text="18000人"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />

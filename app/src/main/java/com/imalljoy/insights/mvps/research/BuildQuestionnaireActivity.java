@@ -2,7 +2,6 @@ package com.imalljoy.insights.mvps.research;
 
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -16,12 +15,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.bus.JumpFragment;
+import com.imalljoy.insights.bus.RefreshView;
 import com.imalljoy.insights.common.ConstantData;
+import com.imalljoy.insights.common.LocalData;
 import com.imalljoy.insights.entity.PersonasVo;
 import com.imalljoy.insights.entity.QuestionnaireVo;
+import com.imalljoy.insights.entity.UserVo;
+import com.imalljoy.insights.mvps.EditType2Activity;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 import com.imalljoy.insights.widgets.TopBarCommon;
@@ -43,15 +47,15 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
     @BindView(R.id.top_bar)
     TopBarCommon topBar;
     @BindView(R.id.name)
-    EditText name;
+    TextView name;
     @BindView(R.id.name_layout)
     LinearLayout nameLayout;
     @BindView(R.id.total_number)
-    EditText totalNumber;
+    TextView totalNumber;
     @BindView(R.id.total_number_layout)
     LinearLayout totalNumberLayout;
     @BindView(R.id.reward)
-    EditText reward;
+    TextView reward;
     @BindView(R.id.reward_layout)
     LinearLayout rewardLayout;
     @BindView(R.id.start_time)
@@ -71,11 +75,11 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
     @BindView(R.id.gender_layout)
     LinearLayout genderLayout;
     @BindView(R.id.age)
-    EditText age;
+    TextView age;
     @BindView(R.id.age_layout)
     LinearLayout ageLayout;
     @BindView(R.id.location)
-    EditText location;
+    TextView location;
     @BindView(R.id.location_layout)
     LinearLayout locationLayout;
     @BindView(R.id.root_view)
@@ -94,7 +98,18 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
     LinearLayout finishNumberLayout;
     @BindView(R.id.select_personas)
     TextView selectPersonas;
+    @BindView(R.id.name_more)
+    ImageView nameMore;
+    @BindView(R.id.total_number_more)
+    ImageView totalNumberMore;
+    @BindView(R.id.reward_more)
+    ImageView rewardMore;
+    @BindView(R.id.age_more)
+    ImageView ageMore;
+    @BindView(R.id.location_more)
+    ImageView locationMore;
     private int mStatus;  //0:新建问卷/1:参与问卷/2:已完成问卷
+    private int mType;   //0:针对企业问询的问卷 1:针对用户调研的问卷
     private QuestionnaireVo mVo;
     private static final String TAG = "BuildQuestionnaireActiv";
 
@@ -107,14 +122,16 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
         mStatus = getIntent().getIntExtra("status", 0);
         mVo = (QuestionnaireVo) getIntent().getSerializableExtra("questionnaireVo");
-        topBar.setVisibility(View.VISIBLE);
+        mType = getIntent().getIntExtra("type",-1);
+
+        topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
-        updateStatus(mStatus);
+        updateStatusView(mStatus);
 
 
     }
 
-    public void updateStatus(int status) {
+    public void updateStatusView(int status) {
         mStatus = status;
         Log.e(TAG, "mstatus=" + mStatus);
         if (mStatus == 0) {
@@ -123,6 +140,7 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             mVo.setId(System.currentTimeMillis() / 1000);
             mVo.setUserVo(ConstantData.mUserVo);
             mVo.setStatus(0);
+            mVo.setPersonas(new PersonasVo());
             topBar.top_bar_title_text.setText("发起问卷");
             topBar.setRightView("发布", 0);
             topBar.top_bar_right_layout.setOnClickListener(this);
@@ -132,10 +150,11 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             startTimeLayout.setOnClickListener(this);
             endTimeLayout.setOnClickListener(this);
             questionsLayout.setOnClickListener(this);
+            showOrHideMoreImg(true);
 
         } else if (mStatus == 1) {
             //参与问卷
-            topBar.top_bar_title_text.setText("问卷");
+            topBar.top_bar_title_text.setText(mVo.getName() + "");
             topBar.setRightView(null, 0);
             btnProcess.setVisibility(View.VISIBLE);
             btnProcess.setText("参与调查");
@@ -152,10 +171,11 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             topBar.top_bar_right_layout.setOnClickListener(null);
             startTimeLayout.setOnClickListener(null);
             endTimeLayout.setOnClickListener(null);
+            showOrHideMoreImg(false);
 
         } else if (mStatus == 2) {
             //已完成
-            topBar.top_bar_title_text.setText("问卷");
+            topBar.top_bar_title_text.setText(mVo.getName() + "");
             topBar.setRightView(null, 0);
             btnProcess.setVisibility(View.VISIBLE);
             btnProcess.setText("已完成");
@@ -171,9 +191,16 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             topBar.top_bar_right_layout.setOnClickListener(null);
             startTimeLayout.setOnClickListener(null);
             endTimeLayout.setOnClickListener(null);
+            showOrHideMoreImg(false);
 
         }
         if (mStatus != 0) {
+            if(mVo.getUserVo() != null){
+                UserVo userVo = mVo.getUserVo();
+                analyst.setText(userVo.getName());
+                Glide.with(this).load(userVo.getHeadPic()).into(analystImg);
+            }
+
             name.setText(mVo.getName());
             name.setEnabled(false);
             totalNumber.setText(mVo.getTotalNumber() + "");
@@ -209,6 +236,21 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             case R.id.top_bar_right_layout:
                 save();
                 break;
+            case R.id.name_layout:
+                EditType2Activity.toActivityForResult(this, "名称", mVo.getName(),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_NAME_CODE);
+                break;
+            case R.id.total_number_layout:
+                EditType2Activity.toActivityForResult(this, "总份数", String.valueOf(mVo.getTotalNumber()),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_TOTALNUM_CODE);
+                break;
+            case R.id.reward_layout:
+                EditType2Activity.toActivityForResult(this, "奖励", String.valueOf(mVo.getReward()),ConstantData.buildQuestionnaireRequestCode, EditType2Activity.BUILD_QUESTIONNAIRE_REWARD_CODE);
+                break;
+            case R.id.age_layout:
+                EditType2Activity.toActivityForResult(this, "年纪", String.valueOf(mVo.getPersonas().getAge()),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_AGE_CODE);
+                break;
+            case R.id.location_layout:
+                EditType2Activity.toActivityForResult(this, "地域", String.valueOf(mVo.getPersonas().getArea()),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_LOCATION_CODE);
+                break;
             case R.id.start_time_layout:
                 showTimePickerView(true);
                 break;
@@ -216,14 +258,12 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
                 showTimePickerView(false);
                 break;
             case R.id.questions_layout:
-                BuildQuestionActivity.goActivity(this);
+                BuildQuestionActivity.toActivity(this,mStatus);
                 break;
             case R.id.btn_process:
                 //参与调查
                 if (mStatus == 1) {
-                    updateStatus(2);
-                    mVo.setStatus(2);
-                    updateQuestionnaire(mVo);
+                    BuildQuestionActivity.toActivityForResult(this, mStatus,0, ConstantData.buildQuestionnaireRequestCode);
                 }
                 break;
         }
@@ -241,16 +281,23 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
         personasVo.setArea(location.getText().toString());
         mVo.setPersonas(personasVo);
         mVo.setStatus(1);
+        mVo.setUserVo(ConstantData.mUserVo);
+        mVo.setReportId(LocalData.getInstance().getmReportVo().getId());
+        mVo.setType(mType);
         ConstantData.questionnaireVos.add(mVo);
-        EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research,0,true,false));
-        updateStatus(1);
+        LocalData.getInstance().setmQuestionnaireVo(mVo);
+        //通知刷新问卷页
+        EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 0, true, false));
+        //通知刷新上一页，上上页
+        EventBus.getDefault().post(new RefreshView(RefreshView.REFRESH_REPORT_FROM_QUESTIONNAIRE));
+        finish();
 
     }
 
     public void updateQuestionnaire(QuestionnaireVo data) {
 
         for (int i = 0; i < ConstantData.questionnaireVos.size(); i++) {
-            if (data.getId() == ConstantData.questionnaireVos.get(i).getId()) {
+            if (data.getId() == (ConstantData.questionnaireVos.get(i).getId())) {
                 ConstantData.questionnaireVos.get(i).setStatus(data.getStatus());
                 break;
             }
@@ -258,7 +305,6 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
     }
 
     private void showTimePickerView(final boolean isStartTime) {
-        hideSoftInputMethod();
         final TimePickerView pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
 
             @Override
@@ -295,27 +341,87 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
         pvTime.show();
     }
 
-    public void hideSoftInputMethod() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        //获取键盘显示状态
-        boolean isOpen = imm.isActive();
-        if (isOpen) {
-            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ConstantData.buildQuestionnaireRequestCode && mStatus ==0 && data != null){
+            String value = data.getStringExtra("value");
+            int valueInt = 0;
+            double valueDouble = 0.0;
+            boolean right = true;
+            if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_NAME_CODE){
+                mVo.setName(value);
+                name.setText(value+"");
+            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_TOTALNUM_CODE){
+                try{
+                    valueInt = Integer.parseInt(value);
+                }catch(Exception e){
+                    right = false;
+                }
+                if(right){
+                    mVo.setTotalNumber(valueInt);
+                    totalNumber.setText(mVo.getTotalNumber()+"");
+                }
+            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_REWARD_CODE){
+                try{
+                    valueDouble = Double.parseDouble(value);
+                }catch(Exception e){
+                    right = false;
+                }
+                if(right){
+                    mVo.setReward(valueDouble);
+                    reward.setText(mVo.getReward()+"");
+                }
+
+            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_AGE_CODE){
+                try{
+                    valueInt = Integer.parseInt(value);
+                }catch(Exception e){
+                    right = false;
+                }
+                if(right){
+                    mVo.getPersonas().setAge(valueInt);
+                    age.setText(mVo.getPersonas().getAge()+"");
+                }
+            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_LOCATION_CODE){
+                mVo.getPersonas().setArea(value);
+                location.setText(value);
+            }
+        }else if (requestCode == ConstantData.buildQuestionnaireRequestCode && resultCode == BuildQuestionActivity.ANSWER_QUESTION){
+            //完成答题
+            updateStatusView(2);
+            mVo.setStatus(2);
+            mVo.getAnswerUserList().add(ConstantData.mUserVo);
+            ConstantData.updateQuestionnaireVo(mVo);
+            EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, -1, true, false));
         }
-        // 如果软键盘已经显示，则隐藏，反之则显示
-        //imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-        // 隐藏软键盘
-        //imm.hideSoftInputFromWindow(view, InputMethodManager.HIDE_NOT_ALWAYS);
-        // 强制显示软键盘
-        //imm.showSoftInput(view,InputMethodManager.SHOW_FORCED);
-        // 强制隐藏软键盘
-        //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        Log.e(TAG,"requestCode=" + requestCode + ", resultCode=" +resultCode);
     }
 
-    public static void toActivity(Context context, QuestionnaireVo questionnaireVo, int status) {
+    /**
+     * 能编辑时就将更多图片“》”显示出来，不能编辑时就影藏掉
+     *
+     * @param isShow
+     */
+    public void showOrHideMoreImg(boolean isShow) {
+        nameMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        totalNumberMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        rewardMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        ageMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        locationMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        nameLayout.setOnClickListener(isShow ? this:null);
+        totalNumberLayout.setOnClickListener(isShow ? this:null);
+        rewardLayout.setOnClickListener(isShow ? this:null);
+        ageLayout.setOnClickListener(isShow ? this:null);
+        locationLayout.setOnClickListener(isShow ? this:null);
+    }
+
+
+    public static void toActivity(Context context, QuestionnaireVo questionnaireVo, int status,int type) {
         Intent it = new Intent(context, BuildQuestionnaireActivity.class);
         it.putExtra("questionnaireVo", questionnaireVo);
         it.putExtra("status", status);
+        it.putExtra("type",type);
         context.startActivity(it);
     }
 }

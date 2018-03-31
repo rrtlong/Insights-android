@@ -2,6 +2,7 @@ package com.imalljoy.insights.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,8 +11,10 @@ import java.util.List;
  */
 
 public class QuestionnaireVo implements Serializable{
-    private Long id;        //问卷的名称
-    private String name;        //问卷的id
+    private long id;        //问卷的id
+    private long reportId;  //报告id
+    private int type;       //问卷类型；0:个人 1:企业
+    private String name;        //问卷的名称
     private String content;     //问卷的描述
     private double reward;      //完成该问卷的IN币奖励
     private List<QuestionVo> questions;       //问卷的问题
@@ -22,13 +25,22 @@ public class QuestionnaireVo implements Serializable{
     private UserVo userVo;      //发起人
     private int totalNumber;        //总份数
     private int finishedNumber;     //完成的份数
+    private List<UserVo> answerUserList;    //回答问题了的用户列表
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public long getReportId() {
+        return reportId;
+    }
+
+    public void setReportId(long reportId) {
+        this.reportId = reportId;
     }
 
     public String getName() {
@@ -119,10 +131,31 @@ public class QuestionnaireVo implements Serializable{
         this.finishedNumber = finishedNumber;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public List<UserVo> getAnswerUserList() {
+        if(answerUserList == null){
+            answerUserList = new ArrayList<>();
+        }
+        return answerUserList;
+    }
+
+    public void setAnswerUserList(List<UserVo> answerUserList) {
+        this.answerUserList = answerUserList;
+    }
+
     @Override
     public String toString() {
         return "QuestionnaireVo{" +
                 "id=" + id +
+                ", reportId=" + reportId +
+                ", type=" + type +
                 ", name='" + name + '\'' +
                 ", content='" + content + '\'' +
                 ", reward=" + reward +
@@ -134,6 +167,7 @@ public class QuestionnaireVo implements Serializable{
                 ", userVo=" + userVo +
                 ", totalNumber=" + totalNumber +
                 ", finishedNumber=" + finishedNumber +
+                ", answerUserList=" + answerUserList +
                 '}';
     }
 }

@@ -41,14 +41,16 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="#f1f1f1" />
+            android:background="#f1f1f1"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:id="@+id/questionnaire_layout"
             android:layout_width="110dp"
             android:layout_height="43dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"

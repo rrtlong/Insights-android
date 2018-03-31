@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.imalljoy.insights.widgets.TopBarCommon
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></com.imalljoy.insights.widgets.TopBarCommon>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开发:"
+                android:textColor="@color/c_333333"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/develop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14sp"
+                android:text="开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发开发"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="推广:"
+                android:textColor="@color/c_333333"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/promotion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14sp"
+                android:text="推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广推广"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="运营:"
+                android:textColor="@color/c_333333"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/operation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14sp"
+                android:text="运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营运营"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="财务:"
+                android:textColor="@color/c_333333"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/finance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14sp"
+                android:text="财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务财务"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

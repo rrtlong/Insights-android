@@ -11,7 +11,7 @@ public class EditReturnData {
     public static int TECHNOLOGY = 3;
     public static int BUSINESS = 4;
     public static int CAPITAL = 5;
-    public static int COIN = 6;
+    public static int COIN_COST = 6;
     public static int LAW = 7;
     public static int INFLUENCE = 8;
     public static int USERRESEARCH = 9;

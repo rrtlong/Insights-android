@@ -12,6 +12,7 @@ import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.mvps.adapter.CommonFragmentAdapter;
 import com.imalljoy.insights.mvps.coins.CoinsChildFragment;
+import com.imalljoy.insights.mvps.coins.CoinsOptionalFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
@@ -54,12 +55,16 @@ public class CoinsFragment extends BaseFragment {
 
     private void initView() {
         tabLayout.setCustomTabView(R.layout.smartlayout_text_layout_coins, R.id.custom_text);
-        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.OPTIONAL));
-        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.CURRENCY));
-        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.ICO));
-        mFragmentTitleList.add(CoinsChildFragment.OPTIONAL_Str);
+
+
+        mFragmentList.add(CoinsOptionalFragment.newInstance());
+        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.CURRENCY,0));
+        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.ICO,0));
+        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.AIRDROP,0));
+        mFragmentTitleList.add(CoinsOptionalFragment.OPTIONAL_STR);
         mFragmentTitleList.add(CoinsChildFragment.CURRENCY_Str);
         mFragmentTitleList.add(CoinsChildFragment.ICO_Str);
+        mFragmentTitleList.add(CoinsChildFragment.AIRDROP_Str);
         CommonFragmentAdapter adapter = new CommonFragmentAdapter(getChildFragmentManager(),mFragmentList, mFragmentTitleList);
         viewpager.setAdapter(adapter);
         tabLayout.setViewPager(viewpager);

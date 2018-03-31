@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"></com.imalljoy.insights.widgets.TopBarCommon>
 
-    <ScrollView
+   <!-- <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content">-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -2663,16 +2663,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/stroke_1_c0c0c0"
-                    android:gravity="left|center_vertical"
-                    android:hint="您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,您有什么意见,"
+                    android:gravity="left|top"
+                    android:hint="请输入..."
                     android:minHeight="60dp"
                     android:textColor="@color/c_7b7b7b"
                     android:textSize="11sp" />
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    <!--</ScrollView>-->
 
 
 </LinearLayout>

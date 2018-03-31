@@ -1,7 +1,10 @@
 package com.imalljoy.insights.entity;
 
+import com.imalljoy.insights.greendao.bean.Question;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +27,29 @@ public class ReportVo implements Serializable{
     private int status;           //状态 -1:新建报告 0未购买 1已购买
     private CoinVo coin;
     private String coinLevel;       //数币评级 如A+,A-,B+....
+    private List<QuestionnaireVo> userResearchList;//用户调研问卷
+    private List<QuestionnaireVo> enterpriseInfoList;//针对单一企业的调研问卷
+
+    public List<QuestionnaireVo> getUserResearchList() {
+        if(userResearchList == null)
+            userResearchList = new ArrayList<>();
+        return userResearchList;
+    }
+
+    public void setUserResearchList(List<QuestionnaireVo> userResearchList) {
+        this.userResearchList = userResearchList;
+    }
+
+    public List<QuestionnaireVo> getEnterpriseInfoList() {
+        if(enterpriseInfoList == null)
+            enterpriseInfoList = new ArrayList<>();
+        return enterpriseInfoList;
+    }
+
+    public void setEnterpriseInfoList(List<QuestionnaireVo> enterpriseInfoList) {
+        this.enterpriseInfoList = enterpriseInfoList;
+    }
+
     public void setCoinLevel(String coinLevel){
         this.coinLevel = coinLevel;
     }
@@ -111,9 +137,6 @@ public class ReportVo implements Serializable{
     }
 
     public RateVo getRating() {
-        if(rating == null){
-            rating = new RateVo();
-        }
         return rating;
     }
 
@@ -152,6 +175,12 @@ public class ReportVo implements Serializable{
                 ", user=" + user +
                 ", rating=" + rating +
                 ", publishTime=" + publishTime +
+                ", request=" + request +
+                ", status=" + status +
+                ", coin=" + coin +
+                ", coinLevel='" + coinLevel + '\'' +
+                ", userResearchList=" + userResearchList +
+                ", enterpriseInfoList=" + enterpriseInfoList +
                 '}';
     }
 }

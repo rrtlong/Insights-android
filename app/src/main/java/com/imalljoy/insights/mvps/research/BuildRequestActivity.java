@@ -3,9 +3,8 @@ package com.imalljoy.insights.mvps.research;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,6 +24,7 @@ import com.imalljoy.insights.bus.JumpFragment;
 import com.imalljoy.insights.common.ConstantData;
 import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.entity.RequestVo;
+import com.imalljoy.insights.mvps.EditType2Activity;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 import com.imalljoy.insights.utils.ScreenUtils;
@@ -45,16 +46,22 @@ import butterknife.ButterKnife;
 public class BuildRequestActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.top_bar)
     TopBarCommon mTopBar;
+    @BindView(R.id.enterprise_layout)
+    RelativeLayout mEnterpriseLayout;
     @BindView(R.id.coin_name_layout)
-    RelativeLayout mCoinNameLayout;
+    LinearLayout mCoinNameLayout;
     @BindView(R.id.coin_logo)
     ImageView mCoinLogo;
     @BindView(R.id.coin_name)
     TextView mCoinName;
     @BindView(R.id.require_name)
-    EditText mRequireName;
+    TextView mRequireName;
+    @BindView(R.id.require_name_more)
+    ImageView mRequireNameMore;
     @BindView(R.id.reward)
-    EditText mReward;
+    TextView mReward;
+    @BindView(R.id.reward_more)
+    ImageView mRewardMore;
     @BindView(R.id.start_time_layout)
     RelativeLayout mStartTimeLayout;
     @BindView(R.id.start_time)
@@ -70,6 +77,10 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.btn_process)
     Button mBtnProcess;
     RequestVo mVo = null;
+    @BindView(R.id.require_name_layout)
+    LinearLayout requireNameLayout;
+    @BindView(R.id.reward_layout)
+    LinearLayout rewardLayout;
     private int mStatus = 0;//0:新建;1未接受;2已接收,3已完成
 
     @Override
@@ -79,15 +90,21 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         ButterKnife.bind(this);
         mIntro.setPadding(ScreenUtils.sp2px(this, 10), ScreenUtils.sp2px(this, 10), ScreenUtils.sp2px(this, 10), ScreenUtils.sp2px(this, 10));
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initDate();
-
-
     }
 
     private void initDate() {
         Bundle bundle = getIntent().getExtras();
         mVo = (RequestVo) getIntent().getSerializableExtra("vo");
         mStatus = bundle.getInt("status", 0);
+        Log.e(TAG, "mStatus=" + mStatus);
         if (mStatus == 0) {
             //新建一个请求
             initwithoutData();
@@ -104,20 +121,27 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             initwithData("请求", "已完成");
         }
         mCoinNameLayout.setOnClickListener(this);
-        if(mVo == null){
+        if (mVo == null) {
             mVo = new RequestVo();
-            mVo.setId(System.currentTimeMillis()/1000);
+            mVo.setId(System.currentTimeMillis() / 1000);
         }
 
     }
 
     public void disableEdit() {
-        mRequireName.setEnabled(false);
-        mRequireName.setFocusable(false);
-        mReward.setEnabled(false);
-        mReward.setFocusable(false);
         mIntro.setEnabled(false);
         mIntro.setFocusable(false);
+        showOrHideMoreImg(false);
+    }
+
+    /**
+     * 能编辑时就将更多图片“》”显示出来，不能编辑时就影藏掉
+     *
+     * @param isShow
+     */
+    public void showOrHideMoreImg(boolean isShow) {
+        mRequireNameMore.setVisibility(isShow?View.VISIBLE:View.GONE);
+        mRewardMore.setVisibility(isShow?View.VISIBLE:View.GONE);
     }
 
     public void initwithData(String title, String buttonText) {
@@ -127,6 +151,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         mTopBar.setRightView(null, 0);
         disableEdit();
         if (mVo != null) {
+            mTopBar.top_bar_title_text.setText(mVo.getName()+"");
             mCoinName.setText(mVo.getCoin() == null ? "比特币" : mVo.getCoin().getName());
             mRequireName.setText(mVo.getName());
             mReward.setText(mVo.getReward() + "");
@@ -135,6 +160,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             mIntro.setText(mVo.getDemand());
             mBtnProcess.setText(buttonText);
             mBtnProcess.setVisibility(View.VISIBLE);
+            mEnterpriseLayout.setVisibility(View.VISIBLE);
             if (mStatus == 1 || mStatus == 2) {
                 //接受请求,撰写报告
                 mBtnProcess.setOnClickListener(this);
@@ -154,9 +180,15 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         mTopBar.top_bar_left_layout.setOnClickListener(this);
         mTopBar.setRightView("发布", 0);
         mTopBar.top_bar_right_layout.setOnClickListener(this);
+        requireNameLayout.setOnClickListener(this);
+        rewardLayout.setOnClickListener(this);
         mStartTimeLayout.setOnClickListener(this);
         mEndTimeLayout.setOnClickListener(this);
         mBtnProcess.setVisibility(View.GONE);
+        mEnterpriseLayout.setVisibility(View.GONE);
+        showOrHideMoreImg(true);
+
+
     }
 
     public static void toActivity(Context context, RequestVo vo, int status) {
@@ -177,6 +209,16 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             case R.id.top_bar_left_layout:
                 finish();
                 break;
+            case R.id.require_name_layout:
+                if(mStatus ==0){
+                    EditType2Activity.toActivityForResult(this, "名称", mRequireName.getText().toString(),ConstantData.requestRequestCode,EditType2Activity.REQUEST_NAME_CODE);
+                }
+                break;
+            case R.id.reward_layout:
+                if(mStatus ==0){
+                    EditType2Activity.toActivityForResult(this, "奖励", mReward.getText().toString(),ConstantData.requestRequestCode,EditType2Activity.REQUEST_REWARD_CODE);
+                }
+                break;
             case R.id.start_time_layout:
                 showTimePickerView(true);
                 break;
@@ -185,9 +227,11 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 break;
             case R.id.top_bar_right_layout:
                 CoinVo coin = null;
-                if(mVo.getCoin() == null){
+                if (mVo.getCoin() == null) {
                     coin = new CoinVo();
-                }else {
+                    coin.setId(System.currentTimeMillis()/1000);
+                    coin.setLogoUrl("http://www.taopic.com/uploads/allimg/140325/318762-14032514002339.jpg");
+                } else {
                     coin = mVo.getCoin();
                 }
                 coin.setName(mCoinName.getText().toString());
@@ -202,7 +246,14 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 mVo.setDemand(mIntro.getText().toString());
                 ConstantData.requestVos.add(mVo);
                 EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true, true));
-                finish();
+                mTopBar.top_bar_right_layout.setOnClickListener(null);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                },250);
+
                 break;
             case R.id.btn_process:
                 if (mStatus == 1) {
@@ -210,11 +261,11 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                     ConstantData.mUserVo.addRequest(mVo, false);
                     updateStatus(mVo.getId(), 2);
                     EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true, true));
-                    finish();
+                    mVo.setStatus(2);
+                    toActivity(this, mVo, mVo.getStatus());
                 } else if (mStatus == 2) {
                     //撰写报告
                     BuildReportActivity.toActivity(this, mVo, null, 0);
-                    updateStatus(mVo.getId(), 3);
                     finish();
                 } else if (mStatus == 3) {
                     //已完成
@@ -227,6 +278,12 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 BuildCoinInfoActivity.toActivityForResult(this, mVo.getCoin(), mStatus, 0);
                 break;
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 
     public void updateStatus(long id, int status) {
@@ -276,6 +333,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
     }
 
     private static final String TAG = "BuildRequestActivity";
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -287,6 +345,26 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
             if (!TextUtils.isEmpty(mVo.getCoin().getLogoUrl())) {
                 Glide.with(this).load(mVo.getCoin().getLogoUrl()).into(mCoinLogo);
             }
+        }else if(requestCode ==0 && resultCode == EditType2Activity.REQUEST_NAME_CODE && data != null){
+            //编辑请求名称
+            String value = data.getStringExtra("value");
+            mRequireName.setText(value+"");
+            mVo.setName(value);
+        }else if(requestCode ==0 && resultCode == EditType2Activity.REQUEST_REWARD_CODE && data != null){
+            //编辑奖励
+            String value = data.getStringExtra("value");
+            Log.e(TAG,"onResulteActivity value=" + value);
+            Double valueDouble = 0.0;
+            boolean right = true;
+            try{
+                valueDouble = Double.parseDouble(value);
+            }catch (Exception e){
+                right = false;
+            }
+            if(right){
+                mVo.setReward(valueDouble);
+            }
+            mReward.setText(mVo.getReward()+"");
         }
     }
 

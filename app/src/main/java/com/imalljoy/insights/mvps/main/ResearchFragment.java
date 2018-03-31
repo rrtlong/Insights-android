@@ -96,8 +96,8 @@ public class ResearchFragment extends BaseFragment {
                                     mPopupWindow.dismiss();
                                     break;
                                 case R.id.questionnaire_layout:
-                                    BuildQuestionnaireActivity.toActivity(ResearchFragment.this.getContext(), null, 0);
-                                    mPopupWindow.dismiss();
+                                  //  BuildQuestionnaireActivity.toActivity(ResearchFragment.this.getContext(), null, 0,-1);
+                                    //mPopupWindow.dismiss();
                                     break;
                                 case R.id.root_view:
                                     mPopupWindow.dismiss();

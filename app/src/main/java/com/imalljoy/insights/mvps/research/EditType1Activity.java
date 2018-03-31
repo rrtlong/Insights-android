@@ -49,7 +49,12 @@ public class EditType1Activity extends BaseActivity implements View.OnClickListe
         mTopBar.top_bar_title_text.setText(mTitle);
         mTopBar.setRightView(null, 0);
         mScore.requestFocus();
+        mScore.setText(String.valueOf(getIntent().getIntExtra("score",60)));
+        mScore.setSelection(mScore.getText().toString().length());
         mScoreIntro.setPadding(ScreenUtils.dp2px(this,10), ScreenUtils.dp2px(this,10), ScreenUtils.dp2px(this,10), ScreenUtils.dp2px(this,10));
+        mScoreIntro.setText(getIntent().getStringExtra("intro"));
+        mScoreIntro.setSelection(mScoreIntro.getText().toString().length());
+
 
         if(mFlag == -1){
             mScore.setEnabled(false);
@@ -57,10 +62,12 @@ public class EditType1Activity extends BaseActivity implements View.OnClickListe
         }
     }
 
-    public static void toActivity(Context context, int flag, String title){
+    public static void toActivity(Context context, int flag, String title,int score, String intro){
         Intent it = new Intent(context, EditType1Activity.class);
         it.putExtra("flag", flag);
         it.putExtra("title",title);
+        it.putExtra("score",score);
+        it.putExtra("intro",intro);
         context.startActivity(it);
     }
 

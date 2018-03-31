@@ -67,23 +67,25 @@ public class RequireFragment extends BaseFragment implements SwipeRefreshLayout.
         mRecyclerview.setAdapter(mAdapter);
         mSwiperRefreshLayout.setOnRefreshListener(this);
 //        mSwiperRefreshLayout.setColorSchemeColors(android.R.color.holo_blue_bright, android.R.color.holo_green_light,  android.R.color.holo_orange_light,android.R.color.holo_purple android.R.color.holo_red_light);
-        mSwiperRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this.getContext(),R.color.holo_blue_bright),
-                ContextCompat.getColor(this.getContext(),R.color.holo_green_light),
-                ContextCompat.getColor(this.getContext(),R.color.holo_orange_light),
-                ContextCompat.getColor(this.getContext(),R.color.holo_purple),
-                ContextCompat.getColor(this.getContext(),R.color.holo_red_light));
+        mSwiperRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this.getContext(), R.color.holo_blue_bright),
+                ContextCompat.getColor(this.getContext(), R.color.holo_green_light),
+                ContextCompat.getColor(this.getContext(), R.color.holo_orange_light),
+                ContextCompat.getColor(this.getContext(), R.color.holo_purple),
+                ContextCompat.getColor(this.getContext(), R.color.holo_red_light));
     }
 
-    public static RequireFragment newInstance(){
+    public static RequireFragment newInstance() {
         RequireFragment fragment = new RequireFragment();
         return fragment;
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(JumpFragment jumpFragment){
-        if(jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.getIndex() == 2 && jumpFragment.isRefresh()){
-                mAdapter.setData(ConstantData.requestVos);
-
+    public void onEvent(JumpFragment jumpFragment) {
+        if (jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.getIndex() == 2 && jumpFragment.isRefresh()) {
+            mAdapter.setData(ConstantData.requestVos);
+        } else if (jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.isRefresh()) {
+            //针对于调研模块的刷新
+            mAdapter.setData(ConstantData.requestVos);
         }
     }
 
@@ -102,14 +104,14 @@ public class RequireFragment extends BaseFragment implements SwipeRefreshLayout.
                 mSwiperRefreshLayout.setRefreshing(false);
                 mAdapter.setData(ConstantData.requestVos);
             }
-        }, 2000);
+        }, 1500);
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser && mRootView != null){
-                mAdapter.setData(ConstantData.requestVos);
+        if (isVisibleToUser && mRootView != null) {
+            mAdapter.setData(ConstantData.requestVos);
         }
     }
 }

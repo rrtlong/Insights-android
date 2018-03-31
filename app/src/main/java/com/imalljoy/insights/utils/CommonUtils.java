@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.imalljoy.insights.R;
 
+import java.math.BigDecimal;
+
 /**
  * Created by lijilong on 03/09.
  */
@@ -77,5 +79,17 @@ public class CommonUtils {
             }
         }
         return color;
+    }
+
+    /**
+     * 四舍五入
+     * @param scale 设置小说
+     * @return
+     */
+    public static float MathRound(float orignal,int scale){
+        int roundingMode = 4;//表示四舍五入，可以选取其他模式
+        BigDecimal bd = new BigDecimal(orignal);
+        bd = bd.setScale(scale,BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 }

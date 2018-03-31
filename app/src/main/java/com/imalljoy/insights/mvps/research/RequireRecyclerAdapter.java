@@ -65,7 +65,8 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
     @Override
     public void onBindViewHolder(RequireRecyclerAdapter.ViewHolder holder, final int position) {
         RequestVo vo = listData.get(position);
-        Glide.with(mContext).load(vo.getUser().getHeadPic()).into(holder.headPic);
+        //数币logo
+        Glide.with(mContext).load(vo.getCoin().getLogoUrl()).error(R.mipmap.dog_logo).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.intro.setText(vo.getDemand());
         holder.reward.setText("INB: " + vo.getReward() + "");
@@ -106,7 +107,6 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
                 BuildRequestActivity.toActivity(mContext, listData.get(position), listData.get(position).getStatus());
             }
         });
-        Log.e("time", "startTime=" + vo.getStartTime().getTime() + ",system.time=" + System.currentTimeMillis() + ",endTime=" + vo.getEndTime().getTime());
 
     }
 

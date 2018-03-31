@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.imalljoy.insights.R;
 import com.imalljoy.insights.entity.QuestionnaireVo;
 import com.imalljoy.insights.utils.DateUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +40,19 @@ public class EnterpriseAdapter extends RecyclerView.Adapter<EnterpriseAdapter.Vi
         this.mType = type;
         this.mStatus = status;
     }
+    public void addData(QuestionnaireVo vo){
+        if(listData == null)
+            listData = new ArrayList<>();
+        listData.add(vo);
+        notifyDataSetChanged();
+    }
+    public void setData(List<QuestionnaireVo> vos){
+        if(listData == null){
+            listData = new ArrayList<>();
+        }
+        listData = vos;
+        notifyDataSetChanged();
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,7 +61,7 @@ public class EnterpriseAdapter extends RecyclerView.Adapter<EnterpriseAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         QuestionnaireVo vo = listData.get(position);
         Glide.with(mContext).load(vo.getUserVo().getHeadPic()).into(holder.headPic);
         holder.name.setText(vo.getName());
@@ -82,7 +97,13 @@ public class EnterpriseAdapter extends RecyclerView.Adapter<EnterpriseAdapter.Vi
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserListActivity.toActivity(mContext,mType);
+                //UserListActivity.toActivity(mContext,mType);
+                if(mType ==1){
+                    TotalPieListActivity.toActivity(mContext, mType, listData.get(position));
+                }else{
+                    AnswerListActivity.toActivity(mContext);
+                }
+
             }
         });
     }

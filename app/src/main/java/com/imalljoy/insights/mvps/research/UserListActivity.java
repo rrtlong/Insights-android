@@ -2,15 +2,19 @@ package com.imalljoy.insights.mvps.research;
 
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
+import com.imalljoy.insights.common.LocalData;
+import com.imalljoy.insights.entity.QuestionnaireVo;
 import com.imalljoy.insights.entity.UserVo;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.TopBarCommon;
@@ -26,11 +30,14 @@ import butterknife.ButterKnife;
  */
 
 public class UserListActivity extends BaseActivity implements View.OnClickListener {
-    int mType;//0:企业问询 1:用户调研
+    private static final String TAG = "UserListActivity";
     @BindView(R.id.top_bar)
     TopBarCommon topBar;
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
+
+    int mType;//0:企业问询 1:用户调研
+    QuestionnaireVo mVo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,7 @@ public class UserListActivity extends BaseActivity implements View.OnClickListen
         ButterKnife.bind(this);
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
         mType = getIntent().getIntExtra("type", 0);
+        mVo = (QuestionnaireVo) getIntent().getSerializableExtra("questionnaireVo");
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
         topBar.top_bar_title_text.setText(mType == 0 ? "企业问询" : "用户调研");
@@ -49,7 +57,7 @@ public class UserListActivity extends BaseActivity implements View.OnClickListen
         divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.recyclerview_divide_type1));
         recyclerview.setLayoutManager(linearLayoutManager);
         recyclerview.addItemDecoration(divider);
-        recyclerview.setAdapter(new UserListAdapter(this, getData(), mType));
+        recyclerview.setAdapter(new UserListAdapter(this, mVo.getAnswerUserList(), mType));
     }
 
     @Override
@@ -134,9 +142,10 @@ public class UserListActivity extends BaseActivity implements View.OnClickListen
         return vos;
     }
 
-    public static void toActivity(Context context, int type){
+    public static void toActivity(Context context, int type, QuestionnaireVo questionnaireVo){
         Intent it = new Intent(context, UserListActivity.class);
         it.putExtra("type",type);
+        it.putExtra("questionnaireVo",questionnaireVo);
         context.startActivity(it);
     }
 }

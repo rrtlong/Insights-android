@@ -10,69 +10,6 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/optional_top_layout"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:background="@color/f1f1f1"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="14dp"
-            android:paddingRight="14dp"
-            android:visibility="gone"
-            android:weightSum="4.5">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_sort" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="币种"
-                    android:textColor="@color/c_333333"
-                    android:textSize="11sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="价格 （USD)"
-                android:textColor="@color/c_333333"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="24小时变化"
-                android:textColor="@color/c_333333"
-                android:textSize="11sp" />
-
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:text="评级"
-                android:textColor="@color/c_333333"
-                android:textSize="11sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/currency_top_layout"
             android:layout_width="match_parent"
             android:layout_height="39dp"
@@ -82,12 +19,13 @@
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:visibility="visible"
-            android:weightSum="6.5">
+            android:weightSum="3.2">
 
             <LinearLayout
+                android:id="@+id/currency_sort_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1.2"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -108,37 +46,28 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="市值"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="价格(CNY)"
                 android:textColor="@color/c_333333"
                 android:textSize="11sp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="价格"
-                android:textColor="@color/c_333333"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:text="评级"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="24小时变化"
                 android:textColor="@color/c_333333"
                 android:textSize="11sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ICO_top_layout"
+            android:id="@+id/ico_top_layout"
             android:layout_width="match_parent"
             android:layout_height="39dp"
-            android:layout_weight="3.5"
+            android:layout_weight="3"
             android:background="@color/f1f1f1"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -146,23 +75,35 @@
             android:paddingRight="14dp"
             android:visibility="gone">
 
+            <LinearLayout
+                android:id="@+id/ico_sort_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/icon_sort" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="23dp"
+                    android:gravity="center_vertical"
+                    android:text="币种"
+                    android:textColor="@color/c_333333"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="币种"
-                android:textColor="@color/c_333333"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="时间"
+                android:gravity="center_horizontal"
+                android:text="状态"
                 android:textColor="@color/c_333333"
                 android:textSize="11sp" />
 
@@ -170,65 +111,94 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:gravity="center"
+                android:gravity="center_horizontal"
+                android:text="RONI"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"
                 android:text="等级"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/airdrop_top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:background="@color/f1f1f1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:visibility="gone"
+            android:weightSum="3.5">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="币种"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="状态"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="币值"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"
+                android:text="个数"
                 android:textColor="@color/c_333333"
                 android:textSize="11sp" />
         </LinearLayout>
 
     </RelativeLayout>
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/top_layout"
-        android:orientation="vertical">
+        android:layout_below="@+id/top_layout"
+        android:background="@color/white">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
+    </android.support.v7.widget.RecyclerView>
 
-        </android.support.v7.widget.RecyclerView>
-
-        <LinearLayout
-            android:id="@+id/optional_add_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <ImageView
-                android:id="@+id/optional_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16.7dp"
-                android:src="@mipmap/icon_optional_add" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16.7dp"
-                android:text="添加自选货币"
-                android:textColor="@color/cccccc"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/select_sort_layout"
+        android:id="@+id/currency_sort_layout"
         android:layout_width="match_parent"
-        android:layout_height="139dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/top_layout"
         android:background="@color/f1f1f1"
         android:orientation="vertical"
         android:paddingLeft="14dp">
 
         <TextView
-            android:id="@+id/sort1"
+            android:id="@+id/currency_sort1"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:drawableRight="@mipmap/icon_sort_dui"
@@ -244,7 +214,7 @@
             android:background="@color/white" />
 
         <TextView
-            android:id="@+id/sort2"
+            android:id="@+id/currency_sort2"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:drawableRight="@mipmap/icon_sort_dui"
@@ -260,7 +230,7 @@
             android:background="@color/white" />
 
         <TextView
-            android:id="@+id/sort3"
+            android:id="@+id/currency_sort3"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:drawableRight="@mipmap/icon_sort_dui"
@@ -276,7 +246,7 @@
             android:background="@color/white" />
 
         <TextView
-            android:id="@+id/sort4"
+            android:id="@+id/currency_sort4"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:drawableRight="@mipmap/icon_sort_dui"
@@ -288,5 +258,74 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ico_sort_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/top_layout"
+        android:background="@color/f1f1f1"
+        android:orientation="vertical"
+        android:paddingLeft="14dp">
+
+        <TextView
+            android:id="@+id/ico_sort1"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:drawableRight="@mipmap/icon_sort_dui"
+            android:gravity="center_vertical"
+            android:paddingRight="14dp"
+            android:text="新上"
+            android:textColor="@color/c_7b7b7b"
+            android:textSize="11sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/ico_sort2"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:drawableRight="@mipmap/icon_sort_dui"
+            android:gravity="center_vertical"
+            android:paddingRight="14dp"
+            android:text="即将ICO"
+            android:textColor="@color/c_7b7b7b"
+            android:textSize="11sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/ico_sort3"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:drawableRight="@mipmap/icon_sort_dui"
+            android:gravity="center_vertical"
+            android:paddingRight="14dp"
+            android:text="正在ICO"
+            android:textColor="@color/c_7b7b7b"
+            android:textSize="11sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/ico_sort4"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:drawableRight="@mipmap/icon_sort_dui"
+            android:gravity="center_vertical"
+            android:paddingRight="14dp"
+            android:text="ICO结束"
+            android:textColor="@color/c_7b7b7b"
+            android:textSize="11sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

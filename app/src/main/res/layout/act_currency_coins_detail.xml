@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f1f1f1"
+    android:orientation="vertical">
+
+    <com.imalljoy.insights.widgets.TopBarCommon
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"></com.imalljoy.insights.widgets.TopBarCommon>
+
+    <LinearLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="8,287.00"
+            android:textColor="@color/c_5ab67d"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/exchange_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="=8,28700"
+                android:textColor="@color/c_333333"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/exchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="left"
+                android:text="USDT"
+                android:textColor="@color/c_333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/range"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="+678.41"
+                android:textColor="@color/c_5ab67d"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/range_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+8.163%"
+                android:textColor="@color/c_5ab67d"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="14dp"
+            android:background="@color/f1f1f1" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/high_24_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="24小时最高"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/high_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/high_24_title"
+                android:layout_marginTop="7dp"
+                android:gravity="left"
+                android:text="8,456.00"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/market_value_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/high_24"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="市值(USD)"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/market_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/market_value_title"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:text="141.19B"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/low_24_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="24小时最低"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/low_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/low_24_title"
+                android:layout_below="@id/low_24_title"
+                android:layout_marginTop="7dp"
+                android:text="7,322.00"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rank_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/low_24_title"
+                android:layout_below="@id/low_24"
+                android:layout_marginTop="10dp"
+                android:text="排名"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/low_24_title"
+                android:layout_below="@id/rank_title"
+                android:layout_marginTop="7dp"
+                android:text="#1"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/vol_24_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="24小时成交量"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/vol_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/vol_24_title"
+                android:layout_marginTop="7dp"
+                android:text="62,292.78(BTC)"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/turnover_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/vol_24"
+                android:layout_marginTop="10dp"
+                android:text="流通量(BTC)"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/turnover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/turnover_title"
+                android:layout_marginTop="7dp"
+                android:text="16.93M"
+                android:textColor="@color/c_333333"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/tab_layout"
+        stl_clickable="true"
+        stl_distributeEvenly="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="14dp"
+        android:background="@color/f1f1f1"
+        android:textColor="@color/c_333333"
+        android:textSize="14sp"
+        app:stl_defaultTabTextSize="11sp"
+        app:stl_dividerColor="@color/transparent"
+        app:stl_indicatorAlwaysInCenter="false"
+        app:stl_indicatorColor="@color/colorPrimary"
+        app:stl_indicatorCornerRadius="1.5dp"
+        app:stl_indicatorGravity="bottom"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="0dp"
+        app:stl_indicatorWidth="0dp"
+        app:stl_underlineColor="@color/f1f1f1"
+        app:stl_underlineThickness="1px" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

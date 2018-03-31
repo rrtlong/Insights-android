@@ -4,6 +4,7 @@ package com.imalljoy.insights.utils;
  * Created by lijilong on 03/16.
  */
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -275,5 +276,22 @@ public class DateUtils {
             default:
                 return -1;
         }
+    }
+
+    public static int differentDaysByMillisecond(Date date1,Date date2)
+    {
+        int days = (int) ((date2.getTime() - date1.getTime()) / (1000*3600*24));
+        return days;
+    }
+    public static int differentDaysByMillisecond(long time1, long time2)
+    {
+        int days = (int) ((time2 - time1) / (1000*3600*24));
+        return days;
+    }
+    public static boolean isBefore(long time1, long time2){
+        if(time1 <= time2){
+            return true;
+        }
+        return false;
     }
 }

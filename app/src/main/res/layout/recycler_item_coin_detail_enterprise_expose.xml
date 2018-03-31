@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="37dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:paddingLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_weight="3.3">
+<TextView
+    android:id="@+id/title"
+    android:layout_width="0dp"
+    android:layout_weight="1.3"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:textColor="@color/c_333333"
+    android:textSize="11sp"
+    android:text="2018年3月进度汇报"/>
+    <TextView
+        android:id="@+id/publish_time"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/c_333333"
+        android:textSize="11sp"
+        android:text="2018.03.28"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right|center_vertical">
+        <ImageView
+            android:id="@+id/start_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:src="@mipmap/icon_star_yes" />
+        <ImageView
+            android:id="@+id/start_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:src="@mipmap/icon_star_yes" />
+        <ImageView
+            android:id="@+id/start_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:src="@mipmap/icon_star_yes" />
+        <ImageView
+            android:id="@+id/start_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:src="@mipmap/icon_star_yes" />
+        <ImageView
+            android:id="@+id/start_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="7dp"
+            android:src="@mipmap/icon_star" />
+        <ImageView
+            android:id="@+id/more_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/more" />
+    </LinearLayout>
+</LinearLayout>

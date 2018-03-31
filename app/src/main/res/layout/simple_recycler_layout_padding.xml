@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp">
+
+    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/tip_info"
+        android:layout_width="67dp"
+        android:layout_height="57dp"
+        android:gravity="center"
+        android:text="简介简介简介简介简介简介简介简介简介简介简介简介"
+        android:textColor="#4c333333"
+        android:textSize="6sp"
+        android:background="#4c333333"
+        android:visibility="gone"/>
+</RelativeLayout>

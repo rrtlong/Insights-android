@@ -99,12 +99,15 @@ public class QuestionnaireFragment extends BaseFragment implements SwipeRefreshL
             public void run() {
                 mSwiperRefreshLayout.setRefreshing(false);
             }
-        }, 2000);
+        }, 1500);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(JumpFragment jumpFragment){
         if(jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.getIndex() ==0 && jumpFragment.isRefresh()){
+            mAdapter.setData(ConstantData.questionnaireVos);
+        }else if(jumpFragment.getType() == JumpFragment.Type.Research && jumpFragment.isRefresh()){
+            //针对于调研模块的刷新
             mAdapter.setData(ConstantData.questionnaireVos);
         }
     }

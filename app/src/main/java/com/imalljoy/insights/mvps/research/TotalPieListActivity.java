@@ -6,6 +6,7 @@ import android.content.pm.PermissionInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -17,6 +18,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
+import com.imalljoy.insights.entity.QuestionnaireVo;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.TopBarCommon;
 
@@ -31,7 +33,7 @@ import butterknife.ButterKnife;
 
 public class TotalPieListActivity extends BaseActivity implements View.OnClickListener {
 
-
+    private static final String TAG = "TotalPieListActivity";
     @BindView(R.id.top_bar)
     TopBarCommon topBar;
     @BindView(R.id.pie_view1)
@@ -59,16 +61,23 @@ public class TotalPieListActivity extends BaseActivity implements View.OnClickLi
     @BindView(R.id.pie_view12)
     PieChart pieView12;
 
+
+    private int mType = 0;
+    private QuestionnaireVo mQuestionnaireVo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_total_pielist);
         ButterKnife.bind(this);
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
+        mType = getIntent().getIntExtra("type",0);
+        mQuestionnaireVo = (QuestionnaireVo) getIntent().getSerializableExtra("questionnaireVo");
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
         topBar.top_bar_title_text.setText("问卷");
         topBar.setRightView("查看详情", 0);
+        topBar.top_bar_right_layout.setOnClickListener(this);
         initView();
 
     }
@@ -154,11 +163,16 @@ public class TotalPieListActivity extends BaseActivity implements View.OnClickLi
             case R.id.top_bar_left_layout:
                 finish();
                 break;
+            case R.id.top_bar_right_layout:
+                UserListActivity.toActivity(this, mType,mQuestionnaireVo);
+                break;
         }
     }
 
-    public static void toActivity(Context context) {
+    public static void toActivity(Context context, int type, QuestionnaireVo questionnaireVo) {
         Intent it = new Intent(context, TotalPieListActivity.class);
+        it.putExtra("type",type);
+        it.putExtra("questionnaireVo",questionnaireVo);
         context.startActivity(it);
     }
 }

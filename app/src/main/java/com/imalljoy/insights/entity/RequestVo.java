@@ -19,6 +19,7 @@ public class RequestVo implements Serializable{
     private UserVo user;        //发起请求的用户
     private CoinVo coin;    //数币名
     private UserVo acceptUser; //接受请求的用户
+    private ReportVo reportVo;  //针对请求的报告
 
 
     public Long getId() {
@@ -107,6 +108,14 @@ public class RequestVo implements Serializable{
 
     public void setAcceptUser(UserVo acceptUser) {
         this.acceptUser = acceptUser;
+    }
+
+    public ReportVo getReportVo() {
+        return reportVo;
+    }
+
+    public void setReportVo(ReportVo reportVo) {
+        this.reportVo = reportVo;
     }
 
     @Override

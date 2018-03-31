@@ -52,7 +52,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TotalPieListActivity.toActivity(mContext);
+            AnswerListActivity.toActivity(mContext);
             }
         });
     }

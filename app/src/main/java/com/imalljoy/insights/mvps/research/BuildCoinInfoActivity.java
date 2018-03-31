@@ -105,7 +105,7 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
             icoTimeLayout.setOnClickListener(this);
             onlineExchangeTimeLayout.setOnClickListener(this);
         }
-        name.setText(mCoinVo.getName());
+     /*   name.setText(mCoinVo.getName());
         if (!TextUtils.isEmpty(mCoinVo.getLogoUrl())) {
             Glide.with(this).load(mCoinVo.getLogoUrl()).into(logo);
         }
@@ -119,13 +119,14 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
         onlineExchange.setText(mCoinVo.getOnlineExchange());
         location.setText(mCoinVo.getLocation());
         telegraphGroup.setText(mCoinVo.getTelegraphGroup());
-        twitterFans.setText(mCoinVo.getTwitterFans());
+        twitterFans.setText(mCoinVo.getTwitterFans());*/
     }
 
     public static void toActivityForResult(Activity activity, CoinVo vo, int status,int requestCode) {
+        //暂时该页面不能编辑，都用默认数据
         Intent it = new Intent(activity, BuildCoinInfoActivity.class);
-        it.putExtra("coinVo", vo);
-        it.putExtra("status", status);
+//        it.putExtra("coinVo", vo);
+        it.putExtra("status", 1);
         activity.startActivityForResult(it, requestCode);
 
     }

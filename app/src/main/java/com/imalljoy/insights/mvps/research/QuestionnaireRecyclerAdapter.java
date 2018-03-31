@@ -63,11 +63,18 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         QuestionnaireVo vo = listData.get(position);
+        //分析师头像
         Glide.with(mContext).load(vo.getUserVo().getHeadPic()).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.intro.setText(vo.getContent());
         holder.reward.setText("INB: " + vo.getReward() + "");
         holder.surplus.setText("剩余数量" + (vo.getTotalNumber() - vo.getFinishedNumber()));
+        if (vo.getStatus() == 2) {
+            holder.status.setText("已完成");
+            holder.status.setVisibility(View.VISIBLE);
+            holder.startTime.setVisibility(View.GONE);
+            holder.endTime.setVisibility(View.GONE);
+        }
         if (vo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < vo.getEndTime().getTime()) {
             //在活动期
             holder.startTime.setText(DateUtils.dateToString(new Date(vo.getStartTime().getTime()), DateUtils.DatePattern.ONLY_DAY));
@@ -90,7 +97,7 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuildQuestionnaireActivity.toActivity(mContext, listData.get(position), listData.get(position).getStatus());
+                BuildQuestionnaireActivity.toActivity(mContext, listData.get(position), listData.get(position).getStatus(), -1);
             }
         });
 
@@ -119,6 +126,8 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
         TextView startTime;
         @BindView(R.id.end_time)
         TextView endTime;
+        @BindView(R.id.status)
+        TextView status;
 
         public ViewHolder(View itemView) {
             super(itemView);

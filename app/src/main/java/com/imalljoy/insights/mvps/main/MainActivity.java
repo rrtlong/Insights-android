@@ -1,5 +1,6 @@
 package com.imalljoy.insights.mvps.main;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,20 +15,24 @@ import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.ActivityLifeCycleEvent;
 import com.imalljoy.insights.base.BaseActivity;
 
+import com.imalljoy.insights.common.LocalData;
 import com.imalljoy.insights.data.http.Api;
 import com.imalljoy.insights.data.http.HttpUtil;
 import com.imalljoy.insights.data.http.ProgressSubscriber;
+import com.imalljoy.insights.entity.ReportVo;
 import com.imalljoy.insights.entity.Subject;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.view.SimpleLoadDialog;
 import com.imalljoy.insights.widgets.FragmentTabHost;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import rx.Observable;
 
 public class MainActivity extends BaseActivity {
+    private static final String TAG = "MainActivity";
     private FragmentTabHost mTabHost;
     private SimpleLoadDialog mSimpleLoadDialog;
     private Class<?> mTabFragmentArray[] = {ResearchFragment.class, CoinsFragment.class, AnalystFragment.class, NewsFragment.class, MineFragment.class};
@@ -145,6 +150,21 @@ public class MainActivity extends BaseActivity {
             }
         }, "cachekey", ActivityLifeCycleEvent.DESTROY, lifecycleSubject, false, false);
 
+    }
+    public void test(){
+        List<ReportVo> vos = new ArrayList<>();
+        ReportVo vo = new ReportVo();
+        vo.setCost(10.0);
+        vos.add(vo);
+        Log.e(TAG,"1 cost=" + vos.get(0).getCost()+"");
+        vo.setCost(20.0);
+        Log.e(TAG,"2 cost=" + vos.get(0).getCost()+"");
+        LocalData.getInstance().setmReportVo(vo);
+        Log.e(TAG, "3 cost" + LocalData.getInstance().getmReportVo().getCost());
+        vo.setCost(30.0);
+        Log.e(TAG, "4 cost" + LocalData.getInstance().getmReportVo().getCost());
+        LocalData.getInstance().getmReportVo().setCost(40.0);
+        Log.e(TAG,"5 cost=" + vo.getCost());
     }
 }
 

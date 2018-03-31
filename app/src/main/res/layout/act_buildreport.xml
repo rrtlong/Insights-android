@@ -7,10 +7,10 @@
         android:id="@+id/root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:background="@color/f1f1f1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <com.imalljoy.insights.widgets.TopBarCommon
             android:id="@+id/top_bar"
@@ -91,7 +91,7 @@
                         android:textColor="#333333"
                         android:textSize="14sp" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/report_name"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -101,6 +101,14 @@
                         android:text="投资喜好调查"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
+
+                    <ImageView
+                        android:id="@+id/report_name_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/more" />
 
                 </LinearLayout>
 
@@ -174,8 +182,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="#f1f1f1" />
-
                 <LinearLayout
+                    android:id="@+id/cost_layout"
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
                     android:background="@color/white"
@@ -191,15 +199,13 @@
                         android:textColor="#333333"
                         android:textSize="14sp" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/cost"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@null"
                         android:gravity="center_vertical|right"
                         android:text="100"
-                        android:inputType="number"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -210,6 +216,14 @@
                         android:text="INB"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
+
+                    <ImageView
+                        android:id="@+id/cost_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/more" />
 
                 </LinearLayout>
 
@@ -352,7 +366,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -394,7 +408,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -436,7 +450,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -478,7 +492,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -519,7 +533,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -537,7 +551,7 @@
                     android:background="#f1f1f1" />
 
                 <LinearLayout
-                    android:id="@+id/coin_layout"
+                    android:id="@+id/coin_cost_layout"
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
                     android:background="@color/white"
@@ -549,23 +563,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="数币"
+                        android:text="花费"
                         android:textColor="#333333"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/coin"
+                        android:id="@+id/coin_cost"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
                     <ImageView
-                        android:id="@+id/coin_img"
+                        android:id="@+id/coin_cost_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -601,7 +615,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -642,7 +656,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -672,7 +686,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="用户调查"
+                        android:text="用户调研"
                         android:textColor="#333333"
                         android:textSize="14sp" />
 
@@ -683,7 +697,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -725,7 +739,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
-                        android:text="80"
+                        android:text="60"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 

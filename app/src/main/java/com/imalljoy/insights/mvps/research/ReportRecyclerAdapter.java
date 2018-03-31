@@ -62,12 +62,15 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
     @Override
     public void onBindViewHolder(ReportRecyclerAdapter.ViewHolder holder, final int position) {
         ReportVo vo = listData.get(position);
-        Glide.with(mContext).load(vo.getUser().getHeadPic()).into(holder.headPic);
+        //数币logo
+        Glide.with(mContext).load(vo.getRequest().getCoin().getLogoUrl()).error(R.mipmap.dog_logo).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.content.setText(vo.getContent());
         holder.publishTime.setText(DateUtils.dateToString(new Date(vo.getPublishTime().getTime()), "yyyy年MM月dd日 HH:mm"));
-        holder.reward.setText("INB: " + vo.getReward() + "");
-        if (vo.getGrade() <= 20) {
+        holder.reward.setText("INB: " + vo.getCost() + "");
+        if (vo.getGrade() == 0) {
+
+        } else if (vo.getGrade() <= 20) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
         } else if (vo.getGrade() <= 40) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
@@ -91,7 +94,7 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BuildReportActivity.toActivity(mContext,listData.get(position).getRequest(),listData.get(position), listData.get(position).getStatus());
+                BuildReportActivity.toActivity(mContext, listData.get(position).getRequest(), listData.get(position), listData.get(position).getStatus());
             }
         });
 
