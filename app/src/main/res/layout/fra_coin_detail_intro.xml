@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/f1f1f1"
         android:orientation="vertical">
 
@@ -285,6 +285,7 @@
                 android:textSize="8sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/telegraph_group_layout"
             android:layout_width="match_parent"
@@ -318,10 +319,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@mipmap/more"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/more" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/twitter_fans_layout"
             android:layout_width="match_parent"
@@ -355,8 +357,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@mipmap/more"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/more" />
 
         </LinearLayout>
 
@@ -381,7 +383,7 @@
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:text="介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
-            android:textColor="@color/cccccc"
+            android:textColor="@color/text_name"
             android:textSize="11sp" />
 
         <TextView
@@ -394,7 +396,7 @@
             android:paddingRight="14dp"
             android:paddingTop="14dp"
             android:text="ETHcoin的特点："
-            android:textColor="@color/cccccc"
+            android:textColor="@color/text_name"
             android:textSize="11sp" />
 
         <TextView
@@ -408,8 +410,7 @@
             android:paddingRight="14dp"
             android:paddingTop="10dp"
             android:text="1、总量与以太坊ETH保持一致，ETH持有者1:1获赠ETH糖果。\n2、目前挖矿算法不变，支持原ETH矿机双挖。\n3、延长POW挖矿周期。\n4、2018年增加POS硬盘挖矿算法，支持分布式存储。"
-            android:textColor="@color/cccccc"
+            android:textColor="@color/text_name"
             android:textSize="8sp" />
-
     </LinearLayout>
 </ScrollView>

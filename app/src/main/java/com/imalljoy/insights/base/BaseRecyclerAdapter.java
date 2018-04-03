@@ -20,6 +20,7 @@ public class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends 
     protected Context context;
     protected int type;
     protected List<T> listData;
+    public OnClickListener onClickListener;
 
     public BaseRecyclerAdapter(Context context, List<T> list, int type) {
         this.context = context;
@@ -58,4 +59,12 @@ public class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends 
         }
 
     }
+    public interface OnClickListener{
+        public void onClick(View view,int position);
+    }
+
+    public void setOnClickListener(OnClickListener listener){
+        this.onClickListener = listener;
+    }
+
 }

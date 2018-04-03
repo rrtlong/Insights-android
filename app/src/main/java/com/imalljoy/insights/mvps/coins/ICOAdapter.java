@@ -52,19 +52,19 @@ public class ICOAdapter extends BaseRecyclerAdapter<CoinVo, ICOAdapter.ICOHolder
             //新上，显示距开始还有多少天
             int days = DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime());
             if(days >=0){
-                holder.status.setText("距开始还有" + days +"天");
+                holder.status.setText("距开始" + days +"天");
             }
         }else if(vo.getType() ==2){
             //即将，显示距开始还有多少天
             int days = DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime());
             if(days >=0){
-                holder.status.setText("距开始还有" + days +"天");
+                holder.status.setText("距开始" + days +"天");
             }
         }else if(vo.getType() ==3){
             //正在进行
             int days = DateUtils.differentDaysByMillisecond(new Date().getTime(),vo.getIcoEndTime().getTime());
             if(days >=0){
-                holder.status.setText("距结束还有" + days +"天");
+                holder.status.setText("距结束" + days +"天");
             }
         }else if(vo.getType() == 4){
             holder.status.setText("已结束");
@@ -72,6 +72,7 @@ public class ICOAdapter extends BaseRecyclerAdapter<CoinVo, ICOAdapter.ICOHolder
             holder.status.setText("");
         }
         holder.roni.setText(vo.getRoni()+"");
+        holder.bsri.setText(vo.getBsri()+"");
         holder.level.setText(vo.getLevel());
         holder.level.setTextColor(ContextCompat.getColor(context,CommonUtils.getColorResourceFromStrg(vo.getLevel())));
         holder.rootView.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +94,8 @@ public class ICOAdapter extends BaseRecyclerAdapter<CoinVo, ICOAdapter.ICOHolder
         TextView status;
         @BindView(R.id.roni)
         TextView roni;
+        @BindView(R.id.bsri)
+        TextView bsri;
         @BindView(R.id.level)
         TextView level;
         @BindView(R.id.root_view)

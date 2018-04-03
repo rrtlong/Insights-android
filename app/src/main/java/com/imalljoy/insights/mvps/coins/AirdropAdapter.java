@@ -48,9 +48,9 @@ public class AirdropAdapter extends BaseRecyclerAdapter<CoinVo, AirdropAdapter.A
         if (DateUtils.isBefore(vo.getIcoEndTime().getTime(), new Date().getTime())) {
             holder.status.setText("已结束");
         } else if (DateUtils.isBefore(new Date().getTime(), vo.getIcoTime().getTime())) {
-            holder.status.setText("距开始还有" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime()) + "天");
+            holder.status.setText("距开始" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime()) + "天");
         } else if (DateUtils.isBefore(vo.getIcoTime().getTime(), new Date().getTime()) && DateUtils.isBefore(new Date().getTime(), vo.getIcoEndTime().getTime())) {
-            holder.status.setText("距结束还有" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoEndTime().getTime()) + "天");
+            holder.status.setText("距结束" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoEndTime().getTime()) + "天");
         } else {
             holder.status.setText("");
         }

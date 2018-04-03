@@ -10,9 +10,12 @@ import com.imalljoy.insights.entity.ReportVo;
 import com.imalljoy.insights.entity.RequestVo;
 import com.imalljoy.insights.entity.UserVo;
 import com.imalljoy.insights.mvps.coins.AirdropAdapter;
+import com.imalljoy.insights.mvps.coins.CoinsChildFragment;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -246,6 +249,7 @@ public class ConstantData {
         coinVo.setShortName("BTC");
         coinVo.setPrice(51921.47f);
         coinVo.setExchangeRate(530.19f);
+        coinVo.setMarketValue(4934623.121);
         coinVo.setForCoin("USDT");
         coinVo.setRange(0.06334f);
         currencyCoinVos.add(coinVo);
@@ -257,6 +261,7 @@ public class ConstantData {
         coinVo.setShortName("ETH");
         coinVo.setPrice(51921.47f);
         coinVo.setExchangeRate(530.19f);
+        coinVo.setMarketValue(5234623.324);
         coinVo.setForCoin("USDT");
         coinVo.setRange(-0.06326f);
         currencyCoinVos.add(coinVo);
@@ -274,6 +279,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setIcoEndTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setRoni(100);
+        coinVo.setBsri(2.3f);
         coinVo.setLevel("A");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -285,6 +291,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setIcoEndTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setRoni(90);
+        coinVo.setBsri(2.25f);
         coinVo.setLevel("B");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -296,6 +303,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setIcoEndTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setRoni(80);
+        coinVo.setBsri(2.34f);
         coinVo.setLevel("C");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -307,6 +315,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1524585600000l));//2018-4-25
         coinVo.setIcoEndTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setRoni(100);
+        coinVo.setBsri(2.33f);
         coinVo.setLevel("A");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -318,6 +327,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1524585600000l));//2018-4-25
         coinVo.setIcoEndTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setRoni(90);
+        coinVo.setBsri(2.23f);
         coinVo.setLevel("B");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -329,6 +339,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1524585600000l));//2018-4-25
         coinVo.setIcoEndTime(new Timestamp(1527177600000l));//2015-5-25
         coinVo.setRoni(80);
+        coinVo.setBsri(2.12f);
         coinVo.setLevel("C");
         icoCoinVos.add(coinVo);
 
@@ -341,6 +352,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1521907200000l));//2018-3-25
         coinVo.setIcoEndTime(new Timestamp(1524585600000l));//2015-4-25
         coinVo.setRoni(100);
+        coinVo.setBsri(2.0f);
         coinVo.setLevel("A");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -352,6 +364,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1521907200000l));//2018-3-25
         coinVo.setIcoEndTime(new Timestamp(1524585600000l));//2015-4-25
         coinVo.setRoni(90);
+        coinVo.setBsri(1.9f);
         coinVo.setLevel("B");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -363,6 +376,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1521907200000l));//2018-3-25
         coinVo.setIcoEndTime(new Timestamp(1524585600000l));//2015-4-25
         coinVo.setRoni(80);
+        coinVo.setBsri(2.52f);
         coinVo.setLevel("C");
         icoCoinVos.add(coinVo);
 
@@ -376,6 +390,7 @@ public class ConstantData {
         coinVo.setIcoEndTime(new Timestamp(1521907200000l));//2018-3-25
         coinVo.setRoni(100);
         coinVo.setLevel("A");
+        coinVo.setBsri(2.1f);
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
         coinVo.setId(13l);
@@ -386,6 +401,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1519056000000l));//2015-2-20
         coinVo.setIcoEndTime(new Timestamp(1521907200000l));//2018-3-25
         coinVo.setRoni(90);
+        coinVo.setBsri(2.8f);
         coinVo.setLevel("B");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -397,6 +413,7 @@ public class ConstantData {
         coinVo.setIcoTime(new Timestamp(1519056000000l));//2015-2-20
         coinVo.setIcoEndTime(new Timestamp(1521907200000l));//2018-3-25
         coinVo.setRoni(80);
+        coinVo.setBsri(2.5f);
         coinVo.setLevel("C");
         icoCoinVos.add(coinVo);
 
@@ -536,6 +553,65 @@ public class ConstantData {
 
         }
         return false;
+    }
+
+    public static List<CoinVo> getIcoCoinsByStatus(int type){
+        List<CoinVo> vos = new ArrayList<CoinVo>();
+        for(CoinVo vo : icoCoinVos){
+            if(vo.getType() == type)
+                vos.add(vo);
+        }
+        return vos;
+    }
+    public static List<CoinVo> getIcoCoinsBySort(int flag, final boolean isDesc){
+        if(flag == 0){
+            //roni排序
+            Collections.sort(icoCoinVos, new Comparator<CoinVo>() {
+                @Override
+                public int compare(CoinVo o1, CoinVo o2) {
+                    if(isDesc){//降序
+                        return o2.getRoni() - o1.getRoni();
+                    }
+                    return o1.getRoni() - o2.getRoni();
+                }
+            });
+        }else if(flag ==1){
+            //bsri
+            Collections.sort(icoCoinVos, new Comparator<CoinVo>() {
+                @Override
+                public int compare(CoinVo o1, CoinVo o2) {
+                    if(isDesc){//降序
+                        if(o1.getBsri() - o2.getBsri() >0){
+                            return 1;
+                        }else if(o1.getBsri() - o2.getBsri() ==0){
+                            return 0;
+                        }else if(o1.getBsri() - o2.getBsri() <0){
+                            return -1;
+                        }
+                    }
+                    if(o1.getBsri() - o2.getBsri() >0){
+                        return -1;
+                    }else if(o1.getBsri() - o2.getBsri() ==0){
+                        return 0;
+                    }else if(o1.getBsri() - o2.getBsri() <0){
+                        return 1;
+                    }
+                    return 0;
+                }
+            });
+        }else if(flag ==2){
+            //level
+            Collections.sort(icoCoinVos, new Comparator<CoinVo>() {
+                @Override
+                public int compare(CoinVo o1, CoinVo o2) {
+                    if(isDesc){
+                        return o1.getLevel().compareTo(o2.getLevel());
+                    }
+                    return o2.getLevel().compareTo(o1.getLevel());
+                }
+            });
+        }
+        return icoCoinVos;
     }
 
 }

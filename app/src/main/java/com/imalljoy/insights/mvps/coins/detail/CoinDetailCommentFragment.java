@@ -71,14 +71,7 @@ public class CoinDetailCommentFragment extends BaseFragment {
         List<CoinVo> vos = new ArrayList<>();
         vos.add(new CoinVo());
         vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
+
         return vos;
     }
     public static CoinDetailCommentFragment newInstance(){

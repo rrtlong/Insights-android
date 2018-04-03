@@ -40,5 +40,8 @@
     <color name="c_e">#e53422</color>
     <color name="c_e_subtract">#e53422</color>
     <color name="c_72d2d6">#72d2d6</color>
+    <color name="text_short_name">@color/c_333333</color>
+    <color name="text_name">#7b7b7b</color>
+
 
 </resources>

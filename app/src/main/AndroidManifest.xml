@@ -72,6 +72,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".mvps.coins.SearchCoinsActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mvps.coins.detail.TeamDetailActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

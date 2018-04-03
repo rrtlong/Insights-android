@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.entity.CoinVo;
@@ -26,6 +27,8 @@ import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailTeamFragment;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.utils.CommonUtils;
+import com.imalljoy.insights.widgets.PullToRefreshScrollableLayout;
+import com.imalljoy.insights.widgets.ScrollViewViewPager;
 import com.imalljoy.insights.widgets.TopBarCommon;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
@@ -60,6 +63,8 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
     SmartTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
+    @BindView(R.id.pull_refresh_scrollable)
+    PullToRefreshScrollableLayout pullToRefreshScrollableLayout;
     CommonFragmentAdapter mAdapter;
     List<Fragment> mFragmentList;
     List<String> mFragmentTitleList;
@@ -78,6 +83,7 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
         topBar.setRightView(null, R.mipmap.icon_more_2);
         topBar.top_bar_right_layout.setOnClickListener(this);
         initViewPager();
+        pullToRefreshScrollableLayout.setMode(PullToRefreshBase.Mode.DISABLED);
     }
 
     public void initViewPager(){
@@ -97,38 +103,39 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
         mFragmentTitleList.add(CoinDetailEnterpriseExposeFragment.TITLE);
         mAdapter = new CommonFragmentAdapter(getSupportFragmentManager(), mFragmentList,mFragmentTitleList);
         viewpager.setAdapter(mAdapter);
-        tabLayout.setCustomTabView(new SmartTabLayout.TabProvider() {
-            @Override
-            public View createTabView(ViewGroup container, int position, PagerAdapter adapter) {
-                LayoutInflater inflater = LayoutInflater.from(container.getContext());
-                Resources res = container.getContext().getResources();
-                View tab = inflater.inflate(R.layout.smartlayout_text_simple, container, false);
-                TextView textView = (TextView) tab.findViewById(R.id.custom_text);
-                switch (position){
-                    case 0:
-                        textView.setText(adapter.getPageTitle(position));
-                        textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-                        break;
-                    case 1:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 2:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 3:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 4:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 5:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                }
-                return tab;
-            }
-
-        });
+        tabLayout.setCustomTabView(R.layout.smartlayout_text_simple, R.id.custom_text);
+//        tabLayout.setCustomTabView(new SmartTabLayout.TabProvider() {
+//            @Override
+//            public View createTabView(ViewGroup container, int position, PagerAdapter adapter) {
+//                LayoutInflater inflater = LayoutInflater.from(container.getContext());
+//                Resources res = container.getContext().getResources();
+//                View tab = inflater.inflate(R.layout.smartlayout_text_simple, container, false);
+//                TextView textView = (TextView) tab.findViewById(R.id.custom_text);
+//                switch (position){
+//                    case 0:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+//                        break;
+//                    case 1:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 2:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 3:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 4:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 5:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                }
+//                return tab;
+//            }
+//
+//        });
 
         tabLayout.setViewPager(viewpager);
         tabLayout.setOnTabClickListener(new SmartTabLayout.OnTabClickListener() {

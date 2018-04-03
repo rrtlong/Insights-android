@@ -34,6 +34,7 @@ public class CoinVo implements Serializable {
     private int type;   //0:空投   1:新上  2:即将ico  3:正在ico  4:ico结束 5：币市
     private Timestamp icoEndTime;   //ico结束时间
     private int roni;   //roni指数
+    private float bsri; //bsri指数
     private String level;   //评级A
     private int airDropNum;     //空投个数
 
@@ -240,6 +241,22 @@ public class CoinVo implements Serializable {
 
     public void setForCoin(String forCoin) {
         this.forCoin = forCoin;
+    }
+
+    public float getRangeRate() {
+        return rangeRate;
+    }
+
+    public void setRangeRate(float rangeRate) {
+        this.rangeRate = rangeRate;
+    }
+
+    public float getBsri() {
+        return bsri;
+    }
+
+    public void setBsri(float bsri) {
+        this.bsri = bsri;
     }
 
     @Override

@@ -12,9 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.entity.CoinVo;
@@ -27,11 +30,18 @@ import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailTeamFragment;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.utils.CommonUtils;
+import com.imalljoy.insights.utils.ScreenUtils;
+import com.imalljoy.insights.widgets.ObservableScrollView;
+import com.imalljoy.insights.widgets.PullToRefreshScrollableLayout;
+import com.imalljoy.insights.widgets.ScrollViewCompatViewPager;
+import com.imalljoy.insights.widgets.ScrollViewViewPager;
 import com.imalljoy.insights.widgets.TopBarCommon;
+import com.imalljoy.insights.widgets.WrapContentHeightViewPager;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,7 +50,7 @@ import butterknife.ButterKnife;
  * Created by lijilong on 03/31.
  */
 
-public class CurrencyCoinsDetailActivity extends BaseActivity implements View.OnClickListener {
+public class CurrencyCoinsDetailActivity extends BaseActivity implements View.OnClickListener, ObservableScrollView.ScrollViewListener {
     private static final String TAG = "CurrencyCoinsDetailActi";
 
     @BindView(R.id.top_bar)
@@ -85,11 +95,14 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
     SmartTabLayout tabLayout;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
+    @BindView(R.id.pull_refresh_scrollable)
+    PullToRefreshScrollableLayout pullToRefreshScrollableLayout;
 
     CoinVo mVo;
     List<Fragment> mFragmentList;
     List<String> mFragmentTitleList;
     CommonFragmentAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,19 +115,37 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         topBar.top_bar_title_text.setText(mVo.getName());
         topBar.setRightView(null, R.mipmap.icon_more_2);
         topBar.top_bar_right_layout.setOnClickListener(this);
+//        tabLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                int location[] = new int[2];
+//                tabLayout.getLocationOnScreen(location);
+//                Log.e(TAG,"y=" + location[1] + "height=" + ScreenUtils.getScreenHeight(CurrencyCoinsDetailActivity.this));
+//                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) viewpager.getLayoutParams();
+//                params.height = ScreenUtils.getScreenHeight(CurrencyCoinsDetailActivity.this) - location[1]-ScreenUtils.dp2px(CurrencyCoinsDetailActivity.this,40);
+//                viewpager.setLayoutParams(params);
+//
+//            }
+//        });
+        pullToRefreshScrollableLayout.setMode(PullToRefreshBase.Mode.DISABLED);
+
+
         initViewPager();
     }
 
     public void initViewPager() {
         mFragmentList = new ArrayList<>();
         mFragmentTitleList = new ArrayList<>();
-        mFragmentList.add(CoinDetailIntroFragment.newInstance());
+        CoinDetailIntroFragment intro = CoinDetailIntroFragment.newInstance();
+        intro.setScrollListener(this);
+//        mFragmentList.add(CoinDetailIntroFragment.newInstance());
+        mFragmentList.add(intro);
         mFragmentList.add(CoinDetailTeamFragment.newInstance());
         mFragmentList.add(CoinDetailCommentFragment.newInstance());
         mFragmentList.add(ReportFragment.newInstance());
         mFragmentList.add(CoinDetailNewsFragment.newInstance());
         //交易所
-        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.CURRENCY,1));
+        mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.CURRENCY, 1));
         //ICO信息
         mFragmentList.add(CoinDetailIcoInfoFragment.newInstance());
 
@@ -129,41 +160,42 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
 
         mAdapter = new CommonFragmentAdapter(getSupportFragmentManager(), mFragmentList, mFragmentTitleList);
         viewpager.setAdapter(mAdapter);
-        tabLayout.setCustomTabView(new SmartTabLayout.TabProvider() {
-            @Override
-            public View createTabView(ViewGroup container, int position, PagerAdapter adapter) {
-                LayoutInflater inflater = LayoutInflater.from(container.getContext());
-                Resources res = container.getContext().getResources();
-                View tab = inflater.inflate(R.layout.smartlayout_text_simple, container, false);
-                TextView textView = (TextView) tab.findViewById(R.id.custom_text);
-                switch (position) {
-                    case 0:
-                        textView.setText(adapter.getPageTitle(position));
-                        textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-                        break;
-                    case 1:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 2:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 3:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 4:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 5:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                    case 6:
-                        textView.setText(adapter.getPageTitle(position));
-                        break;
-                }
-                return tab;
-            }
-
-        });
+        tabLayout.setCustomTabView(R.layout.smartlayout_text_simple, R.id.custom_text);
+//        tabLayout.setCustomTabView(new SmartTabLayout.TabProvider() {
+//            @Override
+//            public View createTabView(ViewGroup container, int position, PagerAdapter adapter) {
+//                LayoutInflater inflater = LayoutInflater.from(container.getContext());
+//                Resources res = container.getContext().getResources();
+//                View tab = inflater.inflate(R.layout.smartlayout_text_simple, container, false);
+//                TextView textView = (TextView) tab.findViewById(R.id.custom_text);
+//                switch (position) {
+//                    case 0:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        textView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+//                        break;
+//                    case 1:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 2:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 3:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 4:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 5:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                    case 6:
+//                        textView.setText(adapter.getPageTitle(position));
+//                        break;
+//                }
+//                return tab;
+//            }
+//
+//        });
 
         tabLayout.setViewPager(viewpager);
         tabLayout.setOnTabClickListener(new SmartTabLayout.OnTabClickListener() {
@@ -216,6 +248,16 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         Intent it = new Intent(context, CurrencyCoinsDetailActivity.class);
         it.putExtra("coinVo", vo);
         context.startActivity(it);
+    }
+
+    @Override
+    public void onScroll(int x, int y, int oldX, int oldY) {
+//        scrollView.scrollTo(x,y);
+        Log.e(TAG, "x=" + x + ",oldX=" + oldX + "y=" + y + ",oldY=" + oldY);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) viewpager.getLayoutParams();
+        params.height = params.height + y;
+        viewpager.setLayoutParams(params);
+        viewpager.requestLayout();
     }
 }
 

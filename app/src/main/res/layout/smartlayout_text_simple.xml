@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginRight="33dp"
     android:gravity="center"
-    android:textColor="@color/c_333333"
+    android:textColor="@color/blue_indicator_selector"
     android:textSize="14sp">
 
 </TextView>

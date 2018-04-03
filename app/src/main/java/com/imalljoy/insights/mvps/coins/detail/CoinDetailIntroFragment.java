@@ -1,17 +1,21 @@
 package com.imalljoy.insights.mvps.coins.detail;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
+import com.imalljoy.insights.widgets.ObservableScrollView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +25,8 @@ import butterknife.Unbinder;
  * Created by lijilong on 03/30.
  */
 
-public class CoinDetailIntroFragment extends BaseFragment {
+public class CoinDetailIntroFragment extends BaseFragment{
+    private static final String TAG = "CoinDetailIntroFragment";
     public static String TITLE = "介绍";
     @BindView(R.id.name)
     TextView name;
@@ -73,6 +78,7 @@ public class CoinDetailIntroFragment extends BaseFragment {
     TextView featureIntro;
     Unbinder unbinder;
     private View mRootView;
+    private ObservableScrollView.ScrollViewListener parentInteface;
 
     @Nullable
     @Override
@@ -98,4 +104,8 @@ public class CoinDetailIntroFragment extends BaseFragment {
         CoinDetailIntroFragment fragment = new CoinDetailIntroFragment();
         return fragment;
     }
+    public void setScrollListener(ObservableScrollView.ScrollViewListener scrollListener){
+        this.parentInteface = scrollListener;
+    }
+
 }

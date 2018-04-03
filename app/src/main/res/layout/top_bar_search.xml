@@ -70,7 +70,7 @@
                 android:id="@+id/top_bar_edit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null"
+                android:background="#33c0ebed"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical|left"
                 android:hint="搜索货币/交易所名称"
@@ -78,13 +78,15 @@
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColorHint="#7fffffff"
+                android:textCursorDrawable="@null"
                 android:textSize="11sp"
                 android:textStyle="bold" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#33c0ebed"/>
+                android:background="#33c0ebed"
+                android:visibility="gone"/>
         </RelativeLayout>
 
         <FrameLayout

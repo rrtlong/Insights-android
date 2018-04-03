@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.imalljoy.insights.widgets.TopBarCommon
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </com.imalljoy.insights.widgets.TopBarCommon>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="REUBRE"
+        android:textColor="@color/text_short_name"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_marginTop="15dp"
+        android:gravity="left"
+        android:text="哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎哎"
+        android:textColor="@color/text_short_name"
+        android:textSize="8sp" />
+</LinearLayout>

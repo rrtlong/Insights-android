@@ -41,12 +41,13 @@ public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter
     public void onBindViewHolder(CurrencyHolder holder, final int position) {
         super.onBindViewHolder(holder, position);
         CoinVo coinVo = listData.get(position);
-        holder.num.setText(position + 1 + "");
-        holder.num.setVisibility(type == 0? View.VISIBLE:View.GONE);
+        /*holder.num.setText(position + 1 + "");
+        holder.num.setVisibility(type == 0? View.VISIBLE:View.GONE);*/
         Glide.with(context).load(coinVo.getLogoUrl()).error(R.mipmap.dog_logo).into(holder.logo);
         holder.nameShort.setText(coinVo.getShortName());
         holder.name.setText(coinVo.getName());
         holder.price.setText(String.valueOf(coinVo.getPrice()));
+        holder.marketValue.setText(String.valueOf(coinVo.getMarketValue()));
         holder.exchangeRate.setText("=" + String.valueOf(coinVo.getExchangeRate()));
         holder.forCoin.setText(coinVo.getForCoin());
         float range = CommonUtils.MathRound(coinVo.getRange() * 100, 2);
@@ -77,6 +78,8 @@ public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter
         TextView name;
         @BindView(R.id.price)
         TextView price;
+        @BindView(R.id.market_value)
+        TextView marketValue;
         @BindView(R.id.exchange_rate)
         TextView exchangeRate;
         @BindView(R.id.for_coin)
