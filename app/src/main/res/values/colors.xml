@@ -42,6 +42,7 @@
     <color name="c_72d2d6">#72d2d6</color>
     <color name="text_short_name">@color/c_333333</color>
     <color name="text_name">#7b7b7b</color>
+    <color name="c_e0e0e0">#e0e0e0</color>
 
 
 </resources>

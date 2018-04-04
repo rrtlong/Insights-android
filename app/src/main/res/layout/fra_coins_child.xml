@@ -18,7 +18,7 @@
             android:orientation="horizontal"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
-            android:visibility="visible"
+            android:visibility="gone"
             android:weightSum="4">
 
             <LinearLayout
@@ -44,7 +44,24 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/currency_marketvalue_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
 
+                <TextView
+                    android:id="@+id/currency_marketvalue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@mipmap/icon_sort_no"
+                    android:gravity="center"
+                    android:text="币值 "
+                    android:textColor="@color/c_333333"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/currency_price_layout"
                 android:layout_width="0dp"
@@ -63,26 +80,6 @@
                     android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/currency_marketvalue_layout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/currency_marketvalue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/icon_sort_no"
-                    android:gravity="center"
-                    android:text="市值 "
-                    android:textColor="@color/c_333333"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/currency_range_layout"
@@ -115,7 +112,7 @@
             android:orientation="horizontal"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <LinearLayout
                 android:id="@+id/ico_sort_btn"
@@ -162,7 +159,7 @@
                     android:id="@+id/ico_roni"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/icon_sort_down"
+                    android:drawableRight="@mipmap/icon_sort_no"
                     android:gravity="center"
                     android:text="RONI "
                     android:textColor="@color/c_333333"
@@ -181,7 +178,7 @@
                     android:id="@+id/ico_bsri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@mipmap/icon_sort_down"
+                    android:drawableRight="@mipmap/icon_sort_no"
                     android:gravity="center"
                     android:text="BSRI "
                     android:textColor="@color/c_333333"

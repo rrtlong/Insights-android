@@ -555,18 +555,18 @@ public class ConstantData {
         return false;
     }
 
-    public static List<CoinVo> getIcoCoinsByStatus(int type){
+    public static List<CoinVo> getIcoCoinsByStatus(List<CoinVo> lists, int type){
         List<CoinVo> vos = new ArrayList<CoinVo>();
-        for(CoinVo vo : icoCoinVos){
+        for(CoinVo vo : lists){
             if(vo.getType() == type)
                 vos.add(vo);
         }
         return vos;
     }
-    public static List<CoinVo> getIcoCoinsBySort(int flag, final boolean isDesc){
+    public static List<CoinVo> getIcoCoinsBySort(List<CoinVo> vos,int flag, final boolean isDesc){
         if(flag == 0){
             //roni排序
-            Collections.sort(icoCoinVos, new Comparator<CoinVo>() {
+            Collections.sort(vos, new Comparator<CoinVo>() {
                 @Override
                 public int compare(CoinVo o1, CoinVo o2) {
                     if(isDesc){//降序
@@ -577,31 +577,31 @@ public class ConstantData {
             });
         }else if(flag ==1){
             //bsri
-            Collections.sort(icoCoinVos, new Comparator<CoinVo>() {
+            Collections.sort(vos, new Comparator<CoinVo>() {
                 @Override
                 public int compare(CoinVo o1, CoinVo o2) {
                     if(isDesc){//降序
                         if(o1.getBsri() - o2.getBsri() >0){
-                            return 1;
+                            return -1;
                         }else if(o1.getBsri() - o2.getBsri() ==0){
                             return 0;
                         }else if(o1.getBsri() - o2.getBsri() <0){
-                            return -1;
+                            return 1;
                         }
                     }
                     if(o1.getBsri() - o2.getBsri() >0){
-                        return -1;
+                        return 1;
                     }else if(o1.getBsri() - o2.getBsri() ==0){
                         return 0;
                     }else if(o1.getBsri() - o2.getBsri() <0){
-                        return 1;
+                        return -1;
                     }
                     return 0;
                 }
             });
         }else if(flag ==2){
             //level
-            Collections.sort(icoCoinVos, new Comparator<CoinVo>() {
+            Collections.sort(vos, new Comparator<CoinVo>() {
                 @Override
                 public int compare(CoinVo o1, CoinVo o2) {
                     if(isDesc){
@@ -611,7 +611,81 @@ public class ConstantData {
                 }
             });
         }
-        return icoCoinVos;
+        return vos;
+    }
+
+    public static List<CoinVo> getCurrencysBySort(List<CoinVo> vos, int flag, final boolean isDesc){
+        if(flag ==0){
+            //币值
+            Collections.sort(vos, new Comparator<CoinVo>() {
+                @Override
+                public int compare(CoinVo o1, CoinVo o2) {
+                    if(isDesc){
+                        if(o1.getMarketValue()-o2.getMarketValue() >0){
+                            return -1;
+                        }else if(o1.getMarketValue() - o2.getMarketValue() ==0){
+                            return 0;
+                        }else{
+                            return 1;
+                        }
+                    }
+                    if(o1.getMarketValue()-o2.getMarketValue() >0){
+                        return 1;
+                    }else if(o1.getMarketValue() - o2.getMarketValue() ==0){
+                        return 0;
+                    }else{
+                        return -1;
+                    }
+                }
+            });
+        }else if(flag ==1){
+            //价格
+            Collections.sort(vos, new Comparator<CoinVo>() {
+                @Override
+                public int compare(CoinVo o1, CoinVo o2) {
+                    if(isDesc){
+                        if(o1.getPrice()-o2.getPrice() >0){
+                            return -1;
+                        }else if(o1.getPrice() - o2.getPrice() ==0){
+                            return 0;
+                        }else{
+                            return 1;
+                        }
+                    }
+                    if(o1.getPrice()-o2.getPrice() >0){
+                        return 1;
+                    }else if(o1.getPrice() - o2.getPrice() ==0){
+                        return 0;
+                    }else{
+                        return -1;
+                    }
+                }
+            });
+        }else if(flag ==2){
+            //涨跌幅
+            Collections.sort(vos, new Comparator<CoinVo>() {
+                @Override
+                public int compare(CoinVo o1, CoinVo o2) {
+                    if(isDesc){
+                        if(o1.getRange()-o2.getRange() >0){
+                            return -1;
+                        }else if(o1.getRange() - o2.getRange() ==0){
+                            return 0;
+                        }else{
+                            return 1;
+                        }
+                    }
+                    if(o1.getRange()-o2.getRange() >0){
+                        return 1;
+                    }else if(o1.getRange() - o2.getRange() ==0){
+                        return 0;
+                    }else{
+                        return -1;
+                    }
+                }
+            });
+        }
+        return vos;
     }
 
 }

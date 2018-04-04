@@ -22,8 +22,8 @@ public class UserVo implements Serializable{
     private double reward;      //收到的打赏,企业给分析师的打赏
     private List<RequestVo> requests;       //请求的调查任务
     private List<RequestVo> accepRequests;      //接受的调查任务
-    private List<QuestionVo> questions;     //发布过的调查问卷
-    private List<QuestionVo> accepQuestions;        //参与过的调查问卷
+    private List<QuestionnaireVo> questionnaires;     //发布过的调查问卷
+    private List<QuestionnaireVo> acceptQuestionnaires;        //参与过的调查问卷
 
     /**
      *
@@ -137,38 +137,20 @@ public class UserVo implements Serializable{
         this.accepRequests = accepRequests;
     }
 
-    public List<QuestionVo> getQuestions() {
-        return questions;
+
+    public List<QuestionnaireVo> getQuestionnaires() {
+        return questionnaires;
     }
 
-    public void setQuestions(List<QuestionVo> questions) {
-        this.questions = questions;
+    public void setQuestionnaires(List<QuestionnaireVo> questionnaires) {
+        this.questionnaires = questionnaires;
     }
 
-    public List<QuestionVo> getAccepQuestions() {
-        return accepQuestions;
+    public List<QuestionnaireVo> getAcceptQuestionnaires() {
+        return acceptQuestionnaires;
     }
 
-    public void setAccepQuestions(List<QuestionVo> accepQuestions) {
-        this.accepQuestions = accepQuestions;
-    }
-
-    @Override
-    public String toString() {
-        return "UserVo{" +
-                "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", headPic='" + headPic + '\'' +
-                ", gender=" + gender +
-                ", password='" + password + '\'' +
-                ", actor=" + actor +
-                ", certification=" + certification +
-                ", coinNumber=" + coinNumber +
-                ", reward=" + reward +
-                ", requests=" + requests +
-                ", accepRequests=" + accepRequests +
-                ", questions=" + questions +
-                ", accepQuestions=" + accepQuestions +
-                '}';
+    public void setAcceptQuestionnaires(List<QuestionnaireVo> acceptQuestionnaires) {
+        this.acceptQuestionnaires = acceptQuestionnaires;
     }
 }

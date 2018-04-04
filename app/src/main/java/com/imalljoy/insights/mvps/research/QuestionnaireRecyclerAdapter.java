@@ -33,7 +33,7 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
     List<QuestionnaireVo> listData = null;
     Context mContext = null;
 
-    QuestionnaireRecyclerAdapter(Context context, List<QuestionnaireVo> listData) {
+    public QuestionnaireRecyclerAdapter(Context context, List<QuestionnaireVo> listData) {
         mContext = context;
         this.listData = new ArrayList<>();
         this.listData = listData;

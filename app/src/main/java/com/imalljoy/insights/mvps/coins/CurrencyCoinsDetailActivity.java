@@ -6,9 +6,11 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +30,11 @@ import com.imalljoy.insights.mvps.coins.detail.CoinDetailIcoInfoFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailIntroFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailTeamFragment;
+import com.imalljoy.insights.mvps.coins.detail.VoteStep1ListActivity;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.ScreenUtils;
+import com.imalljoy.insights.widgets.CustomPopupWindow;
 import com.imalljoy.insights.widgets.ObservableScrollView;
 import com.imalljoy.insights.widgets.PullToRefreshScrollableLayout;
 import com.imalljoy.insights.widgets.ScrollViewCompatViewPager;
@@ -97,6 +101,8 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
     ViewPager viewpager;
     @BindView(R.id.pull_refresh_scrollable)
     PullToRefreshScrollableLayout pullToRefreshScrollableLayout;
+    @BindView(R.id.root_view)
+    LinearLayout rootView;
 
     CoinVo mVo;
     List<Fragment> mFragmentList;
@@ -230,6 +236,7 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         viewpager.setCurrentItem(0);
     }
 
+    CustomPopupWindow popupWindow = null;
 
     @Override
     public void onClick(View v) {
@@ -240,6 +247,24 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
                 break;
             case R.id.top_bar_right_layout:
                 //更多
+                if (popupWindow == null) {
+                    popupWindow = new CustomPopupWindow();
+                    popupWindow.createCoinMorePopup(this, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            switch (v.getId()) {
+                                case R.id.optional_layout:
+                                    popupWindow.dismiss();
+                                    break;
+                                case R.id.vote_layout:
+                                    popupWindow.dismiss();
+                                    VoteStep1ListActivity.toActivity(CurrencyCoinsDetailActivity.this);
+                                    break;
+                            }
+                        }
+                    });
+                }
+                popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0);
                 break;
         }
     }

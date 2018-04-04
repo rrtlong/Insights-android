@@ -32,7 +32,7 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
     List<ReportVo> listData = null;
     Context mContext = null;
 
-    ReportRecyclerAdapter(Context context, List<ReportVo> listData) {
+    public ReportRecyclerAdapter(Context context, List<ReportVo> listData) {
         mContext = context;
         this.listData = new ArrayList<>();
         this.listData = listData;

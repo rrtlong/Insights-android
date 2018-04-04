@@ -45,4 +45,24 @@ public class CustomPopupWindow extends PopupWindow {
         params.topMargin = ScreenUtils.dp2px(context, 50) + ScreenUtils.getStatusHeight(context);
         topTriangle.setLayoutParams(params);
     }
+
+    public void createCoinMorePopup(Context context, View.OnClickListener onClickListener) {
+        View view = LayoutInflater.from(context).inflate(R.layout.popup_coin_more, null);
+        LinearLayout optionalLayout = (LinearLayout) view.findViewById(R.id.optional_layout);
+        LinearLayout voteLayout = (LinearLayout) view.findViewById(R.id.vote_layout);
+        View topTriangle = view.findViewById(R.id.top_triangle);
+        view.setOnClickListener(onClickListener);
+        optionalLayout.setOnClickListener(onClickListener);
+        voteLayout.setOnClickListener(onClickListener);
+        this.setContentView(view);
+        this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        //设置状态栏也包括
+        this.setClippingEnabled(false);
+        this.setFocusable(true);
+        this.setAnimationStyle(R.style.addPopupAnim);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) topTriangle.getLayoutParams();
+        params.topMargin = ScreenUtils.dp2px(context, 50) + ScreenUtils.getStatusHeight(context);
+        topTriangle.setLayoutParams(params);
+    }
 }

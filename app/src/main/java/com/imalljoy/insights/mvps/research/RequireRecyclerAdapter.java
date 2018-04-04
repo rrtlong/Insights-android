@@ -33,7 +33,7 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
     List<RequestVo> listData = null;
     Context mContext = null;
 
-    RequireRecyclerAdapter(Context context, List<RequestVo> listData) {
+    public RequireRecyclerAdapter(Context context, List<RequestVo> listData) {
         mContext = context;
         this.listData = new ArrayList<>();
         this.listData = listData;

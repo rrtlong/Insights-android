@@ -53,7 +53,7 @@ public class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends 
     }
 
     public void setData(List<T> list) {
-        if (list != null && list.size() > 0) {
+        if (list != null) {
             listData = list;
             notifyDataSetChanged();
         }

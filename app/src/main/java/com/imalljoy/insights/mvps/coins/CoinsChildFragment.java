@@ -159,7 +159,9 @@ public class CoinsChildFragment extends BaseFragment implements View.OnClickList
             currencyMarketvalueLayout.setOnClickListener(this);
             currencyPriceLayout.setOnClickListener(this);
             currencyRangeLayout.setOnClickListener(this);
-            mCurrencyAdapter = new CurrencyAdapter(this.getContext(), getData(), mFlag);
+            resetAllSortIconDrawable(true);
+            setSortIconDrawable(currencyMarketvalue,1);
+            mCurrencyAdapter = new CurrencyAdapter(this.getContext(), ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos,0,true), mFlag);
             recyclerview.setAdapter(mCurrencyAdapter);
         } else if (mType == ICO) {
             currencyTopLayout.setVisibility(View.GONE);
@@ -178,7 +180,7 @@ public class CoinsChildFragment extends BaseFragment implements View.OnClickList
             recyclerview.setAdapter(mICOAdapter);
             resetAllSortIconDrawable(false);
             setSortIconDrawable(icoRoni,1);
-            mICOAdapter.setData(ConstantData.getIcoCoinsBySort(0,true));
+            mICOAdapter.setData(ConstantData.getIcoCoinsBySort(ConstantData.icoCoinVos,0,true));
         } else if (mType == AIRDROP) {
             currencyTopLayout.setVisibility(View.GONE);
             icoTopLayout.setVisibility(View.GONE);
@@ -246,58 +248,73 @@ public class CoinsChildFragment extends BaseFragment implements View.OnClickList
                 setSelectSortView(false, 0);
                 showOrHideSortLayout(icoSortLayout);
                 mSortIndex = 0;
-                mICOAdapter.setData(ConstantData.icoCoinVos);
+                mListData = ConstantData.icoCoinVos;
+                resetAllSortIconDrawable(false);
+                mICOAdapter.setData(mListData);
                 break;
             case R.id.ico_sort2:
                 setSelectSortView(false, 1);
                 showOrHideSortLayout(icoSortLayout);
                 mSortIndex = 1;
-                mICOAdapter.setData(ConstantData.getIcoCoinsByStatus(1));
+                mListData = ConstantData.getIcoCoinsByStatus(ConstantData.icoCoinVos,1);
+                mICOAdapter.setData(mListData);
                 break;
             case R.id.ico_sort3:
                 setSelectSortView(false, 2);
                 showOrHideSortLayout(icoSortLayout);
                 mSortIndex = 2;
-                mICOAdapter.setData(ConstantData.getIcoCoinsByStatus(2));
+                mListData = ConstantData.getIcoCoinsByStatus(ConstantData.icoCoinVos,2);
+                mICOAdapter.setData(mListData);
                 break;
             case R.id.ico_sort4:
                 setSelectSortView(false, 3);
                 showOrHideSortLayout(icoSortLayout);
                 mSortIndex = 3;
-                mICOAdapter.setData(ConstantData.getIcoCoinsByStatus(3));
+                mListData = ConstantData.getIcoCoinsByStatus(ConstantData.icoCoinVos,3);
+                mICOAdapter.setData(mListData);
                 break;
             case R.id.ico_sort5:
                 setSelectSortView(false, 4);
                 showOrHideSortLayout(icoSortLayout);
                 mSortIndex = 4;
-                mICOAdapter.setData(ConstantData.getIcoCoinsByStatus(4));
+                mListData = ConstantData.getIcoCoinsByStatus(ConstantData.icoCoinVos,4);
+                mICOAdapter.setData(mListData);
                 break;
             case R.id.currency_marketvalue_layout:
                 resetAllSortIconDrawable(true);
+                currencyMarketvalueStatus = getSortStatus(currencyMarketvalueStatus);
+                setSortIconDrawable(currencyMarketvalue,currencyMarketvalueStatus);
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos,0,currencyMarketvalueStatus == 1? true:false));
                 break;
             case R.id.currency_price_layout:
                 resetAllSortIconDrawable(true);
+                currencyPriceStatus = getSortStatus(currencyPriceStatus);
+                setSortIconDrawable(currencyPrice,currencyPriceStatus);
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos,1,currencyPriceStatus == 1? true:false));
                 break;
             case R.id.currency_range_layout:
                 resetAllSortIconDrawable(true);
+                currencyRangeStatus = getSortStatus(currencyRangeStatus);
+                setSortIconDrawable(currencyRange,currencyRangeStatus);
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos,2,currencyRangeStatus == 1? true:false));
                 break;
             case R.id.ico_roni_layout:
                 resetAllSortIconDrawable(false);
                 icoRoniStatus = getSortStatus(icoRoniStatus);
                 setSortIconDrawable(icoRoni, icoRoniStatus);
-                mICOAdapter.setData(ConstantData.getIcoCoinsBySort(0, icoRoniStatus == 1? true:false));
+                mICOAdapter.setData(ConstantData.getIcoCoinsBySort(mListData,0, icoRoniStatus == 1? true:false));
                 break;
             case R.id.ico_bsri_layout:
                 resetAllSortIconDrawable(false);
                 icoBsriStatus = getSortStatus(icoBsriStatus);
                 setSortIconDrawable(icoBsri, icoBsriStatus);
-                mICOAdapter.setData(ConstantData.getIcoCoinsBySort(1,icoBsriStatus ==1? true:false));
+                mICOAdapter.setData(ConstantData.getIcoCoinsBySort(mListData,1,icoBsriStatus ==1? true:false));
                 break;
             case R.id.ico_level_layout:
                 resetAllSortIconDrawable(false);
                 icoLevelStatus = getSortStatus(icoLevelStatus);
                 setSortIconDrawable(icoLevel, icoLevelStatus);
-                mICOAdapter.setData(ConstantData.getIcoCoinsBySort(2,icoLevelStatus ==1? true:false));
+                mICOAdapter.setData(ConstantData.getIcoCoinsBySort(mListData,2,icoLevelStatus ==1? true:false));
                 break;
         }
     }
@@ -361,7 +378,7 @@ public class CoinsChildFragment extends BaseFragment implements View.OnClickList
             setTextViewRightDrawable(icoSort2, index == 1 ? true : false);
             setTextViewRightDrawable(icoSort3, index == 2 ? true : false);
             setTextViewRightDrawable(icoSort4, index == 3 ? true : false);
-            setTextViewRightDrawable(icoSort4, index == 4 ? true : false);
+            setTextViewRightDrawable(icoSort5, index == 4 ? true : false);
         }
     }
 
@@ -414,7 +431,7 @@ public class CoinsChildFragment extends BaseFragment implements View.OnClickList
             drawable = ContextCompat.getDrawable(this.getContext(), R.mipmap.icon_sort_up);
         }
         drawable.setBounds(0,0,drawable.getMinimumWidth(), drawable.getMinimumHeight());
-        textView.setCompoundDrawables(null, null, null, drawable);
+        textView.setCompoundDrawables(null, null, drawable, null);
     }
 
     public static CoinsChildFragment newInstance(int type, int flag) {

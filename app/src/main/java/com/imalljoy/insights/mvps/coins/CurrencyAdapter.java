@@ -53,10 +53,10 @@ public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter
         float range = CommonUtils.MathRound(coinVo.getRange() * 100, 2);
         if (range >= 0) {
             holder.range.setText("+" + String.valueOf(range) + "%");
-            holder.range.setBackgroundResource(R.drawable.stroke_dd6e48);
+            holder.range.setBackgroundResource(R.drawable.stroke_solid_dd6e48);
         } else {
             holder.range.setText(range + "%");
-            holder.range.setBackgroundResource(R.drawable.stroke_5ab67d);
+            holder.range.setBackgroundResource(R.drawable.stroke_solid_5ab67d);
         }
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override

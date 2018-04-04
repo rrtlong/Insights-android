@@ -64,17 +64,39 @@
         <activity
             android:name=".mvps.research.AnswerListActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".mvps.coins.IcoCoinsDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mvps.coins.detail.EnterpriseExposeDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mvps.coins.CurrencyCoinsDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mvps.coins.SearchCoinsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mvps.coins.detail.TeamDetailActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".mvps.coins.IcoCoinsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.coins.detail.EnterpriseExposeDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.coins.CurrencyCoinsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.coins.SearchCoinsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.coins.detail.TeamDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.coins.detail.VoteStep1ListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.coins.detail.VoteStep2Activity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".mvps.mine.CertificationActivity" />
+        <activity android:name=".mvps.mine.QuestionnaireActivity" />
+        <activity android:name=".mvps.mine.LaunchQuestionnaireActivity" />
+        <activity android:name=".mvps.mine.AcceptQuestionnaireActivity" />
+        <activity android:name=".mvps.mine.ResearchTaskActivity" />
+        <activity android:name=".mvps.mine.LaunchResearchActivity" />
+        <activity android:name=".mvps.mine.AcceptResearchActivity" />
+        <activity android:name=".mvps.mine.MessageExportActivity" />
+        <activity android:name=".mvps.mine.NewsMessageExportActivity" />
+        <activity android:name=".mvps.mine.EnterpriseExport2DetailActivity" />
+        <activity android:name=".mvps.mine.MyReportsActivity" />
+        <activity android:name=".mvps.mine.MyWalletActivity" />
     </application>
 
 </manifest>

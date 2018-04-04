@@ -30,7 +30,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
     Context mContext;
     int mStatus;
 
-    UserListAdapter(Context context, List<UserVo> listData, int status) {
+    public UserListAdapter(Context context, List<UserVo> listData, int status) {
         this.mContext = context;
         this.listData = listData;
         this.mStatus = status;

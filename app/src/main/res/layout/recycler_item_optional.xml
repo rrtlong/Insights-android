@@ -97,7 +97,7 @@
         <TextView
             android:layout_width="60dp"
             android:layout_height="23dp"
-            android:background="@drawable/stroke_dd6e48"
+            android:background="@drawable/stroke_solid_dd6e48"
             android:gravity="center"
             android:text="+6.32%"
             android:textColor="@color/white"
