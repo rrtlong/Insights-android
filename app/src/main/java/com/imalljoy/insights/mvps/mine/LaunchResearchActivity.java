@@ -12,13 +12,17 @@ import android.view.View;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.common.ConstantData;
+import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.RequestVo;
 import com.imalljoy.insights.entity.UserVo;
 import com.imalljoy.insights.mvps.research.RequireRecyclerAdapter;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.TopBarCommon;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +36,7 @@ public class LaunchResearchActivity extends BaseActivity implements View.OnClick
     TopBarCommon topBar;
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
-    List<UserVo> listData;
+    List<RequestVo> listData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,8 @@ public class LaunchResearchActivity extends BaseActivity implements View.OnClick
         divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.recyclerview_divide_type1));
         recyclerview.setLayoutManager(linearManager);
         recyclerview.addItemDecoration(divider);
-        recyclerview.setAdapter(new RequireRecyclerAdapter(this, ConstantData.mUserVo.getRequests()));
+        listData = getData();
+        recyclerview.setAdapter(new RequireRecyclerAdapter(this, listData));
 
     }
 
@@ -69,5 +74,55 @@ public class LaunchResearchActivity extends BaseActivity implements View.OnClick
     public static void toActivity(Context context){
         Intent it = new Intent(context, LaunchResearchActivity.class);
         context.startActivity(it);
+    }
+
+    public List<RequestVo> getData() {
+        List<RequestVo> vos = new ArrayList<>();
+        long baseId = System.currentTimeMillis()/1000;
+        CoinVo coinVo = new CoinVo();
+        coinVo.setId(1l);
+        coinVo.setName("比特币");
+        coinVo.setLogoUrl("http://www.taopic.com/uploads/allimg/140325/318762-14032514002339.jpg");
+
+        RequestVo requestVo = new RequestVo();
+        requestVo.setId(baseId);
+        requestVo.setUser(ConstantData.mUserVo);
+        requestVo.setCoin(coinVo);
+        requestVo.setName("请求一");
+        requestVo.setPlatform(0);
+        requestVo.setReward(33);
+        requestVo.setStatus(3);//未接受
+        requestVo.setDemand("要求被调查者都是年轻人");
+        requestVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
+        requestVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
+        vos.add(requestVo);
+
+        requestVo = new RequestVo();
+        requestVo.setId(baseId+1);
+        requestVo.setUser(ConstantData.mUserVo);
+        requestVo.setCoin(coinVo);
+        requestVo.setName("请求二");
+        requestVo.setPlatform(1);
+        requestVo.setDemand("2天之内给出结果");
+        requestVo.setReward(66);
+        requestVo.setStatus(3);//已接受
+        requestVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
+        requestVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
+        vos.add(requestVo);
+
+        requestVo = new RequestVo();
+        requestVo.setId(baseId+2);
+        requestVo.setUser(ConstantData.mUserVo);
+        requestVo.setCoin(coinVo);
+        requestVo.setName("请求三");
+        requestVo.setPlatform(0);
+        requestVo.setDemand("调查要详细");
+        requestVo.setReward(99);
+        requestVo.setStatus(3);//已完成
+        requestVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
+        requestVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
+        vos.add(requestVo);
+
+        return vos;
     }
 }

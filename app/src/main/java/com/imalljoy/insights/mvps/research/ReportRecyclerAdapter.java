@@ -63,10 +63,18 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
     public void onBindViewHolder(ReportRecyclerAdapter.ViewHolder holder, final int position) {
         ReportVo vo = listData.get(position);
         //数币logo
-        Glide.with(mContext).load(vo.getRequest().getCoin().getLogoUrl()).error(R.mipmap.dog_logo).into(holder.headPic);
+        if(vo.getRequest().getCoin() != null){
+            Glide.with(mContext).load(vo.getRequest().getCoin().getLogoUrl()).error(R.mipmap.dog_logo).into(holder.headPic);
+        }else{
+            Glide.with(mContext).load(R.mipmap.dog_logo).error(R.mipmap.dog_logo).into(holder.headPic);
+        }
         holder.name.setText(vo.getName());
         holder.content.setText(vo.getContent());
-        holder.publishTime.setText(DateUtils.dateToString(new Date(vo.getPublishTime().getTime()), "yyyy年MM月dd日 HH:mm"));
+        if(vo.getPublishTime() != null){
+            holder.publishTime.setText(DateUtils.dateToString(new Date(vo.getPublishTime().getTime()), "yyyy年MM月dd日 HH:mm"));
+        }else{
+            holder.publishTime.setText("1970年1月1日");
+        }
         holder.reward.setText("INB: " + vo.getCost() + "");
         if (vo.getGrade() == 0) {
 

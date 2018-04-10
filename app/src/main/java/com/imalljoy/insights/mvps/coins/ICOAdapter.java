@@ -1,7 +1,6 @@
 package com.imalljoy.insights.mvps.coins;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +30,8 @@ import butterknife.ButterKnife;
 public class ICOAdapter extends BaseRecyclerAdapter<CoinVo, ICOAdapter.ICOHolder> {
 
 
+
+
     public ICOAdapter(Context context, List<CoinVo> list, int type) {
         super(context, list, type);
     }
@@ -48,37 +49,36 @@ public class ICOAdapter extends BaseRecyclerAdapter<CoinVo, ICOAdapter.ICOHolder
         Glide.with(context).load(vo.getLogoUrl()).error(R.mipmap.dog_logo).placeholder(R.mipmap.dog_logo).into(holder.logo);
         holder.nameShort.setText(vo.getShortName());
         holder.name.setText(vo.getName());
-        if(vo.getType() == 1){
+        if (vo.getType() == 1) {
             //新上，显示距开始还有多少天
             int days = DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime());
-            if(days >=0){
-                holder.status.setText("距开始" + days +"天");
+            if (days >= 0) {
+                holder.status.setText("距开始" + days + "天");
             }
-        }else if(vo.getType() ==2){
+        } else if (vo.getType() == 2) {
             //即将，显示距开始还有多少天
             int days = DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime());
-            if(days >=0){
-                holder.status.setText("距开始" + days +"天");
+            if (days >= 0) {
+                holder.status.setText("距开始" + days + "天");
             }
-        }else if(vo.getType() ==3){
+        } else if (vo.getType() == 3) {
             //正在进行
-            int days = DateUtils.differentDaysByMillisecond(new Date().getTime(),vo.getIcoEndTime().getTime());
-            if(days >=0){
-                holder.status.setText("距结束" + days +"天");
+            int days = DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoEndTime().getTime());
+            if (days >= 0) {
+                holder.status.setText("距结束" + days + "天");
             }
-        }else if(vo.getType() == 4){
+        } else if (vo.getType() == 4) {
             holder.status.setText("已结束");
-        }else{
+        } else {
             holder.status.setText("");
         }
-        holder.roni.setText(vo.getRoni()+"");
-        holder.bsri.setText(vo.getBsri()+"");
+        holder.roni.setText(vo.getRoni() + "");
         holder.level.setText(vo.getLevel());
-        holder.level.setTextColor(ContextCompat.getColor(context,CommonUtils.getColorResourceFromStrg(vo.getLevel())));
+        holder.level.setTextColor(ContextCompat.getColor(context, CommonUtils.getColorResourceFromStrg(vo.getLevel())));
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IcoCoinsDetailActivity.toActivity(context,listData.get(position));
+                IcoCoinsDetailActivity.toActivity(context, listData.get(position));
             }
         });
     }
@@ -94,8 +94,6 @@ public class ICOAdapter extends BaseRecyclerAdapter<CoinVo, ICOAdapter.ICOHolder
         TextView status;
         @BindView(R.id.roni)
         TextView roni;
-        @BindView(R.id.bsri)
-        TextView bsri;
         @BindView(R.id.level)
         TextView level;
         @BindView(R.id.root_view)

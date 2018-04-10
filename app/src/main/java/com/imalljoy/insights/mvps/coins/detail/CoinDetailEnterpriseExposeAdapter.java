@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseRecyclerAdapter;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.mvps.mine.EnterpriseExport2DetailActivity;
 
 import java.util.List;
 
@@ -42,7 +43,11 @@ public class CoinDetailEnterpriseExposeAdapter extends BaseRecyclerAdapter<CoinV
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EnterpriseExposeDetailActivity.toActivity(context);
+                if(type ==0){
+                    EnterpriseExposeDetailActivity.toActivity(context);
+                }else{
+                    EnterpriseExport2DetailActivity.toActivity(context);
+                }
             }
         });
     }

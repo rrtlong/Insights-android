@@ -22,6 +22,7 @@ public class UserVo implements Serializable{
     private double reward;      //收到的打赏,企业给分析师的打赏
     private List<RequestVo> requests;       //请求的调查任务
     private List<RequestVo> accepRequests;      //接受的调查任务
+    private List<ReportVo> reports; //我的报告：包含购买的，发布的
     private List<QuestionnaireVo> questionnaires;     //发布过的调查问卷
     private List<QuestionnaireVo> acceptQuestionnaires;        //参与过的调查问卷
 
@@ -139,6 +140,8 @@ public class UserVo implements Serializable{
 
 
     public List<QuestionnaireVo> getQuestionnaires() {
+        if(questionnaires ==null)
+            questionnaires = new ArrayList<>();
         return questionnaires;
     }
 
@@ -152,5 +155,15 @@ public class UserVo implements Serializable{
 
     public void setAcceptQuestionnaires(List<QuestionnaireVo> acceptQuestionnaires) {
         this.acceptQuestionnaires = acceptQuestionnaires;
+    }
+
+    public List<ReportVo> getReports() {
+        if(reports == null)
+            reports = new ArrayList<>();
+        return reports;
+    }
+
+    public void setReports(List<ReportVo> reports) {
+        this.reports = reports;
     }
 }

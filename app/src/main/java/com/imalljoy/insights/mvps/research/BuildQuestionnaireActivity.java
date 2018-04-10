@@ -290,6 +290,8 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
         EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 0, true, false));
         //通知刷新上一页，上上页
         EventBus.getDefault().post(new RefreshView(RefreshView.REFRESH_REPORT_FROM_QUESTIONNAIRE));
+        //将发布的问卷添加的用户数据中
+        ConstantData.mUserVo.getQuestionnaires().add(mVo);
         finish();
 
     }
@@ -394,6 +396,8 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             mVo.getAnswerUserList().add(ConstantData.mUserVo);
             ConstantData.updateQuestionnaireVo(mVo);
             EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, -1, true, false));
+            //将完成问卷数据添加到用户数据中
+            ConstantData.mUserVo.getAcceptQuestionnaires().add(mVo);
         }
         Log.e(TAG,"requestCode=" + requestCode + ", resultCode=" +resultCode);
     }

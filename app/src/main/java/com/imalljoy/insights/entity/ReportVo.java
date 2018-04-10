@@ -12,7 +12,7 @@ import java.util.List;
  * 调研报告
  */
 
-public class ReportVo implements Serializable{
+public class ReportVo implements Serializable {
     private long id;        //调研报告的id
     private String name;        //调研报告名称
     private String content;     //调研报告内容
@@ -24,14 +24,14 @@ public class ReportVo implements Serializable{
     private RateVo rating;      //评级
     private Timestamp publishTime;//报告发布日期
     private RequestVo request;    //报告对应的请求
-    private int status;           //状态 -1:新建报告 0未购买 1已购买
+    private int status;           //状态 0:新建报告 1未购买 2已购买
     private CoinVo coin;
     private String coinLevel;       //数币评级 如A+,A-,B+....
     private List<QuestionnaireVo> userResearchList;//用户调研问卷
     private List<QuestionnaireVo> enterpriseInfoList;//针对单一企业的调研问卷
 
     public List<QuestionnaireVo> getUserResearchList() {
-        if(userResearchList == null)
+        if (userResearchList == null)
             userResearchList = new ArrayList<>();
         return userResearchList;
     }
@@ -41,7 +41,7 @@ public class ReportVo implements Serializable{
     }
 
     public List<QuestionnaireVo> getEnterpriseInfoList() {
-        if(enterpriseInfoList == null)
+        if (enterpriseInfoList == null)
             enterpriseInfoList = new ArrayList<>();
         return enterpriseInfoList;
     }
@@ -50,28 +50,33 @@ public class ReportVo implements Serializable{
         this.enterpriseInfoList = enterpriseInfoList;
     }
 
-    public void setCoinLevel(String coinLevel){
+    public void setCoinLevel(String coinLevel) {
         this.coinLevel = coinLevel;
     }
-    public String getCoinLevel(){
+
+    public String getCoinLevel() {
         return coinLevel;
     }
-    public void setCoin(CoinVo coinVo){
+
+    public void setCoin(CoinVo coinVo) {
         this.coin = coinVo;
     }
-    public CoinVo getCoin(){
-        if(coin == null){
+
+    public CoinVo getCoin() {
+        if (coin == null) {
             coin = new CoinVo();
         }
         return coin;
     }
 
-    public int getStatus(){
+    public int getStatus() {
         return status;
     }
-    public void setStatus(int status){
+
+    public void setStatus(int status) {
         this.status = status;
     }
+
     public long getId() {
         return id;
     }
@@ -145,7 +150,6 @@ public class ReportVo implements Serializable{
     }
 
 
-
     public Timestamp getPublishTime() {
         return publishTime;
     }
@@ -153,11 +157,13 @@ public class ReportVo implements Serializable{
     public void setPublishTime(Timestamp publishTime) {
         this.publishTime = publishTime;
     }
-    public void setRequest(RequestVo vo){
+
+    public void setRequest(RequestVo vo) {
         this.request = vo;
     }
-    public RequestVo getRequest(){
-        if(request == null)
+
+    public RequestVo getRequest() {
+        if (request == null)
             request = new RequestVo();
         return request;
     }
@@ -182,5 +188,20 @@ public class ReportVo implements Serializable{
                 ", userResearchList=" + userResearchList +
                 ", enterpriseInfoList=" + enterpriseInfoList +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ReportVo vo = (ReportVo) obj;
+        if (vo.getId() == this.id)
+            return true;
+        return false;
+
     }
 }

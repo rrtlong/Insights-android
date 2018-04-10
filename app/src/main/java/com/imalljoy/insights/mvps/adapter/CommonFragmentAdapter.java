@@ -4,6 +4,9 @@ import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.List;
 
@@ -57,4 +60,13 @@ public class CommonFragmentAdapter extends FragmentStatePagerAdapter {
     public void restoreState(Parcelable state, ClassLoader loader) {
 
     }
+
+//    @Override
+//    public void finishUpdate(ViewGroup container) {
+//        try {
+//            super.finishUpdate(container);
+//        } catch (NullPointerException nullPointerException) {
+//            Log.d("FragmentPagerAdapter", "Catch the NullPointerException in FragmentPagerAdapter.finishUpdate");
+//        }
+//    }
 }

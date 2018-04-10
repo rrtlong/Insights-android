@@ -13,9 +13,17 @@ import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.common.ConstantData;
 import com.imalljoy.insights.common.LocalData;
+import com.imalljoy.insights.entity.PersonasVo;
+import com.imalljoy.insights.entity.QuestionnaireVo;
+import com.imalljoy.insights.entity.UserVo;
+import com.imalljoy.insights.mvps.research.EnterpriseAdapter;
 import com.imalljoy.insights.mvps.research.QuestionnaireRecyclerAdapter;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.TopBarCommon;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +37,7 @@ public class AcceptQuestionnaireActivity extends BaseActivity implements View.On
     TopBarCommon topBar;
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
+    List<QuestionnaireVo> listData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +59,9 @@ public class AcceptQuestionnaireActivity extends BaseActivity implements View.On
         divider.setDrawable(ContextCompat.getDrawable(this,R.drawable.recyclerview_divide_type1));
         recyclerview.setLayoutManager(linearManager);
         recyclerview.addItemDecoration(divider);
-        recyclerview.setAdapter(new QuestionnaireRecyclerAdapter(this, ConstantData.mUserVo.getAcceptQuestionnaires()));
+        listData = getData();
+        //展示已答问卷列表，点进去直接显示答题结果
+        recyclerview.setAdapter(new EnterpriseAdapter(this, listData,0,1));
     }
 
     @Override
@@ -64,5 +75,49 @@ public class AcceptQuestionnaireActivity extends BaseActivity implements View.On
     public static void toActivity(Context context){
         Intent it = new Intent(context, AcceptQuestionnaireActivity.class);
         context.startActivity(it);
+    }
+
+    public List<QuestionnaireVo> getData() {
+        List<QuestionnaireVo> vos = new ArrayList<>();
+        long baseId = System.currentTimeMillis() / 1000;
+        QuestionnaireVo questionnaireVo = new QuestionnaireVo();
+        questionnaireVo.setId(baseId);
+        questionnaireVo.setName("你最爱吃什么");
+        questionnaireVo.setContent("问卷调查一内容");
+        questionnaireVo.setTotalNumber(100);
+        questionnaireVo.setReward(100);
+        questionnaireVo.setStartTime(new Timestamp(1508342400000l));//2017-10-19
+        questionnaireVo.setEndTime(new Timestamp(1508601600000l));//2017-10-22
+        questionnaireVo.setPersonas(new PersonasVo(24, 1, "北京"));
+        questionnaireVo.setStatus(4);
+        questionnaireVo.setUserVo(ConstantData.mUserVo);
+        vos.add(questionnaireVo);
+
+        questionnaireVo = new QuestionnaireVo();
+        questionnaireVo.setId(baseId + 1);
+        questionnaireVo.setName("你想从事什么职业");
+        questionnaireVo.setContent("问卷调查二内容");
+        questionnaireVo.setTotalNumber(50);
+        questionnaireVo.setReward(50);
+        questionnaireVo.setStartTime(new Timestamp(1521043200000l));//2018-3-15
+        questionnaireVo.setEndTime(new Timestamp(1533686400000l));//2018-8-8
+        questionnaireVo.setPersonas(new PersonasVo(21, 0, "上海"));
+        questionnaireVo.setStatus(4);
+        questionnaireVo.setUserVo(ConstantData.mUserVo);
+        vos.add(questionnaireVo);
+
+        questionnaireVo = new QuestionnaireVo();
+        questionnaireVo.setId(baseId + 2);
+        questionnaireVo.setName("周末一般做什么");
+        questionnaireVo.setContent("问卷调查三内容");
+        questionnaireVo.setTotalNumber(200);
+        questionnaireVo.setReward(50);
+        questionnaireVo.setStartTime(new Timestamp(1533686400000l));//2018-8-8
+        questionnaireVo.setEndTime(new Timestamp(1533686400000l));//2018-8-8
+        questionnaireVo.setPersonas(new PersonasVo(24, 1, "北京"));
+        questionnaireVo.setStatus(4);
+        questionnaireVo.setUserVo(ConstantData.mUserVo);
+        vos.add(questionnaireVo);
+        return vos;
     }
 }

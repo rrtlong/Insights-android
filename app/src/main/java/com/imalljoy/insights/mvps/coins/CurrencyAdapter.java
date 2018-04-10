@@ -26,6 +26,8 @@ import butterknife.ButterKnife;
 
 public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter.CurrencyHolder> {
 
+
+
     //type 0:显示排序  type不显示排序
     public CurrencyAdapter(Context context, List<CoinVo> list, int type) {
         super(context, list, type);
@@ -46,10 +48,10 @@ public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter
         Glide.with(context).load(coinVo.getLogoUrl()).error(R.mipmap.dog_logo).into(holder.logo);
         holder.nameShort.setText(coinVo.getShortName());
         holder.name.setText(coinVo.getName());
-        holder.price.setText(String.valueOf(coinVo.getPrice()));
-        holder.marketValue.setText(String.valueOf(coinVo.getMarketValue()));
-        holder.exchangeRate.setText("=" + String.valueOf(coinVo.getExchangeRate()));
-        holder.forCoin.setText(coinVo.getForCoin());
+        holder.price.setText(CommonUtils.formatNumberWithCommaSplit(coinVo.getPrice()));
+        holder.marketValue.setText(CommonUtils.formatNumberWithCommaSplit(coinVo.getMarketValue()));
+        holder.roni.setText(String.valueOf(coinVo.getRoni()));
+        holder.bsri.setText(String.valueOf(coinVo.getBsri()));
         float range = CommonUtils.MathRound(coinVo.getRange() * 100, 2);
         if (range >= 0) {
             holder.range.setText("+" + String.valueOf(range) + "%");
@@ -61,13 +63,14 @@ public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CurrencyCoinsDetailActivity.toActivity(context,listData.get(position));
+                CurrencyCoinsDetailActivity.toActivity(context, listData.get(position));
             }
         });
 
     }
 
     class CurrencyHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.num)
         TextView num;
         @BindView(R.id.logo)
@@ -80,15 +83,14 @@ public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter
         TextView price;
         @BindView(R.id.market_value)
         TextView marketValue;
-        @BindView(R.id.exchange_rate)
-        TextView exchangeRate;
-        @BindView(R.id.for_coin)
-        TextView forCoin;
+        @BindView(R.id.roni)
+        TextView roni;
+        @BindView(R.id.bsri)
+        TextView bsri;
         @BindView(R.id.range)
         TextView range;
         @BindView(R.id.root_view)
         LinearLayout rootView;
-
         public CurrencyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

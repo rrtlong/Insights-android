@@ -2,21 +2,15 @@ package com.imalljoy.insights.mvps.coins;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -25,7 +19,6 @@ import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.mvps.adapter.CommonFragmentAdapter;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailCommentFragment;
-import com.imalljoy.insights.mvps.coins.detail.CoinDetailEnterpriseExposeFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailIcoInfoFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailIntroFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsFragment;
@@ -33,19 +26,14 @@ import com.imalljoy.insights.mvps.coins.detail.CoinDetailTeamFragment;
 import com.imalljoy.insights.mvps.coins.detail.VoteStep1ListActivity;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.utils.CommonUtils;
-import com.imalljoy.insights.utils.ScreenUtils;
 import com.imalljoy.insights.widgets.CustomPopupWindow;
 import com.imalljoy.insights.widgets.ObservableScrollView;
 import com.imalljoy.insights.widgets.PullToRefreshScrollableLayout;
-import com.imalljoy.insights.widgets.ScrollViewCompatViewPager;
-import com.imalljoy.insights.widgets.ScrollViewViewPager;
 import com.imalljoy.insights.widgets.TopBarCommon;
-import com.imalljoy.insights.widgets.WrapContentHeightViewPager;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,18 +45,32 @@ import butterknife.ButterKnife;
 public class CurrencyCoinsDetailActivity extends BaseActivity implements View.OnClickListener, ObservableScrollView.ScrollViewListener {
     private static final String TAG = "CurrencyCoinsDetailActi";
 
+
+    @BindView(R.id.tab_layout)
+    SmartTabLayout tabLayout;
+    @BindView(R.id.viewpager)
+    ViewPager viewpager;
+    @BindView(R.id.pull_refresh_scrollable)
+    PullToRefreshScrollableLayout pullToRefreshScrollableLayout;
+    @BindView(R.id.root_view)
+    LinearLayout rootView;
+
+    CoinVo mVo;
+    List<Fragment> mFragmentList;
+    List<String> mFragmentTitleList;
+    CommonFragmentAdapter mAdapter;
     @BindView(R.id.top_bar)
     TopBarCommon topBar;
     @BindView(R.id.price)
     TextView price;
-    @BindView(R.id.exchange_rate)
-    TextView exchangeRate;
-    @BindView(R.id.exchange)
-    TextView exchange;
+    @BindView(R.id.price3)
+    TextView price3;
+    @BindView(R.id.price4)
+    TextView price4;
     @BindView(R.id.range)
     TextView range;
-    @BindView(R.id.range_rate)
-    TextView rangeRate;
+    @BindView(R.id.range_value)
+    TextView rangeValue;
     @BindView(R.id.high_24_title)
     TextView high24Title;
     @BindView(R.id.high_24)
@@ -95,19 +97,8 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
     TextView turnover;
     @BindView(R.id.top_layout)
     LinearLayout topLayout;
-    @BindView(R.id.tab_layout)
-    SmartTabLayout tabLayout;
-    @BindView(R.id.viewpager)
-    ViewPager viewpager;
-    @BindView(R.id.pull_refresh_scrollable)
-    PullToRefreshScrollableLayout pullToRefreshScrollableLayout;
-    @BindView(R.id.root_view)
-    LinearLayout rootView;
-
-    CoinVo mVo;
-    List<Fragment> mFragmentList;
-    List<String> mFragmentTitleList;
-    CommonFragmentAdapter mAdapter;
+    @BindView(R.id.pager_container)
+    FrameLayout pagerContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,28 +112,35 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         topBar.top_bar_title_text.setText(mVo.getName());
         topBar.setRightView(null, R.mipmap.icon_more_2);
         topBar.top_bar_right_layout.setOnClickListener(this);
-//        tabLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                int location[] = new int[2];
-//                tabLayout.getLocationOnScreen(location);
-//                Log.e(TAG,"y=" + location[1] + "height=" + ScreenUtils.getScreenHeight(CurrencyCoinsDetailActivity.this));
-//                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) viewpager.getLayoutParams();
-//                params.height = ScreenUtils.getScreenHeight(CurrencyCoinsDetailActivity.this) - location[1]-ScreenUtils.dp2px(CurrencyCoinsDetailActivity.this,40);
-//                viewpager.setLayoutParams(params);
-//
-//            }
-//        });
         pullToRefreshScrollableLayout.setMode(PullToRefreshBase.Mode.DISABLED);
-
+        initView();
 
         initViewPager();
+    }
+
+    private void initView() {
+        price.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getPrice()));
+        price3.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getPrice3()));
+        price4.setText(mVo.getPrice4());
+        float rate = CommonUtils.MathRound(mVo.getRange() * 100, 2);
+        if (rate >= 0) {
+            range.setText("+" + String.valueOf(rate) + "%");
+        } else {
+            range.setText(rate + "%");
+        }
+        rangeValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getMarketValue()*mVo.getRange()));
+        high24.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getHigh24()));
+        low24.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getLow24()));
+        vol24.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getVol24()) + "("+mVo.getPrice2()+")");
+        marketValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getMarketValue()));
+        rank.setText("#"+mVo.getRank());
+        turnover.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getTurnover()) +"M");
     }
 
     public void initViewPager() {
         mFragmentList = new ArrayList<>();
         mFragmentTitleList = new ArrayList<>();
-        CoinDetailIntroFragment intro = CoinDetailIntroFragment.newInstance();
+        CoinDetailIntroFragment intro = CoinDetailIntroFragment.newInstance(mVo);
         intro.setScrollListener(this);
 //        mFragmentList.add(CoinDetailIntroFragment.newInstance());
         mFragmentList.add(intro);
@@ -153,7 +151,7 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         //交易所
         mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.CURRENCY, 1));
         //ICO信息
-        mFragmentList.add(CoinDetailIcoInfoFragment.newInstance());
+        mFragmentList.add(CoinDetailIcoInfoFragment.newInstance(mVo));
 
         mFragmentTitleList.add(CoinDetailIntroFragment.TITLE);
         mFragmentTitleList.add(CoinDetailTeamFragment.TITLE);
@@ -258,7 +256,7 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
                                     break;
                                 case R.id.vote_layout:
                                     popupWindow.dismiss();
-                                    VoteStep1ListActivity.toActivity(CurrencyCoinsDetailActivity.this);
+                                    VoteStep1ListActivity.toActivity(CurrencyCoinsDetailActivity.this, 0);
                                     break;
                             }
                         }

@@ -7,7 +7,7 @@
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/dog_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -85,18 +85,51 @@
         <activity
             android:name=".mvps.coins.detail.VoteStep2Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".mvps.mine.CertificationActivity" />
-        <activity android:name=".mvps.mine.QuestionnaireActivity" />
-        <activity android:name=".mvps.mine.LaunchQuestionnaireActivity" />
-        <activity android:name=".mvps.mine.AcceptQuestionnaireActivity" />
-        <activity android:name=".mvps.mine.ResearchTaskActivity" />
-        <activity android:name=".mvps.mine.LaunchResearchActivity" />
-        <activity android:name=".mvps.mine.AcceptResearchActivity" />
-        <activity android:name=".mvps.mine.MessageExportActivity" />
-        <activity android:name=".mvps.mine.NewsMessageExportActivity" />
-        <activity android:name=".mvps.mine.EnterpriseExport2DetailActivity" />
-        <activity android:name=".mvps.mine.MyReportsActivity" />
-        <activity android:name=".mvps.mine.MyWalletActivity" />
+        <activity
+            android:name=".mvps.mine.CertificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.QuestionnaireActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.LaunchQuestionnaireActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.AcceptQuestionnaireActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.ResearchTaskActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.LaunchResearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.AcceptResearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.MessageExportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.NewsMessageExportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.EnterpriseMessageExportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.EnterpriseExport2DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.MyReportsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.mine.MyWalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvps.analyst.AnalystInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.WebViewActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

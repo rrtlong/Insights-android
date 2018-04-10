@@ -16,8 +16,8 @@ import java.util.List;
  * Created by lijilong on 04/04.
  */
 
-public class LaunchQuestionnaireAdapter extends BaseRecyclerAdapter<UserVo, LaunchQuestionnaireAdapter.UserHolder> {
-    public LaunchQuestionnaireAdapter(Context context, List<UserVo> list, int type) {
+public class AcceptQuestionnaireAdapter extends BaseRecyclerAdapter<UserVo, AcceptQuestionnaireAdapter.UserHolder> {
+    public AcceptQuestionnaireAdapter(Context context, List<UserVo> list, int type) {
         super(context, list, type);
     }
 

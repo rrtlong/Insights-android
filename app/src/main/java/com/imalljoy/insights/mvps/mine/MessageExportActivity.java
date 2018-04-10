@@ -29,7 +29,7 @@ public class MessageExportActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_research_task);
+        setContentView(R.layout.act_message_export);
         ButterKnife.bind(this);
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
@@ -48,13 +48,15 @@ public class MessageExportActivity extends BaseActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.news_layout:
+                NewsMessageExportActivity.toActivity(this);
                 break;
             case R.id.enterprise_layout:
+                EnterpriseMessageExportActivity.toActivity(this);
                 break;
         }
     }
     public static void toActivity(Context context){
-        Intent it = new Intent(context, QuestionnaireActivity.class);
+        Intent it = new Intent(context, MessageExportActivity.class);
         context.startActivity(it);
     }
 }

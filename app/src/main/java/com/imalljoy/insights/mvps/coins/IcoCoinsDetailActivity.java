@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,14 +26,18 @@ import com.imalljoy.insights.mvps.coins.detail.CoinDetailEnterpriseExposeFragmen
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailIntroFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailTeamFragment;
+import com.imalljoy.insights.mvps.coins.detail.VoteStep1ListActivity;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.utils.CommonUtils;
+import com.imalljoy.insights.widgets.CustomPopupWindow;
 import com.imalljoy.insights.widgets.PullToRefreshScrollableLayout;
 import com.imalljoy.insights.widgets.ScrollViewViewPager;
 import com.imalljoy.insights.widgets.TopBarCommon;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,16 +48,22 @@ import butterknife.ButterKnife;
  */
 
 public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClickListener{
+    @BindView(R.id.root_view)
+    LinearLayout rootView;
     @BindView(R.id.top_bar)
     TopBarCommon topBar;
-    @BindView(R.id.exchange_rate)
-    TextView exchangeRate;
+    @BindView(R.id.price)
+    TextView price;
     @BindView(R.id.for_coin)
     TextView forCoin;
     @BindView(R.id.soft_cap)
     TextView softCap;
     @BindView(R.id.hard_cap)
     TextView hardCap;
+    @BindView(R.id.roi)
+    TextView roi;
+    @BindView(R.id.ico_market_value)
+    TextView marketValue;
     @BindView(R.id.start_time)
     TextView startTime;
     @BindView(R.id.end_time)
@@ -82,14 +93,51 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
         topBar.top_bar_title_text.setText(mVo.getName());
         topBar.setRightView(null, R.mipmap.icon_more_2);
         topBar.top_bar_right_layout.setOnClickListener(this);
-        initViewPager();
         pullToRefreshScrollableLayout.setMode(PullToRefreshBase.Mode.DISABLED);
+        initView();
+        initViewPager();
+
+    }
+
+    private void initView() {
+        if(mVo != null){
+            price.setText(mVo.getPriceConvert());
+            forCoin.setText(mVo.getForCoin());
+            softCap.setText(mVo.getSoftcap());
+            hardCap.setText(mVo.getHardcap());
+            roi.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getRoni()));
+            marketValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getMarketValue()));
+            SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日:HH:mm:ss");
+            startTime.setText(mVo.getIcoTime() != null ? format.format(new Date(mVo.getIcoTime().getTime())):"");
+            endTime.setText(mVo.getIcoEndTime() != null ? format.format(new Date(mVo.getIcoEndTime().getTime())):"");
+            //0:空投   1:新上  2:即将ico  3:正在ico  4:ico结束 5：币市
+            switch (mVo.getType()){
+                case 0:
+                    status.setText("空投");
+                    break;
+                case 1:
+                    status.setText("新上");
+                    break;
+                case 2:
+                    status.setText("即将ICO");
+                    break;
+                case 3:
+                    status.setText("正在ICO");
+                    break;
+                case 4:
+                    status.setText("ICO结束");
+                    break;
+                case 5:
+                    status.setText("币市");
+                    break;
+            }
+        }
     }
 
     public void initViewPager(){
         mFragmentList = new ArrayList<>();
         mFragmentTitleList = new ArrayList<>();
-        mFragmentList.add(CoinDetailIntroFragment.newInstance());
+        mFragmentList.add(CoinDetailIntroFragment.newInstance(mVo));
         mFragmentList.add(CoinDetailTeamFragment.newInstance());
         mFragmentList.add(CoinDetailCommentFragment.newInstance());
         mFragmentList.add(ReportFragment.newInstance());
@@ -171,7 +219,7 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
     }
 
 
-
+    CustomPopupWindow popupWindow = null;
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -181,7 +229,26 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.top_bar_right_layout:
                 //更多
+                if (popupWindow == null) {
+                    popupWindow = new CustomPopupWindow();
+                    popupWindow.createCoinMorePopup(this, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            switch (v.getId()) {
+                                case R.id.optional_layout:
+                                    popupWindow.dismiss();
+                                    break;
+                                case R.id.vote_layout:
+                                    popupWindow.dismiss();
+                                    VoteStep1ListActivity.toActivity(IcoCoinsDetailActivity.this,0);
+                                    break;
+                            }
+                        }
+                    });
+                }
+                popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0);
                 break;
+
         }
     }
 

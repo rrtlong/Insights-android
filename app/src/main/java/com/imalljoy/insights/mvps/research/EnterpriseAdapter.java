@@ -34,7 +34,7 @@ public class EnterpriseAdapter extends RecyclerView.Adapter<EnterpriseAdapter.Vi
     int mType;
     int mStatus;
 
-    EnterpriseAdapter(Context context, List<QuestionnaireVo> data, int type, int status) {
+    public EnterpriseAdapter(Context context, List<QuestionnaireVo> data, int type, int status) {
         this.mContext = context;
         this.listData = data;
         this.mType = type;

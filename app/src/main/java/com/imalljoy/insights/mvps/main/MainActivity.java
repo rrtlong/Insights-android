@@ -39,6 +39,7 @@ public class MainActivity extends BaseActivity {
     private int mTabTextArray[] = {R.string.research, R.string.coins, R.string.analyst, R.string.news, R.string.mine};
     private int mTabTagArray[] = {R.string.research_tag, R.string.coins_tag, R.string.analyst_tag, R.string.news_tag, R.string.mine_tag};
     private int mTabImageArray[] = {R.drawable.tab_main_research_selector, R.drawable.tab_main_coins_selector, R.drawable.tab_main_analyts_selector, R.drawable.tab_main_news_selector, R.drawable.tab_main_mine_selector};
+    long mLatestPressBackTime = 0;
 
 
     @Override
@@ -151,20 +152,32 @@ public class MainActivity extends BaseActivity {
         }, "cachekey", ActivityLifeCycleEvent.DESTROY, lifecycleSubject, false, false);
 
     }
-    public void test(){
+
+    public void test() {
         List<ReportVo> vos = new ArrayList<>();
         ReportVo vo = new ReportVo();
         vo.setCost(10.0);
         vos.add(vo);
-        Log.e(TAG,"1 cost=" + vos.get(0).getCost()+"");
+        Log.e(TAG, "1 cost=" + vos.get(0).getCost() + "");
         vo.setCost(20.0);
-        Log.e(TAG,"2 cost=" + vos.get(0).getCost()+"");
+        Log.e(TAG, "2 cost=" + vos.get(0).getCost() + "");
         LocalData.getInstance().setmReportVo(vo);
         Log.e(TAG, "3 cost" + LocalData.getInstance().getmReportVo().getCost());
         vo.setCost(30.0);
         Log.e(TAG, "4 cost" + LocalData.getInstance().getmReportVo().getCost());
         LocalData.getInstance().getmReportVo().setCost(40.0);
-        Log.e(TAG,"5 cost=" + vo.getCost());
+        Log.e(TAG, "5 cost=" + vo.getCost());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - mLatestPressBackTime < 1500) {
+            super.onBackPressed();
+        } else {
+            mLatestPressBackTime = System.currentTimeMillis();
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
 

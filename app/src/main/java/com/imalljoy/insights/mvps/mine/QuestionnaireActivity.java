@@ -49,8 +49,10 @@ public class QuestionnaireActivity extends BaseActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.launch_layout:
+                LaunchQuestionnaireActivity.toActivity(this);
                 break;
             case R.id.accept_layout:
+                AcceptQuestionnaireActivity.toActivity(this);
                 break;
         }
     }

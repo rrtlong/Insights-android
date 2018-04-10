@@ -50,6 +50,7 @@ public class CertificationActivity extends BaseActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.top_bar_left_layout:
+                finish();
                 break;
             case R.id.enterprise_layout:
                 break;

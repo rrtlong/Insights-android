@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseRecyclerAdapter;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 
 import java.util.Date;
@@ -45,21 +46,27 @@ public class AirdropAdapter extends BaseRecyclerAdapter<CoinVo, AirdropAdapter.A
         Glide.with(context).load(vo.getLogoUrl()).error(R.mipmap.dog_logo).placeholder(R.mipmap.dog_logo).into(holder.logo);
         holder.nameShort.setText(vo.getShortName());
         holder.name.setText(vo.getName());
-        if (DateUtils.isBefore(vo.getIcoEndTime().getTime(), new Date().getTime())) {
-            holder.status.setText("已结束");
-        } else if (DateUtils.isBefore(new Date().getTime(), vo.getIcoTime().getTime())) {
-            holder.status.setText("距开始" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime()) + "天");
-        } else if (DateUtils.isBefore(vo.getIcoTime().getTime(), new Date().getTime()) && DateUtils.isBefore(new Date().getTime(), vo.getIcoEndTime().getTime())) {
-            holder.status.setText("距结束" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoEndTime().getTime()) + "天");
-        } else {
-            holder.status.setText("");
-        }
-        holder.price.setText(String.valueOf(vo.getPrice()));
+//        if (DateUtils.isBefore(vo.getIcoEndTime().getTime(), new Date().getTime())) {
+//            holder.status.setText("已结束");
+//        } else if (DateUtils.isBefore(new Date().getTime(), vo.getIcoTime().getTime())) {
+//            holder.status.setText("距开始" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoTime().getTime()) + "天");
+//        } else if (DateUtils.isBefore(vo.getIcoTime().getTime(), new Date().getTime()) && DateUtils.isBefore(new Date().getTime(), vo.getIcoEndTime().getTime())) {
+//            holder.status.setText("距结束" + DateUtils.differentDaysByMillisecond(new Date().getTime(), vo.getIcoEndTime().getTime()) + "天");
+//        } else {
+//            holder.status.setText("");
+//        }
+//        if (position == getItemCount() - 1) {
+//            holder.price.setText("未上市");
+//        } else {
+//            holder.price.setText(String.valueOf(vo.getPrice()));
+//        }
+        holder.status.setText("正在进行中");
+        holder.price.setText(CommonUtils.formatNumberWithCommaSplit(vo.getPrice()));
         holder.num.setText(vo.getAirDropNum() + "个");
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IcoCoinsDetailActivity.toActivity(context,listData.get(position));
+                IcoCoinsDetailActivity.toActivity(context, listData.get(position));
             }
         });
     }

@@ -2,6 +2,7 @@ package com.imalljoy.insights.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.audiofx.Equalizer;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import com.imalljoy.insights.R;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 /**
  * Created by lijilong on 03/09.
@@ -55,12 +57,13 @@ public class CommonUtils {
             decorView.addView(statusBarView, lp);
         }
     }
-    public static int getColorResourceFromStrg(String level){
+
+    public static int getColorResourceFromStrg(String level) {
         int color = R.color.c_e;
-        if(level == null || level.length()>2 ||level.length()==0){
+        if (level == null || level.length() > 2 || level.length() == 0) {
             return color;
-        }else if(level.length() == 1){
-            switch (level.substring(0,1)){
+        } else if (level.length() == 1) {
+            switch (level.substring(0, 1)) {
                 case "A":
                     color = R.color.c_a;
                     break;
@@ -83,13 +86,37 @@ public class CommonUtils {
 
     /**
      * 四舍五入
-     * @param scale 设置小说
+     *
+     * @param scale 设置小数
      * @return
      */
-    public static float MathRound(float orignal,int scale){
+    public static float MathRound(float orignal, int scale) {
         int roundingMode = 4;//表示四舍五入，可以选取其他模式
         BigDecimal bd = new BigDecimal(orignal);
-        bd = bd.setScale(scale,BigDecimal.ROUND_HALF_UP);
+        bd = bd.setScale(scale, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();
+    }
+
+    /***
+     * //格式化数字，用逗号分割
+     * @param number 12345678.12345
+     * @return 123,456,78.12345
+     */
+    public static String formatNumberWithCommaSplit(double number) {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        numberFormat.setGroupingUsed(true);//使用000,000,00.0000方式显示
+        return numberFormat.format(number);
+
+    }
+    /***
+     * //格式化数字，用逗号分割
+     * @param number 12345678.12345
+     * @return 123,456,78.12345
+     */
+    public static String formatNumberWithCommaSplit(float number) {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        numberFormat.setGroupingUsed(true);//使用000,000,00.0000方式显示
+        return numberFormat.format(number);
+
     }
 }

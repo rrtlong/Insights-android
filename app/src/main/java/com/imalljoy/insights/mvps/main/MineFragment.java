@@ -57,12 +57,13 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             }
         } else {
             mRootView = inflater.inflate(R.layout.fra_mine, container, false);
+            unbinder = ButterKnife.bind(this, mRootView);
             mTopBar = (TopBarCommon) mRootView.findViewById(R.id.top_bar);
             mTopBar.setTitle("我的");
             mTopBar.setRightView(null, 0);
             initView();
         }
-        unbinder = ButterKnife.bind(this, mRootView);
+
         return mRootView;
     }
 
@@ -101,7 +102,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 MyReportsActivity.toActivity(this.getContext());
                 break;
             case R.id.vote_layout:
-                VoteStep1ListActivity.toActivity(this.getContext());
+                VoteStep1ListActivity.toActivity(this.getContext(),1);
                 break;
             case R.id.wallet_layout:
                 MyWalletActivity.toActivity(this.getContext());

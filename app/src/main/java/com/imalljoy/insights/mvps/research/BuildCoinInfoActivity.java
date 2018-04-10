@@ -17,6 +17,7 @@ import com.bigkoo.pickerview.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
+import com.imalljoy.insights.base.WebViewActivity;
 import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
@@ -99,12 +100,17 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
             location.setEnabled(false);
             telegraphGroup.setEnabled(false);
             twitterFans.setEnabled(false);
+
+
         } else {
             //能编辑
             logoLayout.setOnClickListener(this);
             icoTimeLayout.setOnClickListener(this);
             onlineExchangeTimeLayout.setOnClickListener(this);
         }
+        websiteLayout.setOnClickListener(this);
+        telegraphGroupLayout.setOnClickListener(this);
+        twitterFansLayout.setOnClickListener(this);
      /*   name.setText(mCoinVo.getName());
         if (!TextUtils.isEmpty(mCoinVo.getLogoUrl())) {
             Glide.with(this).load(mCoinVo.getLogoUrl()).into(logo);
@@ -145,6 +151,15 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
                 break;
             case R.id.online_exchange_time_layout:
                 showTimePickerView(false);
+                break;
+            case R.id.website_layout:
+                WebViewActivity.toActivity(this,"官网","https://www.egcchain.com/");
+                break;
+            case R.id.telegraph_group_layout:
+                WebViewActivity.toActivity(this,"电报","https://t.me/joinchat/IEbn1knC_iMb2cX16Dut3A");
+                break;
+            case R.id.twitter_fans_layout:
+                WebViewActivity.toActivity(this,"推特","https://twitter.com/enginechainegcc");
                 break;
         }
     }

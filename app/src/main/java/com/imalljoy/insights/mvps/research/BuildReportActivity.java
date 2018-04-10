@@ -1,5 +1,6 @@
 package com.imalljoy.insights.mvps.research;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -164,6 +165,7 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
     private ReportVo mReportVo;
     private int mStatus; //0:新建报告 1:未购买报告 2:已购买报告
     private int mEnterEnterpriseActType = 0; //0:点击了企业问询 1：点击了用户调研
+    private boolean mIsFromMyReport = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,8 +175,20 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
         ButterKnife.bind(this);
         mRequestVo = (RequestVo) getIntent().getSerializableExtra("request");
         mReportVo = (ReportVo) getIntent().getSerializableExtra("report");
+        mIsFromMyReport = getIntent().getBooleanExtra("isFromMyReport",false);
         if (mReportVo == null) {
             Log.e(TAG, "1");
+            if (mRequestVo == null) {
+                mRequestVo = new RequestVo();
+                mRequestVo.setId(System.currentTimeMillis() / 1000);
+                CoinVo coinVo = new CoinVo();
+                coinVo.setId(1l);
+                coinVo.setName("比特币");
+                coinVo.setLogoUrl("http://www.taopic.com/uploads/allimg/140325/318762-14032514002339.jpg");
+                mRequestVo.setCoin(coinVo);
+                mRequestVo.setUser(ConstantData.mUserVo);//设置分析师信息
+            }
+            //请求里面存放报告数据，是由于撰写报告没有发布，为了保存临时状态
             mReportVo = mRequestVo.getReportVo();
             if (mReportVo == null) {
                 Log.e(TAG, "2");
@@ -231,9 +245,9 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
         mCoinName.setText(mReportVo.getRequest().getCoin().getName());
         mReportName.setText(mReportVo.getName());
         mCost.setText(mReportVo.getCost() + "");
-        if(mReportVo.getGrade() == 0){
+        if (mReportVo.getGrade() == 0) {
 
-        }else if (mReportVo.getGrade() <= 20) {
+        } else if (mReportVo.getGrade() <= 20) {
             mStart1.setImageResource(R.mipmap.icon_star_yes);
         } else if (mReportVo.getGrade() <= 40) {
             mStart1.setImageResource(R.mipmap.icon_star_yes);
@@ -255,7 +269,7 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
             mStart5.setImageResource(R.mipmap.icon_star_yes);
         }
         mCoinRating.setText(mReportVo.getCoinLevel());
-        if(mReportVo.getRating() == null){
+        if (mReportVo.getRating() == null) {
             RateVo rateVo = new RateVo();
             rateVo.setProject(60);
             rateVo.setTeam(60);
@@ -284,38 +298,38 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
     }
 
     //如果没有购买报告，一些数据不让用户看见
-    public void isBuyLayout(Boolean isBuy){
+    public void isBuyLayout(Boolean isBuy) {
         mAnalystLayout.setVisibility(View.VISIBLE);
         mAnalystLayout.setOnClickListener(this);
         mAnalyst.setText(mReportVo.getUser().getName());
         mPublishTimeLayout.setVisibility(View.VISIBLE);
         mPublishTime.setText(DateUtils.dateToString(new Date(mReportVo.getPublishTime().getTime()), "yyyy-MM-dd HH:mm"));
         mGradeLayout.setVisibility(View.VISIBLE);
-        mCoinRatingImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mCoinRating.setVisibility(isBuy ? View.VISIBLE :View.INVISIBLE);
-        mProjectImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mProject.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mTeamImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mTeam.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mTechnologyImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mTechnology.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mBusinessImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mBusiness.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mCapitalImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mCapital.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mCoinCostImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mCoinCost.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mLawImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mLaw.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mInfluenceImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mInfluence.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mUserResearchImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mUserResearch.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mEnterpriseInfoImg.setImageResource(isBuy ? R.mipmap.more:R.mipmap.disable);
-        mEnterpriseInfo.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
+        mCoinRatingImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mCoinRating.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mProjectImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mProject.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mTeamImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mTeam.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mTechnologyImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mTechnology.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mBusinessImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mBusiness.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mCapitalImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mCapital.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mCoinCostImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mCoinCost.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mLawImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mLaw.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mInfluenceImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mInfluence.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mUserResearchImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mUserResearch.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mEnterpriseInfoImg.setImageResource(isBuy ? R.mipmap.more : R.mipmap.disable);
+        mEnterpriseInfo.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
         mPlatformIndexLayout.setVisibility(View.VISIBLE);
-        mPlatformIndex.setVisibility(isBuy ? View.VISIBLE:View.INVISIBLE);
-        mPlatformIndexImg.setVisibility(isBuy ? View.INVISIBLE:View.VISIBLE);
+        mPlatformIndex.setVisibility(isBuy ? View.VISIBLE : View.INVISIBLE);
+        mPlatformIndexImg.setVisibility(isBuy ? View.INVISIBLE : View.VISIBLE);
         mContent.setText(isBuy ? mReportVo.getContent() : "***");
     }
 
@@ -334,15 +348,16 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
         mEnterpriseInfoLayout.setOnClickListener(this);
         mBtnProcess.setOnClickListener(this);
     }
+
     /**
      * 能编辑时就将更多图片“》”显示出来，不能编辑时就影藏掉
      *
      * @param isShow
      */
     public void showOrHideMoreImg(boolean isShow) {
-        mReportNameMore.setVisibility(isShow?View.VISIBLE:View.GONE);
-        mCostMore.setVisibility(isShow?View.VISIBLE:View.GONE);
-        mContent.setEnabled(isShow?true:false);
+        mReportNameMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        mCostMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        mContent.setEnabled(isShow ? true : false);
     }
 
 
@@ -370,23 +385,23 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.project_layout:
                 if (mStatus == 0) {
-                    EditType1Activity.toActivity(this, EditReturnData.PROJECT, "项目", mReportVo.getRating().getProject(),mReportVo.getRating().getProjectIntro());
+                    EditType1Activity.toActivity(this, EditReturnData.PROJECT, "项目", mReportVo.getRating().getProject(), mReportVo.getRating().getProjectIntro());
                 } else if (mStatus == 2) {
-                    EditType1Activity.toActivity(this, -1, "项目", mReportVo.getRating().getProject(),mReportVo.getRating().getProjectIntro());
+                    EditType1Activity.toActivity(this, -1, "项目", mReportVo.getRating().getProject(), mReportVo.getRating().getProjectIntro());
                 }
                 break;
             case R.id.team_layout:
                 if (mStatus == 0) {
-                    EditType1Activity.toActivity(this, EditReturnData.TEAM, "团队",mReportVo.getRating().getTeam(),mReportVo.getRating().getTeamIntro());
+                    EditType1Activity.toActivity(this, EditReturnData.TEAM, "团队", mReportVo.getRating().getTeam(), mReportVo.getRating().getTeamIntro());
                 } else if (mStatus == 2) {
-                    EditType1Activity.toActivity(this, -1, "团队",mReportVo.getRating().getTeam(),mReportVo.getRating().getTeamIntro());
+                    EditType1Activity.toActivity(this, -1, "团队", mReportVo.getRating().getTeam(), mReportVo.getRating().getTeamIntro());
                 }
                 break;
             case R.id.technology_layout:
                 if (mStatus == 0) {
-                    EditType1Activity.toActivity(this, EditReturnData.TECHNOLOGY, "技术",mReportVo.getRating().getTechnology(),mReportVo.getRating().getTechnologyIntro());
+                    EditType1Activity.toActivity(this, EditReturnData.TECHNOLOGY, "技术", mReportVo.getRating().getTechnology(), mReportVo.getRating().getTechnologyIntro());
                 } else if (mStatus == 2) {
-                    EditType1Activity.toActivity(this, -1, "技术",mReportVo.getRating().getTechnology(),mReportVo.getRating().getTechnologyIntro());
+                    EditType1Activity.toActivity(this, -1, "技术", mReportVo.getRating().getTechnology(), mReportVo.getRating().getTechnologyIntro());
                 }
                 break;
             case R.id.business_layout:
@@ -398,9 +413,9 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.capital_layout:
                 if (mStatus == 0) {
-                    EditType1Activity.toActivity(this, EditReturnData.CAPITAL, "资金",mReportVo.getRating().getCapital(), mReportVo.getRating().getCapitalIntro());
+                    EditType1Activity.toActivity(this, EditReturnData.CAPITAL, "资金", mReportVo.getRating().getCapital(), mReportVo.getRating().getCapitalIntro());
                 } else if (mStatus == 2) {
-                    EditType1Activity.toActivity(this, -1, "资金",mReportVo.getRating().getCapital(), mReportVo.getRating().getCapitalIntro());
+                    EditType1Activity.toActivity(this, -1, "资金", mReportVo.getRating().getCapital(), mReportVo.getRating().getCapitalIntro());
                 }
                 break;
             case R.id.coin_cost_layout:
@@ -412,9 +427,9 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.law_layout:
                 if (mStatus == 0) {
-                    EditType1Activity.toActivity(this, EditReturnData.LAW, "法律",mReportVo.getRating().getLaw(), mReportVo.getRating().getLawIntro());
+                    EditType1Activity.toActivity(this, EditReturnData.LAW, "法律", mReportVo.getRating().getLaw(), mReportVo.getRating().getLawIntro());
                 } else if (mStatus == 2) {
-                    EditType1Activity.toActivity(this, -1, "法律",mReportVo.getRating().getLaw(), mReportVo.getRating().getLawIntro());
+                    EditType1Activity.toActivity(this, -1, "法律", mReportVo.getRating().getLaw(), mReportVo.getRating().getLawIntro());
                 }
 
                 break;
@@ -454,12 +469,19 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
                 EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 1, true, true));
                 //跟新请求状态为已完成
                 ConstantData.updateRequestStatus(mRequestVo.getId(), 3);
+                //发布的报告添加到用户数据中
+                ConstantData.addReportToUser(mReportVo);
                 finish();
+                if(mIsFromMyReport){
+                    ConstantData.myReports.add(mReportVo);
+                }
                 break;
             case R.id.btn_process:
                 if (mStatus == 1) {
                     ConstantData.updateReportStatus(mReportVo.getId(), 2);
                     updateStatus(2);
+                    //购买的报告添加到用户数据中
+                    ConstantData.addReportToUser(mReportVo);
                 }
                 break;
         }
@@ -468,7 +490,7 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(EditReturnData editReturnData) {
         Log.e(TAG, editReturnData.toString());
-        if(mReportVo.getRating() == null){
+        if (mReportVo.getRating() == null) {
             mReportVo.setRating(new RateVo());
         }
         if (editReturnData.getFlag() == EditReturnData.COIN_RATING) {
@@ -573,6 +595,13 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
             it.putExtra("report", reportVo);
         }
         it.putExtra("status", status);
+        context.startActivity(it);
+
+    }
+    public static void toActivityForMyreport(Context context, int status,boolean isFromMyReport) {
+        Intent it = new Intent(context, BuildReportActivity.class);
+        it.putExtra("status", status);
+        it.putExtra("isFromMyReport",isFromMyReport);
         context.startActivity(it);
 
     }

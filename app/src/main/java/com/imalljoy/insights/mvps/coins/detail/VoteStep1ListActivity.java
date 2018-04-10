@@ -35,6 +35,7 @@ public class VoteStep1ListActivity extends BaseActivity implements View.OnClickL
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     List<CoinVo> listData;
+    int mType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class VoteStep1ListActivity extends BaseActivity implements View.OnClickL
         setContentView(R.layout.simple_recycler_layout_with_topbar);
         ButterKnife.bind(this);
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
+        mType = getIntent().getIntExtra("type",0);
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
         topBar.top_bar_title_text.setText("投票");
@@ -52,7 +54,7 @@ public class VoteStep1ListActivity extends BaseActivity implements View.OnClickL
         divider.setDrawable(ContextCompat.getDrawable(this,R.drawable.recyclerview_divide_type1));
         recyclerview.setLayoutManager(linearManager);
         recyclerview.addItemDecoration(divider);
-        recyclerview.setAdapter(new VoteStep1Adapter(this, listData, 0));
+        recyclerview.setAdapter(new VoteStep1Adapter(this, listData, mType));
     }
 
     @Override
@@ -83,8 +85,9 @@ public class VoteStep1ListActivity extends BaseActivity implements View.OnClickL
 
         return vos;
     }
-    public static void toActivity(Context context){
+    public static void toActivity(Context context,int type){
         Intent it = new Intent(context, VoteStep1ListActivity.class);
+        it.putExtra("type",type);
         context.startActivity(it);
     }
 }

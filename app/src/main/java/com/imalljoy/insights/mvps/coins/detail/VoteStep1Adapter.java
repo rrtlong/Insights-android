@@ -43,12 +43,15 @@ public class VoteStep1Adapter extends BaseRecyclerAdapter<CoinVo, VoteStep1Adapt
         } else {
             holder.reward.setTextColor(ContextCompat.getColor(context, R.color.c_5ab67d));
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                VoteStep2Activity.toActivity(context);
-            }
-        });
+        if(type ==0){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    VoteStep2Activity.toActivity(context);
+                }
+            });
+        }
+
     }
 
     class VoteListHolder extends RecyclerView.ViewHolder {

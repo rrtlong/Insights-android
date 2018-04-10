@@ -244,6 +244,7 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 mVo.setStartTime(new Timestamp(DateUtils.stringToDate(mStartTime.getText().toString(), "yyyy-MM-dd HH:mm").getTime()));
                 mVo.setEndTime(new Timestamp(DateUtils.stringToDate(mEndTime.getText().toString(), "yyyy-MM-dd HH:mm").getTime()));
                 mVo.setDemand(mIntro.getText().toString());
+                ConstantData.mUserVo.getRequests().add(mVo);
                 ConstantData.requestVos.add(mVo);
                 EventBus.getDefault().post(new JumpFragment(JumpFragment.Type.Research, 2, true, true));
                 mTopBar.top_bar_right_layout.setOnClickListener(null);

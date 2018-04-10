@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
+import com.imalljoy.insights.base.WebViewActivity;
+import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.widgets.ObservableScrollView;
 
 import butterknife.BindView;
@@ -25,7 +27,7 @@ import butterknife.Unbinder;
  * Created by lijilong on 03/30.
  */
 
-public class CoinDetailIntroFragment extends BaseFragment{
+public class CoinDetailIntroFragment extends BaseFragment implements View.OnClickListener {
     private static final String TAG = "CoinDetailIntroFragment";
     public static String TITLE = "介绍";
     @BindView(R.id.name)
@@ -79,6 +81,7 @@ public class CoinDetailIntroFragment extends BaseFragment{
     Unbinder unbinder;
     private View mRootView;
     private ObservableScrollView.ScrollViewListener parentInteface;
+    private CoinVo mVo;
 
     @Nullable
     @Override
@@ -92,7 +95,30 @@ public class CoinDetailIntroFragment extends BaseFragment{
             mRootView = inflater.inflate(R.layout.fra_coin_detail_intro, container, false);
         }
         unbinder = ButterKnife.bind(this, mRootView);
+        websiteLayout.setOnClickListener(this);
+        whitebookLayout.setOnClickListener(this);
+        blockStationLayout.setOnClickListener(this);
+        telegraphGroupLayout.setOnClickListener(this);
+        twitterFansLayout.setOnClickListener(this);
+
+
         return mRootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mVo = (CoinVo) getArguments().getSerializable("coinVo");
+        initView();
+    }
+
+    private void initView() {
+        if (mVo != null) {
+            website.setText(mVo.getWebsiteUrl());
+            location.setText(mVo.getLocation());
+            telegraphGroup.setText(mVo.getTelegraphGroup() + "人");
+            twitterFans.setText(mVo.getTwitterFans() + "人");
+        }
     }
 
     @Override
@@ -100,12 +126,35 @@ public class CoinDetailIntroFragment extends BaseFragment{
         super.onDestroyView();
         unbinder.unbind();
     }
-    public static CoinDetailIntroFragment newInstance(){
+
+    public static CoinDetailIntroFragment newInstance(CoinVo coinVo) {
         CoinDetailIntroFragment fragment = new CoinDetailIntroFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("coinVo", coinVo);
         return fragment;
     }
-    public void setScrollListener(ObservableScrollView.ScrollViewListener scrollListener){
+
+    public void setScrollListener(ObservableScrollView.ScrollViewListener scrollListener) {
         this.parentInteface = scrollListener;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.website_layout:
+                WebViewActivity.toActivity(getContext(), "官网", mVo != null ? mVo.getWebsiteUrl() : "https://www.egcchain.com/");
+                break;
+            case R.id.whitebook_layout:
+                WebViewActivity.toActivity(getContext(), "白皮书", mVo != null ? mVo.getWhiteBookUrl() : "http://7xqn4j.com1.z0.glb.clouddn.com/Engine%20V2.2.3%20-%20Chinese%20Version.pdf");
+                break;
+            case R.id.block_station_layout:
+                break;
+            case R.id.telegraph_group_layout:
+                WebViewActivity.toActivity(getContext(), "电报", mVo != null ? mVo.getTelegraphGroupUrl() : "https://t.me/joinchat/IEbn1knC_iMb2cX16Dut3A");
+                break;
+            case R.id.twitter_fans_layout:
+                WebViewActivity.toActivity(getContext(), "推特", mVo != null ? mVo.getTwitterFanUrl() : "https://twitter.com/enginechainegcc");
+                break;
+        }
+    }
 }

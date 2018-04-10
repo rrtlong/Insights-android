@@ -15,7 +15,7 @@ public class RequestVo implements Serializable{
     private String demand;  //分析的需求
     private Timestamp startTime;  //请求有效期开始时间
     private Timestamp endTime;      //请求有效期结束时间
-    private int status;     //状态,如:待接收,已被接受,已完成
+    private int status;     //状态,如:0新建，1待接收,2已被接受,3已完成
     private UserVo user;        //发起请求的用户
     private CoinVo coin;    //数币名
     private UserVo acceptUser; //接受请求的用户

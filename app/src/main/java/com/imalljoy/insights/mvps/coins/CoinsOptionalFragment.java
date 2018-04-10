@@ -39,10 +39,50 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
     public static final String OPTIONAL_STR = "自选";
     @BindView(R.id.currency_sort_btn)
     LinearLayout currencySortBtn;
+    @BindView(R.id.currency_price)
+    TextView currencyPrice;
+    @BindView(R.id.currency_price_layout)
+    LinearLayout currencyPriceLayout;
+    @BindView(R.id.currency_roni)
+    TextView currencyRoni;
+    @BindView(R.id.currency_roni_layout)
+    LinearLayout currencyRoniLayout;
+    @BindView(R.id.currency_bsri)
+    TextView currencyBsri;
+    @BindView(R.id.currency_bsri_layout)
+    LinearLayout currencyBsriLayout;
+    @BindView(R.id.currency_range)
+    TextView currencyRange;
+    @BindView(R.id.currency_range_layout)
+    LinearLayout currencyRangeLayout;
     @BindView(R.id.currency_top_layout)
     LinearLayout currencyTopLayout;
     @BindView(R.id.currency_recyclerview)
     RecyclerView currencyRecyclerview;
+    @BindView(R.id.currency_layout)
+    RelativeLayout currencyLayout;
+    @BindView(R.id.ico_sort_btn)
+    LinearLayout icoSortBtn;
+    @BindView(R.id.ico_roni)
+    TextView icoRoni;
+    @BindView(R.id.ico_roni_layout)
+    LinearLayout icoRoniLayout;
+    @BindView(R.id.ico_level)
+    TextView icoLevel;
+    @BindView(R.id.ico_level_layout)
+    LinearLayout icoLevelLayout;
+    @BindView(R.id.ico_top_layout)
+    LinearLayout icoTopLayout;
+    @BindView(R.id.ico_recyclerview)
+    RecyclerView icoRecyclerview;
+    @BindView(R.id.ico_layout)
+    RelativeLayout icoLayout;
+    @BindView(R.id.airdrop_top_layout)
+    LinearLayout airdropTopLayout;
+    @BindView(R.id.airdrop_recyclerview)
+    RecyclerView airdropRecyclerview;
+    @BindView(R.id.airdrop_layout)
+    LinearLayout airdropLayout;
     @BindView(R.id.currency_sort1)
     TextView currencySort1;
     @BindView(R.id.currency_sort2)
@@ -53,14 +93,6 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
     TextView currencySort4;
     @BindView(R.id.currency_sort_layout)
     LinearLayout currencySortLayout;
-    @BindView(R.id.currency_layout)
-    RelativeLayout currencyLayout;
-    @BindView(R.id.ico_sort_btn)
-    LinearLayout icoSortBtn;
-    @BindView(R.id.ico_top_layout)
-    LinearLayout icoTopLayout;
-    @BindView(R.id.ico_recyclerview)
-    RecyclerView icoRecyclerview;
     @BindView(R.id.ico_sort1)
     TextView icoSort1;
     @BindView(R.id.ico_sort2)
@@ -73,43 +105,12 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
     TextView icoSort5;
     @BindView(R.id.ico_sort_layout)
     LinearLayout icoSortLayout;
-    @BindView(R.id.ico_layout)
-    RelativeLayout icoLayout;
-    @BindView(R.id.airdrop_top_layout)
-    LinearLayout airdropTopLayout;
-    @BindView(R.id.airdrop_recyclerview)
-    RecyclerView airdropRecyclerview;
-    @BindView(R.id.airdrop_layout)
-    LinearLayout airdropLayout;
     @BindView(R.id.optional_add)
     ImageView optionalAdd;
     @BindView(R.id.optional_add_layout)
     LinearLayout optionalAddLayout;
-    Unbinder unbinder;
-    @BindView(R.id.currency_marketvalue)
-    TextView currencyMarketvalue;
-    @BindView(R.id.currency_marketvalue_layout)
-    LinearLayout currencyMarketvalueLayout;
-    @BindView(R.id.currency_price)
-    TextView currencyPrice;
-    @BindView(R.id.currency_price_layout)
-    LinearLayout currencyPriceLayout;
-    @BindView(R.id.currency_range)
-    TextView currencyRange;
-    @BindView(R.id.currency_range_layout)
-    LinearLayout currencyRangeLayout;
-    @BindView(R.id.ico_roni)
-    TextView icoRoni;
-    @BindView(R.id.ico_roni_layout)
-    LinearLayout icoRoniLayout;
-    @BindView(R.id.ico_bsri)
-    TextView icoBsri;
-    @BindView(R.id.ico_bsri_layout)
-    LinearLayout icoBsriLayout;
-    @BindView(R.id.ico_level)
-    TextView icoLevel;
-    @BindView(R.id.ico_level_layout)
-    LinearLayout icoLevelLayout;
+
+    private Unbinder unbinder;
     private View mRootView;
     private CurrencyAdapter mCurrencyAdapter;
     private ICOAdapter mICOAdapter;
@@ -119,11 +120,11 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
     private List<CoinVo> mAirdropData;
     private int mCurrencySortIndex = 0;
     private int mIcoSortIndex = 0;
-    int currencyPriceStatus = 0;//0:无序 1：降序 2：升序
-    int currencyMarketvalueStatus = 1;
+    int currencyPriceStatus = 1;//0:无序 1：降序 2：升序
+    int currencyRoniStatus = 0;
+    int currencyBsriStatus = 0;
     int currencyRangeStatus = 0;
     int icoRoniStatus = 1;
-    int icoBsriStatus = 0;
     int icoLevelStatus = 0;
 
     @Nullable
@@ -162,8 +163,9 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
             mCurrencyData = ConstantData.optionalCoinVos1;
             mCurrencyAdapter = new CurrencyAdapter(this.getContext(), mCurrencyData, 0);
             currencyRecyclerview.setAdapter(mCurrencyAdapter);
-            currencyMarketvalueLayout.setOnClickListener(this);
             currencyPriceLayout.setOnClickListener(this);
+            currencyRoniLayout.setOnClickListener(this);
+            currencyBsriLayout.setOnClickListener(this);
             currencyRangeLayout.setOnClickListener(this);
         }
         if (mICOData != null && mICOData.size() > 0) {
@@ -177,8 +179,8 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
             icoSort3.setOnClickListener(this);
             icoSort4.setOnClickListener(this);
             icoSort5.setOnClickListener(this);
+            icoSortBtn.setOnClickListener(this);
             icoRoniLayout.setOnClickListener(this);
-            icoBsriLayout.setOnClickListener(this);
             icoLevelLayout.setOnClickListener(this);
         }
         if (mAirdropData != null && mAirdropData.size() > 0) {
@@ -210,33 +212,9 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.currency_sort_btn:
-                setSelectSortView(true, mCurrencySortIndex);
-                showOrHideSortLayout(currencySortLayout);
-                break;
             case R.id.ico_sort_btn:
                 setSelectSortView(false, mIcoSortIndex);
                 showOrHideSortLayout(icoSortLayout);
-                break;
-            case R.id.currency_sort1:
-                setSelectSortView(true, 0);
-                showOrHideSortLayout(currencySortLayout);
-                mCurrencySortIndex = 0;
-                break;
-            case R.id.currency_sort2:
-                setSelectSortView(true, 1);
-                showOrHideSortLayout(currencySortLayout);
-                mCurrencySortIndex = 1;
-                break;
-            case R.id.currency_sort3:
-                setSelectSortView(true, 2);
-                showOrHideSortLayout(currencySortLayout);
-                mCurrencySortIndex = 2;
-                break;
-            case R.id.currency_sort4:
-                setSelectSortView(true, 3);
-                showOrHideSortLayout(currencySortLayout);
-                mCurrencySortIndex = 3;
                 break;
             case R.id.ico_sort1:
                 setSelectSortView(false, 0);
@@ -281,17 +259,23 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
             case R.id.optional_add:
                 SearchCoinsActivity.toActivity(this.getContext());
                 break;
-            case R.id.currency_marketvalue_layout:
-                resetAllSortIconDrawable(true);
-                currencyMarketvalueStatus = getSortStatus(currencyMarketvalueStatus);
-                setSortIconDrawable(currencyMarketvalue, currencyMarketvalueStatus);
-                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.optionalCoinVos1, 0, currencyMarketvalueStatus == 1 ? true : false));
-                break;
             case R.id.currency_price_layout:
                 resetAllSortIconDrawable(true);
                 currencyPriceStatus = getSortStatus(currencyPriceStatus);
                 setSortIconDrawable(currencyPrice, currencyPriceStatus);
                 mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.optionalCoinVos1, 1, currencyPriceStatus == 1 ? true : false));
+                break;
+            case R.id.currency_roni_layout:
+                resetAllSortIconDrawable(true);
+                currencyRoniStatus = getSortStatus(currencyRoniStatus);
+                setSortIconDrawable(currencyRoni, currencyRoniStatus);
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.optionalCoinVos1, 3, currencyRoniStatus == 1 ? true : false));
+                break;
+            case R.id.currency_bsri_layout:
+                resetAllSortIconDrawable(true);
+                currencyBsriStatus = getSortStatus(currencyBsriStatus);
+                setSortIconDrawable(currencyBsri, currencyBsriStatus);
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.optionalCoinVos1, 3, currencyBsriStatus == 1 ? true : false));
                 break;
             case R.id.currency_range_layout:
                 resetAllSortIconDrawable(true);
@@ -304,12 +288,6 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
                 icoRoniStatus = getSortStatus(icoRoniStatus);
                 setSortIconDrawable(icoRoni, icoRoniStatus);
                 mICOAdapter.setData(ConstantData.getIcoCoinsBySort(mICOData, 0, icoRoniStatus == 1 ? true : false));
-                break;
-            case R.id.ico_bsri_layout:
-                resetAllSortIconDrawable(false);
-                icoBsriStatus = getSortStatus(icoBsriStatus);
-                setSortIconDrawable(icoBsri, icoBsriStatus);
-                mICOAdapter.setData(ConstantData.getIcoCoinsBySort(mICOData, 0, icoBsriStatus == 1 ? true : false));
                 break;
             case R.id.ico_level_layout:
                 resetAllSortIconDrawable(false);
@@ -401,12 +379,12 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
 
     public void resetAllSortIconDrawable(boolean isCurrency) {
         if (isCurrency) {
-            setSortIconDrawable(currencyMarketvalue, 0);
             setSortIconDrawable(currencyPrice, 0);
+            setSortIconDrawable(currencyRoni,0);
+            setSortIconDrawable(currencyBsri,0);
             setSortIconDrawable(currencyRange, 0);
         } else {
             setSortIconDrawable(icoRoni, 0);
-            setSortIconDrawable(icoBsri, 0);
             setSortIconDrawable(icoLevel, 0);
         }
     }

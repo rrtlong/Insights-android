@@ -49,13 +49,15 @@ public class ResearchTaskActivity extends BaseActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.launch_layout:
+                LaunchResearchActivity.toActivity(this);
                 break;
             case R.id.accept_layout:
+                AcceptResearchActivity.toActivity(this);
                 break;
         }
     }
     public static void toActivity(Context context){
-        Intent it = new Intent(context, QuestionnaireActivity.class);
+        Intent it = new Intent(context, ResearchTaskActivity.class);
         context.startActivity(it);
     }
 }

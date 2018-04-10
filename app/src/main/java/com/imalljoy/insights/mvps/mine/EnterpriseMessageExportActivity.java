@@ -46,7 +46,7 @@ public class EnterpriseMessageExportActivity extends BaseActivity implements Vie
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
         topBar.top_bar_title_text.setText("企业披露");
-        topBar.setRightView(null, 0);
+        topBar.setRightView("添加", 0);
         initView();
     }
 
@@ -57,7 +57,7 @@ public class EnterpriseMessageExportActivity extends BaseActivity implements Vie
         recyclerview.setLayoutManager(linearManager);
         recyclerview.addItemDecoration(divider);
         listData = getData();
-        recyclerview.setAdapter(new CoinDetailEnterpriseExposeAdapter(this,listData,0));
+        recyclerview.setAdapter(new CoinDetailEnterpriseExposeAdapter(this,listData,1));
 
     }
 

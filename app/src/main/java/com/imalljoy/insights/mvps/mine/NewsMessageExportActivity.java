@@ -44,7 +44,7 @@ public class NewsMessageExportActivity extends BaseActivity implements View.OnCl
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
         topBar.top_bar_title_text.setText("新闻披露");
-        topBar.setRightView(null, 0);
+        topBar.setRightView("添加", 0);
         initView();
     }
 

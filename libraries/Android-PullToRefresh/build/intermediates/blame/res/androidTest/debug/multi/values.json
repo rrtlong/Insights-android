@@ -11,7 +11,14 @@
                     "endOffset": 1719
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1660,
+                        "endColumn": 63,
+                        "endOffset": 1719
+                    }
                 }
             },
             {
@@ -23,7 +30,14 @@
                     "endOffset": 1783
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1724,
+                        "endColumn": 63,
+                        "endOffset": 1783
+                    }
                 }
             },
             {
@@ -35,7 +49,14 @@
                     "endOffset": 1838
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1788,
+                        "endColumn": 54,
+                        "endOffset": 1838
+                    }
                 }
             },
             {
@@ -47,7 +68,14 @@
                     "endOffset": 1895
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1843,
+                        "endColumn": 56,
+                        "endOffset": 1895
+                    }
                 }
             },
             {
@@ -59,7 +87,14 @@
                     "endOffset": 1950
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1900,
+                        "endColumn": 54,
+                        "endOffset": 1950
+                    }
                 }
             },
             {
@@ -71,7 +106,14 @@
                     "endOffset": 1988
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1955,
+                        "endColumn": 37,
+                        "endOffset": 1988
+                    }
                 }
             },
             {
@@ -102,7 +144,14 @@
                     "endOffset": 2074
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 2039,
+                        "endColumn": 39,
+                        "endOffset": 2074
+                    }
                 }
             },
             {
@@ -114,7 +163,14 @@
                     "endOffset": 2111
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 2079,
+                        "endColumn": 36,
+                        "endOffset": 2111
+                    }
                 }
             },
             {
@@ -126,7 +182,14 @@
                     "endOffset": 2213
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 2116,
+                        "endColumn": 101,
+                        "endOffset": 2213
+                    }
                 }
             },
             {
@@ -138,7 +201,14 @@
                     "endOffset": 2327
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 2218,
+                        "endColumn": 113,
+                        "endOffset": 2327
+                    }
                 }
             },
             {
@@ -150,7 +220,14 @@
                     "endOffset": 2435
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 2332,
+                        "endColumn": 107,
+                        "endOffset": 2435
+                    }
                 }
             },
             {
@@ -162,7 +239,14 @@
                     "endOffset": 2507
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 2440,
+                        "endColumn": 71,
+                        "endOffset": 2507
+                    }
                 }
             },
             {
@@ -174,7 +258,14 @@
                     "endOffset": 2577
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 2512,
+                        "endColumn": 69,
+                        "endOffset": 2577
+                    }
                 }
             },
             {
@@ -186,7 +277,14 @@
                     "endOffset": 2655
                 },
                 "from": {
-                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml"
+                    "file": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 2582,
+                        "endColumn": 77,
+                        "endOffset": 2655
+                    }
                 }
             }
         ]
