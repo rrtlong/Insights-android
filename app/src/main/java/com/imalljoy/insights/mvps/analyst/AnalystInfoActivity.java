@@ -17,6 +17,7 @@ import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.common.ConstantData;
 import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.entity.ReportVo;
+import com.imalljoy.insights.entity.UserVo;
 import com.imalljoy.insights.mvps.research.ReportRecyclerAdapter;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.TopBarCommon;
@@ -65,6 +66,7 @@ public class AnalystInfoActivity extends BaseActivity implements View.OnClickLis
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     ReportRecyclerAdapter mAdapter;
+    UserVo mVo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +74,68 @@ public class AnalystInfoActivity extends BaseActivity implements View.OnClickLis
         setContentView(R.layout.act_analyst_info);
         ButterKnife.bind(this);
         CommonUtils.tryShowStatusBar(this,R.color.colorPrimary);
+        mVo = (UserVo) getIntent().getSerializableExtra("userVo");
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
         topBar.setTitle("分析师的名字");
         topBar.setRightView(null,0);
+        initDataToView();
         initRecycler();
+    }
+
+    private void initDataToView() {
+        if(mVo != null){
+            name.setText(mVo.getName());
+            sex.setText(mVo.getGender() ==0?"男":"女");
+            if(mVo.getAnalytsLevel() ==1){
+                certificationLevel.setText("I");
+            }else if(mVo.getAnalytsLevel() ==2){
+                certificationLevel.setText("II");
+            }else if(mVo.getAnalytsLevel() ==3){
+                certificationLevel.setText("III");
+            }
+            if(mVo.getAnalytsStars() ==0){
+                star1.setImageResource(R.mipmap.icon_star);
+                star2.setImageResource(R.mipmap.icon_star);
+                star3.setImageResource(R.mipmap.icon_star);
+                star4.setImageResource(R.mipmap.icon_star);
+                star5.setImageResource(R.mipmap.icon_star);
+            }else if(mVo.getAnalytsStars() ==1){
+                star1.setImageResource(R.mipmap.icon_star_yes);
+                star2.setImageResource(R.mipmap.icon_star);
+                star3.setImageResource(R.mipmap.icon_star);
+                star4.setImageResource(R.mipmap.icon_star);
+                star5.setImageResource(R.mipmap.icon_star);
+            }else if(mVo.getAnalytsStars() ==2){
+                star1.setImageResource(R.mipmap.icon_star_yes);
+                star2.setImageResource(R.mipmap.icon_star_yes);
+                star3.setImageResource(R.mipmap.icon_star);
+                star4.setImageResource(R.mipmap.icon_star);
+                star5.setImageResource(R.mipmap.icon_star);
+            }
+            else if(mVo.getAnalytsStars() ==3){
+                star1.setImageResource(R.mipmap.icon_star_yes);
+                star2.setImageResource(R.mipmap.icon_star_yes);
+                star3.setImageResource(R.mipmap.icon_star_yes);
+                star4.setImageResource(R.mipmap.icon_star);
+                star5.setImageResource(R.mipmap.icon_star);
+            }
+            else if(mVo.getAnalytsStars() ==4){
+                star1.setImageResource(R.mipmap.icon_star_yes);
+                star2.setImageResource(R.mipmap.icon_star_yes);
+                star3.setImageResource(R.mipmap.icon_star_yes);
+                star4.setImageResource(R.mipmap.icon_star_yes);
+                star5.setImageResource(R.mipmap.icon_star);
+            }
+            else if(mVo.getAnalytsStars() ==5){
+                star1.setImageResource(R.mipmap.icon_star_yes);
+                star2.setImageResource(R.mipmap.icon_star_yes);
+                star3.setImageResource(R.mipmap.icon_star_yes);
+                star4.setImageResource(R.mipmap.icon_star_yes);
+                star5.setImageResource(R.mipmap.icon_star_yes);
+            }
+
+        }
     }
 
     private void initRecycler() {
@@ -96,8 +155,11 @@ public class AnalystInfoActivity extends BaseActivity implements View.OnClickLis
     }
 
 
-    public static void toActivity(Context context) {
+    public static void toActivity(Context context, UserVo userVo) {
         Intent it = new Intent(context, AnalystInfoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("userVo",userVo);
+        it.putExtras(bundle);
         context.startActivity(it);
     }
 

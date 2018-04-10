@@ -46,7 +46,8 @@ public class ICOAdapter extends BaseRecyclerAdapter<CoinVo, ICOAdapter.ICOHolder
     public void onBindViewHolder(ICOHolder holder, final int position) {
         super.onBindViewHolder(holder, position);
         CoinVo vo = listData.get(position);
-        Glide.with(context).load(vo.getLogoUrl()).error(R.mipmap.dog_logo).placeholder(R.mipmap.dog_logo).into(holder.logo);
+//        Glide.with(context).load(vo.getLogoUrl()).error(R.mipmap.dog_logo).placeholder(R.mipmap.dog_logo).into(holder.logo);
+        Glide.with(context).load(CommonUtils.getLogoIdFromString(vo.getLogoUrl())).error(R.mipmap.dog_logo).into(holder.logo);
         holder.nameShort.setText(vo.getShortName());
         holder.name.setText(vo.getName());
         if (vo.getType() == 1) {

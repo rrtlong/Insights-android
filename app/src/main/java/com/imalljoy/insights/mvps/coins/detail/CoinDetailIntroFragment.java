@@ -13,10 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.base.WebViewActivity;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.ObservableScrollView;
 
 import butterknife.BindView;
@@ -101,23 +103,24 @@ public class CoinDetailIntroFragment extends BaseFragment implements View.OnClic
         telegraphGroupLayout.setOnClickListener(this);
         twitterFansLayout.setOnClickListener(this);
 
-
         return mRootView;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onResume() {
+        super.onResume();
         mVo = (CoinVo) getArguments().getSerializable("coinVo");
         initView();
     }
 
     private void initView() {
         if (mVo != null) {
+            name.setText(mVo.getName());
+            Glide.with(this).load(CommonUtils.getLogoIdFromString(mVo.getLogoUrl())).error(R.mipmap.dog_logo).into(logo);
             website.setText(mVo.getWebsiteUrl());
             location.setText(mVo.getLocation());
-            telegraphGroup.setText(mVo.getTelegraphGroup() + "人");
-            twitterFans.setText(mVo.getTwitterFans() + "人");
+            telegraphGroup.setText(mVo.getTelegraphGroup() ==null? "":mVo.getTelegraphGroup() + "人");
+            twitterFans.setText(mVo.getTwitterFans() == null ? "":mVo.getTwitterFans() + "人");
         }
     }
 
@@ -131,6 +134,7 @@ public class CoinDetailIntroFragment extends BaseFragment implements View.OnClic
         CoinDetailIntroFragment fragment = new CoinDetailIntroFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("coinVo", coinVo);
+        fragment.setArguments(bundle);
         return fragment;
     }
 

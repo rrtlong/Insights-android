@@ -275,7 +275,7 @@ public class CoinsOptionalFragment extends BaseFragment implements View.OnClickL
                 resetAllSortIconDrawable(true);
                 currencyBsriStatus = getSortStatus(currencyBsriStatus);
                 setSortIconDrawable(currencyBsri, currencyBsriStatus);
-                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.optionalCoinVos1, 3, currencyBsriStatus == 1 ? true : false));
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.optionalCoinVos1, 4, currencyBsriStatus == 1 ? true : false));
                 break;
             case R.id.currency_range_layout:
                 resetAllSortIconDrawable(true);

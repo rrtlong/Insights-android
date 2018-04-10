@@ -1,10 +1,10 @@
 [
     {
-        "merged": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
-        "source": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+        "merged": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_vertical.xml",
+        "source": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_vertical.xml"
     },
     {
-        "merged": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
-        "source": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+        "merged": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_horizontal.xml",
+        "source": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_horizontal.xml"
     }
 ]

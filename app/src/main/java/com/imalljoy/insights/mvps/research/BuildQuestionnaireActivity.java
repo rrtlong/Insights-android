@@ -2,6 +2,7 @@ package com.imalljoy.insights.mvps.research;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -212,6 +213,7 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             age.setText(mVo.getPersonas() == null ? "未设置" : mVo.getPersonas().getAge() + "");
             location.setText(mVo.getPersonas() == null ? "未设置" : mVo.getPersonas().getArea() + "");
         }
+        checkActivityBeforeOrEnd();
 
     }
 
@@ -428,4 +430,28 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
         it.putExtra("type",type);
         context.startActivity(it);
     }
+
+    //当活动未开始或则已结束时，禁用下方按钮
+    public void checkActivityBeforeOrEnd(){
+        if(mVo != null){
+        if (mVo.getStatus() == 2) {
+        //已完成
+
+    }else if (mVo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < mVo.getEndTime().getTime()) {
+        //在活动期
+
+    } else if (System.currentTimeMillis() < mVo.getStartTime().getTime()) {
+        //活动未开始
+       btnProcess.setOnClickListener(null);
+            btnProcess.setBackgroundColor(ContextCompat.getColor(this, R.color.cccccc));
+    } else if (mVo.getEndTime().getTime() <= System.currentTimeMillis()) {
+        //活动已结束
+            btnProcess.setOnClickListener(null);
+            btnProcess.setBackgroundColor(ContextCompat.getColor(this, R.color.cccccc));
+    }
+        }
+
+    }
+
+
 }

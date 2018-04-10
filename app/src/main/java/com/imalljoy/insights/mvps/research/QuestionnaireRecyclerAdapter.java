@@ -74,8 +74,7 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
             holder.status.setVisibility(View.VISIBLE);
             holder.startTime.setVisibility(View.GONE);
             holder.endTime.setVisibility(View.GONE);
-        }
-        if (vo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < vo.getEndTime().getTime()) {
+        }else if (vo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < vo.getEndTime().getTime()) {
             //在活动期
             holder.startTime.setText(DateUtils.dateToString(new Date(vo.getStartTime().getTime()), DateUtils.DatePattern.ONLY_DAY));
             holder.endTime.setText(DateUtils.dateToString(new Date(vo.getEndTime().getTime()), DateUtils.DatePattern.ONLY_DAY));

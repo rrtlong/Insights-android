@@ -63,15 +63,12 @@ public class CoinDetailIcoInfoFragment extends BaseFragment {
             mRootView = inflater.inflate(R.layout.fra_coins_detail_icoinfo, container, false);
         }
         unbinder = ButterKnife.bind(this, mRootView);
+        mVo = (CoinVo) getArguments().getSerializable("coinVo");
+        initView();
         return mRootView;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mVo = (CoinVo) getArguments().getSerializable("coinVo");
-        initView();
-    }
+
 
     private void initView() {
         if(mVo != null){

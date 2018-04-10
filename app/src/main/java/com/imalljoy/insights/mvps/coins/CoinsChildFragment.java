@@ -271,12 +271,16 @@ public class CoinsChildFragment extends BaseFragment implements View.OnClickList
                 mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos,3, currencyRoniStatus ==1));
                 break;
             case R.id.currency_bsri_layout:
+                resetAllSortIconDrawable(true);
+                currencyBsriStatus = getSortStatus(currencyBsriStatus);
+                setSortIconDrawable(currencyBsri, currencyBsriStatus);
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos,4, currencyBsriStatus ==1));
                 break;
             case R.id.currency_range_layout:
                 resetAllSortIconDrawable(true);
                 currencyRangeStatus = getSortStatus(currencyRangeStatus);
                 setSortIconDrawable(currencyRange, currencyRangeStatus);
-                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos, 4, currencyRangeStatus == 1 ? true : false));
+                mCurrencyAdapter.setData(ConstantData.getCurrencysBySort(ConstantData.currencyCoinVos, 2, currencyRangeStatus == 1 ? true : false));
                 break;
             case R.id.ico_roni_layout:
                 resetAllSortIconDrawable(false);

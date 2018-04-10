@@ -1,14 +1,14 @@
 [
     {
-        "merged": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
-        "source": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\default_ptr_rotate.png"
+        "merged": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/indicator_arrow.png",
+        "source": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/bundles/debug/res/drawable-mdpi-v4/indicator_arrow.png"
     },
     {
-        "merged": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\indicator_arrow.png",
-        "source": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\indicator_arrow.png"
+        "merged": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/default_ptr_rotate.png",
+        "source": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/bundles/debug/res/drawable-mdpi-v4/default_ptr_rotate.png"
     },
     {
-        "merged": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\default_ptr_flip.png",
-        "source": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\default_ptr_flip.png"
+        "merged": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/default_ptr_flip.png",
+        "source": "/Users/lijilong/Documents/as301/Insights-android/libraries/Android-PullToRefresh/build/intermediates/bundles/debug/res/drawable-mdpi-v4/default_ptr_flip.png"
     }
 ]

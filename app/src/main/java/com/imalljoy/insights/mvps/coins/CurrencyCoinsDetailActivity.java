@@ -120,7 +120,7 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
 
     private void initView() {
         price.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getPrice()));
-        price3.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getPrice3()));
+        price3.setText("=" +CommonUtils.formatNumberWithCommaSplit(mVo.getPrice3()));
         price4.setText(mVo.getPrice4());
         float rate = CommonUtils.MathRound(mVo.getRange() * 100, 2);
         if (rate >= 0) {

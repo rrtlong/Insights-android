@@ -45,7 +45,8 @@ public class CurrencyAdapter extends BaseRecyclerAdapter<CoinVo, CurrencyAdapter
         CoinVo coinVo = listData.get(position);
         /*holder.num.setText(position + 1 + "");
         holder.num.setVisibility(type == 0? View.VISIBLE:View.GONE);*/
-        Glide.with(context).load(coinVo.getLogoUrl()).error(R.mipmap.dog_logo).into(holder.logo);
+//        Glide.with(context).load(coinVo.getLogoUrl()).error(R.mipmap.dog_logo).into(holder.logo);
+        Glide.with(context).load(CommonUtils.getLogoIdFromString(coinVo.getLogoUrl())).error(R.mipmap.dog_logo).into(holder.logo);
         holder.nameShort.setText(coinVo.getShortName());
         holder.name.setText(coinVo.getName());
         holder.price.setText(CommonUtils.formatNumberWithCommaSplit(coinVo.getPrice()));

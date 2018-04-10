@@ -2,7 +2,6 @@ package com.imalljoy.insights.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.audiofx.Equalizer;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -118,5 +117,41 @@ public class CommonUtils {
         numberFormat.setGroupingUsed(true);//使用000,000,00.0000方式显示
         return numberFormat.format(number);
 
+    }
+    public static int getLogoIdFromString(String iconName){
+        if("ABYSS.png".equals(iconName)){
+            return R.mipmap.abyss;
+        }else if("ACT.png".equals(iconName)){
+            return R.mipmap.act;
+        }else if("ADA.png".equals(iconName)){
+            return R.mipmap.ada;
+        }else if("BTC.png".equals(iconName)){
+            return R.mipmap.btc;
+        }else if("CMT.png".equals(iconName)){
+            return R.mipmap.cmt;
+        }else if("ECOM.png".equals(iconName)){
+            return R.mipmap.ecom;
+        }else if("ELI.png".equals(iconName)){
+            return R.mipmap.eli;
+        }else if("EOS.png".equals(iconName)){
+            return R.mipmap.eos;
+        }else if("ETH.png".equals(iconName)){
+            return R.mipmap.eth;
+        }else if("FC.png".equals(iconName)){
+            return R.mipmap.fc;
+        }else if("GES.png".equals(iconName)){
+            return R.mipmap.ges;
+        }else if("LTC.png".equals(iconName)){
+            return R.mipmap.ltc;
+        }else if("SWTC.png".equals(iconName)){
+            return R.mipmap.swtc;
+        }else if("TBD.png".equals(iconName)){
+            return R.mipmap.tbd;
+        }else if("UGC.png".equals(iconName)){
+            return R.mipmap.ugc;
+        }else if("XRP.png".equals(iconName)){
+            return R.mipmap.xrp;
+        }
+        return R.mipmap.dog_logo;
     }
 }

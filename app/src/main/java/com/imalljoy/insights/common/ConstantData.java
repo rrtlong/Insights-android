@@ -469,6 +469,8 @@ public class ConstantData {
         coinVo.setName("Bitcoin");
         coinVo.setShortName("BTC");
         coinVo.setChineseName("比特币");
+        coinVo.setType(5);
+        coinVo.setLogoUrl("BTC.png");
         coinVo.setPriceConvert("42,781CNY=6,782USDT");
         coinVo.setPrice(42781);
         coinVo.setPrice2("CNY");
@@ -491,6 +493,8 @@ public class ConstantData {
         coinVo.setName("Rthereum");
         coinVo.setShortName("ETH");
         coinVo.setChineseName("以太坊");
+        coinVo.setType(5);
+        coinVo.setLogoUrl("ETH.png");
         coinVo.setPriceConvert("2,661.33CNY＝403USDT");
         coinVo.setPrice(2661.33f);
         coinVo.setPrice2("CNY");
@@ -512,6 +516,8 @@ public class ConstantData {
         coinVo.setName("Ripple");
         coinVo.setShortName("XRP");
         coinVo.setChineseName("瑞波币");
+        coinVo.setType(5);
+        coinVo.setLogoUrl("XRP.png");
         coinVo.setPriceConvert("3.07CNY=0.4881USDT");
         coinVo.setPrice(3.07f);
         coinVo.setPrice2("CNY");
@@ -532,6 +538,8 @@ public class ConstantData {
         coinVo.setName("Litecoin");
         coinVo.setShortName("LTC");
         coinVo.setChineseName("莱特币");
+        coinVo.setType(5);
+        coinVo.setLogoUrl("LTC.png");
         coinVo.setPriceConvert("716CNY=144USDT");
         coinVo.setPrice(716);
         coinVo.setPrice2("CNY");
@@ -553,6 +561,8 @@ public class ConstantData {
         coinVo.setName("柚子");
         coinVo.setShortName("EOS");
         coinVo.setChineseName("柚子");
+        coinVo.setType(5);
+        coinVo.setLogoUrl("EOS.png");
         coinVo.setPriceConvert("36.74");
         coinVo.setPrice(36.74f);
         coinVo.setRoni(65.74f);
@@ -571,6 +581,8 @@ public class ConstantData {
         coinVo.setName("Cardano");
         coinVo.setShortName("ADA");
         coinVo.setChineseName("艾达币");
+        coinVo.setType(5);
+        coinVo.setLogoUrl("ADA.png");
         coinVo.setPriceConvert("0.945CNY=0.1501USDT");
         coinVo.setPrice(0.945f);
         coinVo.setPrice2("CNY");
@@ -591,6 +603,7 @@ public class ConstantData {
         coinVo = new CoinVo();
         coinVo.setShortName("TBD");
         coinVo.setName("Crowd Machine");
+        coinVo.setLogoUrl("TBD.png");
         coinVo.setType(3);//正在ico
         coinVo.setRoni(45);
         coinVo.setLevel("B");
@@ -598,11 +611,12 @@ public class ConstantData {
         coinVo.setSoftcap("TBD");
         coinVo.setHardcap("TBD");
         coinVo.setIcoTime(new Timestamp(1522512000000l));//2018-4-1
-        coinVo.setIcoEndTime(new Timestamp(1530115200000l));//2018-6-28
+        coinVo.setIcoEndTime(new Timestamp(1558454400000l));//2019-5-22
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
         coinVo.setShortName("ECOM");
         coinVo.setName("Omnitude");
+        coinVo.setLogoUrl("ECOM.png");
         coinVo.setType(3);//正在ico
         coinVo.setRoni(85);
         coinVo.setLevel("B");
@@ -610,12 +624,13 @@ public class ConstantData {
         coinVo.setSoftcap("$10000000");
         coinVo.setHardcap("$25000000");
         coinVo.setIcoTime(new Timestamp(1522512000000l));//2018-4-1
-        coinVo.setIcoEndTime(new Timestamp(1530115200000l));//2018-6-28
+        coinVo.setIcoEndTime(new Timestamp(1558454400000l));//2019-5-22
         coinVo.setWhiteBookUrl("https://files.acrobat.com/a/preview/75fe0af9-d98b-4002-863c-138b43a131ef");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
         coinVo.setShortName("FC");
         coinVo.setName("FogCoin");
+        coinVo.setLogoUrl("FC.png");
         coinVo.setType(4);//已结束
         coinVo.setRoni(67);
         coinVo.setLevel("C");
@@ -623,24 +638,26 @@ public class ConstantData {
         coinVo.setSoftcap("TBD");
         coinVo.setHardcap("TBD");
         coinVo.setIcoTime(new Timestamp(1511971200000l));//2017-11-30
-        coinVo.setIcoEndTime(new Timestamp(1530115200000l));//2018-6-28
+        coinVo.setIcoEndTime(new Timestamp(1523289600000l));//2018-4-10
         coinVo.setWhiteBookUrl("https://fogcoin.io/documents/FogCoin-Whitepaper.pdf");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
         coinVo.setShortName("ABYSS");
         coinVo.setName("The Abyss");
+        coinVo.setLogoUrl("ABYSS.png");
         coinVo.setType(2);//即将ico
         coinVo.setLevel("D");
         coinVo.setForCoin("ETH,BNB");
         coinVo.setSoftcap("$6000000");
         coinVo.setHardcap("$18000000");
         coinVo.setIcoTime(new Timestamp(1523808000000l));//2018-4-16
-        coinVo.setIcoEndTime(new Timestamp(1530115200000l));//2018-6-28
+        coinVo.setIcoEndTime(new Timestamp(1526400000000l));//2018-5-16
         coinVo.setWhiteBookUrl("https://theabyss.docsend.com/view/nff9r2c");
         icoCoinVos.add(coinVo);
         coinVo = new CoinVo();
         coinVo.setShortName("ELI");
         coinVo.setName("Eligma");
+        coinVo.setLogoUrl("ELI.png");
         coinVo.setType(2);//即将ico
         coinVo.setLevel("B");
         coinVo.setPriceConvert("1ELI= 0.1USDT");
@@ -658,6 +675,7 @@ public class ConstantData {
         coinVo = new CoinVo();
         coinVo.setShortName("GES");
         coinVo.setName("GalaxyeSolution");
+        coinVo.setLogoUrl("GES.png");
         coinVo.setType(3);//正在ico
         coinVo.setRoni(76.32f);
         coinVo.setLevel("A");
@@ -669,8 +687,8 @@ public class ConstantData {
         coinVo.setForCoin("ETH");
         coinVo.setSoftcap("TBD");
         coinVo.setHardcap("TBD");
-        coinVo.setIcoTime(new Timestamp(1519747200000l));//2018-2-28
-        coinVo.setIcoEndTime(new Timestamp(1530115200000l));//2018-6-28
+        coinVo.setIcoTime(new Timestamp(1519747200000l));//2018-2-18
+        coinVo.setIcoEndTime(new Timestamp(1534262400000l));//2018-8-15
         coinVo.setWhiteBookUrl("http://whitepaper.galaxy-esolutions.com/GES_Business_Deck_Full_Version_EN.pdf");
         icoCoinVos.add(coinVo);
         //airdrop coin
@@ -690,6 +708,7 @@ public class ConstantData {
         coinVo.setRank(106);
         coinVo.setTurnover(461580723);
         coinVo.setName("Achain");
+        coinVo.setLogoUrl("ACT.png");
         coinVo.setWhiteBookUrl("https://www.achain.com/Achain%20Whitepaper%202.0_CHS.pdf");
         coinVo.setBlockStationUrl("https://browser.achain.com/");
         coinVo.setTelegraphGroup("25695");
@@ -710,6 +729,7 @@ public class ConstantData {
         coinVo.setRank(657);
         coinVo.setTurnover(461580723);
         coinVo.setName("斯微特");
+        coinVo.setLogoUrl("SWTC.png");
         coinVo.setBlockStationUrl("http://state.jingtum.com/");
         airdropCoinVos.add(coinVo);
         coinVo = new CoinVo();
@@ -728,9 +748,11 @@ public class ConstantData {
         coinVo.setRank(309);
         coinVo.setTurnover(500000000);
         coinVo.setName("UGCHAIN");
+        coinVo.setLogoUrl("UGC.png");
         airdropCoinVos.add(coinVo);
         coinVo = new CoinVo();
         coinVo.setShortName("CMT");
+        coinVo.setLogoUrl("CMT.png");
         coinVo.setPriceConvert("0.5018CNY=0.0797USDT");
         coinVo.setPrice(0.5018f);
         coinVo.setPrice2("CNY");
@@ -1054,7 +1076,7 @@ public class ConstantData {
                 }
             });
         } else if (flag == 4) {
-            //根据roni进行排序
+            //根据bsri进行排序
             Collections.sort(vos, new Comparator<CoinVo>() {
                 @Override
                 public int compare(CoinVo o1, CoinVo o2) {

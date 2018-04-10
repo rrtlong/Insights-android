@@ -14,7 +14,7 @@ public class UserVo implements Serializable{
     private long userId;        //用户id
     private String name;        //用户名称
     private String headPic;
-    private int gender;     //性别;0:未知,1:男,2:女
+    private int gender;     //性别;0:男,1:女
     private String password;        //用户密码
     private int actor;      //用户角色,如企业/媒体/分析师/投资者/数币
     private int certification;      //是否认证
@@ -25,6 +25,8 @@ public class UserVo implements Serializable{
     private List<ReportVo> reports; //我的报告：包含购买的，发布的
     private List<QuestionnaireVo> questionnaires;     //发布过的调查问卷
     private List<QuestionnaireVo> acceptQuestionnaires;        //参与过的调查问卷
+    private int analytsLevel;//分析师级别1，2，3级
+    private int analytsStars;//分析师星星
 
     /**
      *
@@ -157,6 +159,7 @@ public class UserVo implements Serializable{
         this.acceptQuestionnaires = acceptQuestionnaires;
     }
 
+
     public List<ReportVo> getReports() {
         if(reports == null)
             reports = new ArrayList<>();
@@ -165,5 +168,21 @@ public class UserVo implements Serializable{
 
     public void setReports(List<ReportVo> reports) {
         this.reports = reports;
+    }
+
+    public int getAnalytsLevel() {
+        return analytsLevel;
+    }
+
+    public void setAnalytsLevel(int analytsLevel) {
+        this.analytsLevel = analytsLevel;
+    }
+
+    public int getAnalytsStars() {
+        return analytsStars;
+    }
+
+    public void setAnalytsStars(int analytsStars) {
+        this.analytsStars = analytsStars;
     }
 }

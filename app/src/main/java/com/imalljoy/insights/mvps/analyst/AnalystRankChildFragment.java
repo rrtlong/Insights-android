@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.UserVo;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsAdapter;
 import com.imalljoy.insights.mvps.news.CoinsNewsFragment;
 
@@ -41,6 +42,7 @@ public class AnalystRankChildFragment extends BaseFragment {
     RecyclerView recyclerview;
     Unbinder unbinder;
     AnalystRankAdapter mAdapter;
+    List<UserVo> listData;
 
     @Nullable
     @Override
@@ -76,18 +78,141 @@ public class AnalystRankChildFragment extends BaseFragment {
     }
 
 
-    public List<CoinVo> getListData() {
-        List<CoinVo> vos = new ArrayList<>();
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
+    public List<UserVo> getListData() {
+        List<UserVo> vos = new ArrayList<>();
+        UserVo vo;
+        if(mType ==0) {
+            vo = new UserVo();
+            vo.setName("黄晓霞");
+            vo.setGender(1);
+            vo.setAnalytsLevel(1);
+            vo.setAnalytsStars(3);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("李清");
+            vo.setGender(0);
+            vo.setAnalytsLevel(2);
+            vo.setAnalytsStars(2);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("Chris Wong");
+            vo.setGender(0);
+            vo.setAnalytsLevel(2);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("王合喜");
+            vo.setGender(0);
+            vo.setAnalytsLevel(1);
+            vo.setAnalytsStars(4);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("张青峰 ");
+            vo.setGender(0);
+            vo.setAnalytsLevel(2);
+            vo.setAnalytsStars(2);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("宋玉");
+            vo.setGender(1);
+            vo.setAnalytsLevel(1);
+            vo.setAnalytsStars(3);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("孙福泉");
+            vo.setGender(0);
+            vo.setAnalytsLevel(1);
+            vo.setAnalytsStars(4);
+            vos.add(vo);
+            vo.setName("王杰");
+            vo.setGender(1);
+            vo.setAnalytsLevel(2);
+            vo.setAnalytsStars(2);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("邹晓倩 ");
+            vo.setGender(1);
+            vo.setAnalytsLevel(2);
+            vo.setAnalytsStars(3);
+            vos.add(vo);
+        }else if(mType ==1){
+            vo = new UserVo();
+            vo.setName("张萌 ");
+            vo.setGender(1);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(4);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("李奥 ");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("孙伟亮");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("陈潇");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(4);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("李健");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(4);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("曲美玲");
+            vo.setGender(1);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(3);
+            vos.add(vo);
+        }else {
+            vo = new UserVo();
+            vo.setName("jack chen");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("张东");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("吴晓庆");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(3);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("李志祥");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("张健 ");
+            vo.setGender(0);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+            vo = new UserVo();
+            vo.setName("刘佳慧");
+            vo.setGender(1);
+            vo.setAnalytsLevel(3);
+            vo.setAnalytsStars(5);
+            vos.add(vo);
+        }
+
+
+
         return vos;
     }
 
