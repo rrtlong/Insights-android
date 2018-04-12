@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.common.ConstantData;
@@ -85,6 +86,7 @@ public class AnalystInfoActivity extends BaseActivity implements View.OnClickLis
 
     private void initDataToView() {
         if(mVo != null){
+            Glide.with(this).load(CommonUtils.getHeadCoverFromString(mVo.getHeadPic())).error(R.mipmap.default_head).into(cover);
             name.setText(mVo.getName());
             sex.setText(mVo.getGender() ==0?"男":"女");
             if(mVo.getAnalytsLevel() ==1){

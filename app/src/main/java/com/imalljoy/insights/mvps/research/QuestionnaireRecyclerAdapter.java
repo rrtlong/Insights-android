@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.entity.QuestionnaireVo;
 import com.imalljoy.insights.greendao.bean.Question;
+import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class QuestionnaireRecyclerAdapter extends RecyclerView.Adapter<Questionn
     public void onBindViewHolder(ViewHolder holder, final int position) {
         QuestionnaireVo vo = listData.get(position);
         //分析师头像
-        Glide.with(mContext).load(vo.getUserVo().getHeadPic()).into(holder.headPic);
+        Glide.with(mContext).load(CommonUtils.getHeadCoverFromString(vo.getUserVo().getHeadPic())).error(R.mipmap.default_head).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.intro.setText(vo.getContent());
         holder.reward.setText("INB: " + vo.getReward() + "");

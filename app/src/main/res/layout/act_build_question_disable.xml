@@ -16,1363 +16,1404 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/container_layout"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="1.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="2.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="3.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="4.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="5.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="6.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="7.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="8.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="9.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="10.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="11.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/white"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:text="12.你喜欢什么水果?"
-                    android:textColor="@color/c_333333"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="苹果"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="香蕉"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/stroke_1_c0c0c0"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left|center_vertical"
-                        android:paddingLeft="14dp"
-                        android:text="葡萄"
-                        android:textColor="@color/c_333333"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="42dp"
+                                android:layout_marginTop="3dp"
+                                android:background="@color/white"
+                                android:paddingLeft="14dp"
+                                android:paddingRight="14dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    android:gravity="left|center_vertical"
+                                    android:text="1.你喜欢什么水果?"
+                                    android:textColor="@color/c_333333"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="27dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingLeft="14dp"
+                                android:paddingRight="14dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/stroke_1_c0c0c0"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingLeft="14dp"
+                                        android:text="苹果"
+                                        android:textColor="@color/c_333333"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="27dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingLeft="14dp"
+                                android:paddingRight="14dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/stroke_1_c0c0c0"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingLeft="14dp"
+                                        android:text="香蕉"
+                                        android:textColor="@color/c_333333"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="27dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingLeft="14dp"
+                                android:paddingRight="14dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/stroke_1_c0c0c0"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="left|center_vertical"
+                                        android:paddingLeft="14dp"
+                                        android:text="葡萄"
+                                        android:textColor="@color/c_333333"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+                            </LinearLayout>-->
+
+                <!-- <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="2.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="3.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="4.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="5.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="6.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="7.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="8.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="9.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="10.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="11.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="42dp"
+                     android:layout_marginTop="3dp"
+                     android:background="@color/white"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="12.你喜欢什么水果?"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="苹果"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="香蕉"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="27dp"
+                     android:layout_marginBottom="10dp"
+                     android:background="@color/white"
+                     android:orientation="horizontal"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <LinearLayout
+                         android:layout_width="0dp"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:orientation="horizontal">
+
+                         <TextView
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical"
+                             android:paddingLeft="14dp"
+                             android:text="葡萄"
+                             android:textColor="@color/c_333333"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@color/white"
+                     android:orientation="vertical"
+                     android:paddingLeft="14dp"
+                     android:paddingRight="14dp">
+
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:background="@null"
+                         android:gravity="left|center_vertical"
+                         android:text="您有什么意见"
+                         android:textColor="@color/c_333333"
+                         android:textSize="14sp"
+                         android:textStyle="bold" />
+
+                     <EditText
+                         android:id="@+id/feedback"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="10dp"
+                         android:layout_marginBottom="30dp"
+                         android:background="@drawable/stroke_1_c0c0c0"
+                         android:gravity="left|top"
+                         android:hint="请输入..."
+                         android:minHeight="60dp"
+                         android:textColor="@color/c_7b7b7b"
+                         android:textSize="11sp" />
+
+                 </LinearLayout>
+     -->
             </LinearLayout>
 
             <LinearLayout
@@ -1397,8 +1438,8 @@
                     android:id="@+id/feedback"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/stroke_1_c0c0c0"
                     android:gravity="left|top"
                     android:hint="请输入..."
@@ -1407,7 +1448,6 @@
                     android:textSize="11sp" />
 
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

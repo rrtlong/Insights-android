@@ -25,6 +25,7 @@ import com.imalljoy.insights.entity.RateVo;
 import com.imalljoy.insights.entity.ReportVo;
 import com.imalljoy.insights.entity.RequestVo;
 import com.imalljoy.insights.mvps.EditType2Activity;
+import com.imalljoy.insights.mvps.analyst.AnalystInfoActivity;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 import com.imalljoy.insights.utils.ScreenUtils;
@@ -196,6 +197,7 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
                 mReportVo.setId(System.currentTimeMillis() / 1000);
                 mReportVo.setUser(ConstantData.mUserVo);
                 mReportVo.setRequest(mRequestVo);
+                mReportVo.setCoin(mRequestVo.getCoin());
             }
 
         }
@@ -242,26 +244,27 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
             isBuyLayout(true);
             showOrHideMoreImg(false);
         }
-        mCoinName.setText(mReportVo.getRequest().getCoin().getName());
-        mReportName.setText(mReportVo.getName());
+        //mCoinName.setText(mReportVo.getRequest().getCoin().getName());
+        mCoinName.setText(mReportVo.getCoin().getName());
+        mReportName.setText(mReportVo.getName() == null ? "我的报告" : mReportVo.getName());
         mCost.setText(mReportVo.getCost() + "");
-        if (mReportVo.getGrade() == 0) {
+        if (mReportVo.getEvalLevel() == 0) {
 
-        } else if (mReportVo.getGrade() <= 20) {
+        } else if (mReportVo.getEvalLevel() == 1) {
             mStart1.setImageResource(R.mipmap.icon_star_yes);
-        } else if (mReportVo.getGrade() <= 40) {
+        } else if (mReportVo.getEvalLevel() ==2) {
             mStart1.setImageResource(R.mipmap.icon_star_yes);
             mStart2.setImageResource(R.mipmap.icon_star_yes);
-        } else if (mReportVo.getGrade() <= 60) {
+        } else if (mReportVo.getEvalLevel() ==3) {
             mStart1.setImageResource(R.mipmap.icon_star_yes);
             mStart2.setImageResource(R.mipmap.icon_star_yes);
             mStart3.setImageResource(R.mipmap.icon_star_yes);
-        } else if (mReportVo.getGrade() <= 80) {
+        } else if (mReportVo.getEvalLevel() ==4) {
             mStart1.setImageResource(R.mipmap.icon_star_yes);
             mStart2.setImageResource(R.mipmap.icon_star_yes);
             mStart3.setImageResource(R.mipmap.icon_star_yes);
             mStart4.setImageResource(R.mipmap.icon_star_yes);
-        } else if (mReportVo.getGrade() <= 100) {
+        } else if (mReportVo.getEvalLevel() ==5) {
             mStart1.setImageResource(R.mipmap.icon_star_yes);
             mStart2.setImageResource(R.mipmap.icon_star_yes);
             mStart3.setImageResource(R.mipmap.icon_star_yes);
@@ -293,6 +296,7 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
         mInfluence.setText(String.valueOf(mReportVo.getRating().getInfluence()));
         mUserResearch.setText(String.valueOf(mReportVo.getRating().getUserResearch()));
         mEnterpriseInfo.setText(String.valueOf(mReportVo.getRating().getEnterpriseInfo()));
+        mPlatformIndex.setText(mReportVo.getPlatformIndex());
 
 
     }
@@ -366,12 +370,15 @@ public class BuildReportActivity extends BaseActivity implements View.OnClickLis
         Log.e(TAG, "onclick 1");
         switch (v.getId()) {
             case R.id.coin_name_layout:
-                BuildCoinInfoActivity.toActivityForResult(this, mReportVo.getRequest().getCoin(), mStatus, 1);
+                BuildCoinInfoActivity.toActivityForResult(this, mReportVo.getCoin(), mStatus, 1);
                 break;
             case R.id.report_name_layout:
                 if (mStatus == 0) {
                     EditType2Activity.toActivityForResult(this, "名称", mReportName.getText().toString(), ConstantData.reportRequestCode, EditType2Activity.REPORT_NAME_CODE);
                 }
+                break;
+            case R.id.analyst_layout:
+                AnalystInfoActivity.toActivity(this, mReportVo.getUser());
                 break;
             case R.id.cost_layout:
                 if (mStatus == 0) {

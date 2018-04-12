@@ -98,7 +98,7 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:gravity="center_vertical|right"
-                        android:text="投资喜好调查"
+                        android:text="我的报告"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -195,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="花费"
+                        android:text="价格"
                         android:textColor="#333333"
                         android:textSize="14sp" />
 

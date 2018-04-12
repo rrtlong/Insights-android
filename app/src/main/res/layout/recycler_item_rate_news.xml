@@ -30,6 +30,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="报告新闻的名称"
+        android:ellipsize="end"
+        android:lines="1"
         android:textColor="@color/text_short_name"
         android:textSize="11sp" />
 

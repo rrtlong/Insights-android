@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.entity.QuestionnaireVo;
 import com.imalljoy.insights.entity.RequestVo;
+import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class RequireRecyclerAdapter extends RecyclerView.Adapter<RequireRecycler
     public void onBindViewHolder(RequireRecyclerAdapter.ViewHolder holder, final int position) {
         RequestVo vo = listData.get(position);
         //数币logo
-        Glide.with(mContext).load(vo.getCoin().getLogoUrl()).error(R.mipmap.dog_logo).into(holder.headPic);
+        Glide.with(mContext).load(CommonUtils.getLogoIdFromString(vo.getCoin().getLogoUrl())).error(R.mipmap.dog_logo).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.intro.setText(vo.getDemand());
         holder.reward.setText("INB: " + vo.getReward() + "");

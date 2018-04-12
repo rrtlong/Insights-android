@@ -8,11 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseRecyclerAdapter;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.LiveVo;
 import com.imalljoy.insights.entity.UserVo;
+import com.imalljoy.insights.utils.CommonUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,11 +27,10 @@ import butterknife.ButterKnife;
  * Created by lijilong on 04/08.
  */
 
-public class AnalystLiveAdapter extends BaseRecyclerAdapter<UserVo, AnalystLiveAdapter.AnalystLiveHolder> {
+public class AnalystLiveAdapter extends BaseRecyclerAdapter<LiveVo, AnalystLiveAdapter.AnalystLiveHolder> {
 
 
-
-    public AnalystLiveAdapter(Context context, List<UserVo> list, int type) {
+    public AnalystLiveAdapter(Context context, List<LiveVo> list, int type) {
         super(context, list, type);
     }
 
@@ -39,10 +43,13 @@ public class AnalystLiveAdapter extends BaseRecyclerAdapter<UserVo, AnalystLiveA
     @Override
     public void onBindViewHolder(AnalystLiveHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        if(position ==0){
-            holder.content.setText("比特币走势分析");
-        }else if(position ==1){
-            holder.content.setText("ETH币上市进展");
+        LiveVo vo = listData.get(position);
+        Glide.with(context).load(CommonUtils.getHeadCoverFromString(vo.getUserVo().getHeadPic())).error(R.mipmap.default_head).into(holder.cover);
+        holder.name.setText(vo.getUserVo().getName());
+        holder.content.setText(vo.getTitle());
+        if (vo.getEndTime() != null) {
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            holder.endTime.setText(df.format(new Date(vo.getEndTime().getTime())));
         }
     }
 
@@ -57,6 +64,7 @@ public class AnalystLiveAdapter extends BaseRecyclerAdapter<UserVo, AnalystLiveA
         TextView startTime;
         @BindView(R.id.end_time)
         TextView endTime;
+
         public AnalystLiveHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

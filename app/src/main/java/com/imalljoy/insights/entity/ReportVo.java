@@ -29,6 +29,8 @@ public class ReportVo implements Serializable {
     private String coinLevel;       //数币评级 如A+,A-,B+....
     private List<QuestionnaireVo> userResearchList;//用户调研问卷
     private List<QuestionnaireVo> enterpriseInfoList;//针对单一企业的调研问卷
+    private int evalLevel;//评价等级
+    private String platformIndex;//平台指数
 
     public List<QuestionnaireVo> getUserResearchList() {
         if (userResearchList == null)
@@ -166,6 +168,22 @@ public class ReportVo implements Serializable {
         if (request == null)
             request = new RequestVo();
         return request;
+    }
+
+    public int getEvalLevel() {
+        return evalLevel;
+    }
+
+    public void setEvalLevel(int evalLevel) {
+        this.evalLevel = evalLevel;
+    }
+
+    public String getPlatformIndex() {
+        return platformIndex;
+    }
+
+    public void setPlatformIndex(String platformIndex) {
+        this.platformIndex = platformIndex;
     }
 
     @Override

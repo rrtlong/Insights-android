@@ -85,6 +85,7 @@
         android:layout_height="43dp"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:paddingLeft="14dp"
         android:paddingRight="14dp">
 
@@ -107,6 +108,11 @@
             android:text="https://www.egcchain.com/"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/more"/>
 
     </LinearLayout>
 
@@ -263,6 +269,7 @@
         android:layout_height="43dp"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:paddingLeft="14dp"
         android:paddingRight="14dp">
 
@@ -284,6 +291,11 @@
             android:text="15000人"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/more"/>
 
     </LinearLayout>
 
@@ -298,6 +310,7 @@
         android:layout_height="43dp"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:paddingLeft="14dp"
         android:paddingRight="14dp">
 
@@ -319,6 +332,11 @@
             android:text="18000人"
             android:textColor="#7b7b7b"
             android:textSize="11sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/more"/>
 
     </LinearLayout>
 

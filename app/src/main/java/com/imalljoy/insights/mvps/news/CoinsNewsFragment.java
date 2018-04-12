@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.NewVo;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsAdapter;
 
 import java.util.ArrayList;
@@ -66,19 +67,24 @@ public class CoinsNewsFragment extends BaseFragment {
         recyclerview.setAdapter(mAdapter);
     }
 
-
-    public List<CoinVo> getListData() {
-        List<CoinVo> vos = new ArrayList<>();
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
+    public List<NewVo> getListData() {
+        List<NewVo> vos = new ArrayList<>();
+        NewVo newVo = new NewVo();
+        newVo.setName("比特币闪电网络实现兼容数字资产，彩色币技术成关键");
+        newVo.setCover("new_cover1");
+        vos.add(newVo);
+        newVo = new NewVo();
+        newVo.setName("Ubitquity采用比特币区块链保护房地产产权");
+        newVo.setCover("new_cover2");
+        vos.add(newVo);
+        newVo = new NewVo();
+        newVo.setName("火币袁煜明：我们现在处于区块链经济的1776年");
+        newVo.setCover("new_cover3");
+        vos.add(newVo);
+        newVo = new NewVo();
+        newVo.setName("去中心化数据库：传统IT与区块链的未来融合形式");
+        newVo.setCover("new_cover4");
+        vos.add(newVo);
         return vos;
     }
     public static CoinsNewsFragment newInstance(){

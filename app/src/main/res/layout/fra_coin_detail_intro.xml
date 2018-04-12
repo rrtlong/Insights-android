@@ -5,7 +5,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/f1f1f1"
         android:orientation="vertical">
 
@@ -379,7 +379,9 @@
             android:id="@+id/intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="50dp"
             android:background="@color/white"
+            android:gravity="left|top"
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:text="介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
@@ -397,7 +399,8 @@
             android:paddingTop="14dp"
             android:text="ETHcoin的特点："
             android:textColor="@color/text_name"
-            android:textSize="11sp" />
+            android:textSize="11sp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/feature_intro"
@@ -411,6 +414,7 @@
             android:paddingTop="10dp"
             android:text="1、总量与以太坊ETH保持一致，ETH持有者1:1获赠ETH糖果。\n2、目前挖矿算法不变，支持原ETH矿机双挖。\n3、延长POW挖矿周期。\n4、2018年增加POS硬盘挖矿算法，支持分布式存储。"
             android:textColor="@color/text_name"
-            android:textSize="8sp" />
+            android:textSize="8sp"
+            android:visibility="gone"/>
     </LinearLayout>
 </ScrollView>

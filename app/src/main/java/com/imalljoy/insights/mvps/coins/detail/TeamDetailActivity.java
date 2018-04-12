@@ -35,6 +35,7 @@ public class TeamDetailActivity extends BaseActivity implements View.OnClickList
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
         topBar.top_bar_title_text.setText("团队详情");
+        topBar.setRightView(null,0);
 
     }
 

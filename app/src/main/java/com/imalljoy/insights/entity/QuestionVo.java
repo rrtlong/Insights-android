@@ -11,11 +11,19 @@ import java.util.List;
 public class QuestionVo implements Serializable {
     private long id;        //问题id
     private String name;        //问题名称
-    private int type;       //问题类型;如单选,多选,填空
+    private int type;       //问题类型;如0单选,1多选,2填空
     private boolean isNecessary;        //是否必答
     private List<String> options;       //选项
     private String text;        //填空题答案
     private String answer;      //回答;自己根据类型解析,多选用,隔开
+
+    public QuestionVo(long id, String name, int type, boolean isNecessary, List<String> options) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.isNecessary = isNecessary;
+        this.options = options;
+    }
 
     public long getId() {
         return id;

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.NewVo;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsAdapter;
 
 import java.util.ArrayList;
@@ -67,18 +68,20 @@ public class IndustryNewsFragment extends BaseFragment {
     }
 
 
-    public List<CoinVo> getListData() {
-        List<CoinVo> vos = new ArrayList<>();
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
+    public List<NewVo> getListData() {
+        List<NewVo> vos = new ArrayList<>();
+        NewVo newVo = new NewVo();
+        newVo.setName("英国国家安全网络中心将加密货币盗取归为网络威胁范畴");
+        newVo.setCover("new_cover5");
+        vos.add(newVo);
+        newVo = new NewVo();
+        newVo.setName("中国银行前行长李礼辉：区块链在金融领域的规模化应用需要三年");
+        newVo.setCover("new_cover6");
+        vos.add(newVo);
+        newVo = new NewVo();
+        newVo.setName("李笑来：未来中国一定是区块链最大的市场");
+        newVo.setCover("new_cover7");
+        vos.add(newVo);
         return vos;
     }
 

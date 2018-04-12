@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.LiveVo;
 import com.imalljoy.insights.entity.UserVo;
 import com.imalljoy.insights.mvps.news.IndustryNewsFragment;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,10 +70,24 @@ public class AnalystLiveFragment extends BaseFragment {
     }
 
 
-    public List<UserVo> getListData() {
-        List<UserVo> vos = new ArrayList<>();
-        vos.add(new UserVo());
-        vos.add(new UserVo());
+    public List<LiveVo> getListData() {
+        List<LiveVo> vos = new ArrayList<>();
+        LiveVo vo = new LiveVo();
+        UserVo userVo = new UserVo();
+        userVo.setName("断肠人");
+        userVo.setHeadPic("head9");
+        vo.setUserVo(userVo);
+        vo.setTitle("比特币走势分析");
+        vo.setEndTime(new Timestamp(1523894400000l));//2018-4-17
+        vos.add(vo);
+        vo = new LiveVo();
+        userVo = new UserVo();
+        userVo.setName("在天涯");
+        userVo.setHeadPic("head10");
+        vo.setUserVo(userVo);
+        vo.setTitle("ETH币近况");
+        vo.setEndTime(new Timestamp(1523635200000l));//2018-4-14
+        vos.add(vo);
         return vos;
     }
 

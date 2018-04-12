@@ -2,17 +2,14 @@ package com.imalljoy.insights.mvps.coins;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,12 +23,11 @@ import com.imalljoy.insights.mvps.coins.detail.CoinDetailEnterpriseExposeFragmen
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailIntroFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailTeamFragment;
-import com.imalljoy.insights.mvps.coins.detail.VoteStep1ListActivity;
+import com.imalljoy.insights.mvps.coins.detail.VoteStep2Activity;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.CustomPopupWindow;
 import com.imalljoy.insights.widgets.PullToRefreshScrollableLayout;
-import com.imalljoy.insights.widgets.ScrollViewViewPager;
 import com.imalljoy.insights.widgets.TopBarCommon;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
@@ -47,7 +43,7 @@ import butterknife.ButterKnife;
  * Created by lijilong on 03/30.
  */
 
-public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClickListener{
+public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.root_view)
     LinearLayout rootView;
     @BindView(R.id.top_bar)
@@ -80,6 +76,12 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
     List<Fragment> mFragmentList;
     List<String> mFragmentTitleList;
     CoinVo mVo;
+    @BindView(R.id.private_price)
+    TextView privatePrice;
+    @BindView(R.id.pre_ico_price)
+    TextView preIcoPrice;
+    @BindView(R.id.pager_container)
+    FrameLayout pagerContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,18 +102,20 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
     }
 
     private void initView() {
-        if(mVo != null){
+        if (mVo != null) {
             price.setText(mVo.getPriceConvert());
             forCoin.setText(mVo.getForCoin());
             softCap.setText(mVo.getSoftcap());
             hardCap.setText(mVo.getHardcap());
             roi.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getRoni()));
-            marketValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getMarketValue()));
+            marketValue.setText(mVo.getIcoMarketValue());
+            privatePrice.setText(mVo.getPrivatePrice());
+            preIcoPrice.setText(mVo.getPreIcoPrice());
             SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日:HH:mm:ss");
-            startTime.setText(mVo.getIcoTime() != null ? format.format(new Date(mVo.getIcoTime().getTime())):"");
-            endTime.setText(mVo.getIcoEndTime() != null ? format.format(new Date(mVo.getIcoEndTime().getTime())):"");
+            startTime.setText(mVo.getIcoTime() != null ? format.format(new Date(mVo.getIcoTime().getTime())) : "");
+            endTime.setText(mVo.getIcoEndTime() != null ? format.format(new Date(mVo.getIcoEndTime().getTime())) : "");
             //0:空投   1:新上  2:即将ico  3:正在ico  4:ico结束 5：币市
-            switch (mVo.getType()){
+            switch (mVo.getType()) {
                 case 0:
                     status.setText("空投");
                     break;
@@ -134,7 +138,7 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
         }
     }
 
-    public void initViewPager(){
+    public void initViewPager() {
         mFragmentList = new ArrayList<>();
         mFragmentTitleList = new ArrayList<>();
         mFragmentList.add(CoinDetailIntroFragment.newInstance(mVo));
@@ -149,7 +153,7 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
         mFragmentTitleList.add(ReportFragment.TITLE);
         mFragmentTitleList.add(CoinDetailNewsFragment.TITLE);
         mFragmentTitleList.add(CoinDetailEnterpriseExposeFragment.TITLE);
-        mAdapter = new CommonFragmentAdapter(getSupportFragmentManager(), mFragmentList,mFragmentTitleList);
+        mAdapter = new CommonFragmentAdapter(getSupportFragmentManager(), mFragmentList, mFragmentTitleList);
         viewpager.setAdapter(mAdapter);
         tabLayout.setCustomTabView(R.layout.smartlayout_text_simple, R.id.custom_text);
 //        tabLayout.setCustomTabView(new SmartTabLayout.TabProvider() {
@@ -200,10 +204,10 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
 
             @Override
             public void onPageSelected(int position) {
-                LinearLayout titleRoot = ((LinearLayout)tabLayout.getChildAt(0));
-                Log.e("onPageChange","childCount=" + tabLayout.getChildCount() + " child.child.count=" + titleRoot.getChildCount());
-                for(int i=0; i<titleRoot.getChildCount(); i++){
-                    TextView tv = (TextView)titleRoot.getChildAt(i);
+                LinearLayout titleRoot = ((LinearLayout) tabLayout.getChildAt(0));
+                Log.e("onPageChange", "childCount=" + tabLayout.getChildCount() + " child.child.count=" + titleRoot.getChildCount());
+                for (int i = 0; i < titleRoot.getChildCount(); i++) {
+                    TextView tv = (TextView) titleRoot.getChildAt(i);
                     tv.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
                 }
                 TextView chooseTv = (TextView) titleRoot.getChildAt(position);
@@ -220,9 +224,10 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
 
 
     CustomPopupWindow popupWindow = null;
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.top_bar_left_layout:
                 //返回
                 finish();
@@ -240,7 +245,11 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
                                     break;
                                 case R.id.vote_layout:
                                     popupWindow.dismiss();
-                                    VoteStep1ListActivity.toActivity(IcoCoinsDetailActivity.this,0);
+//                                    VoteStep1ListActivity.toActivity(IcoCoinsDetailActivity.this,0);
+                                    VoteStep2Activity.toActivity(IcoCoinsDetailActivity.this);
+                                    break;
+                                case R.id.root_view:
+                                    popupWindow.dismiss();
                                     break;
                             }
                         }
@@ -252,9 +261,9 @@ public class IcoCoinsDetailActivity extends BaseActivity implements View.OnClick
         }
     }
 
-    public static void toActivity(Context context,CoinVo vo){
+    public static void toActivity(Context context, CoinVo vo) {
         Intent it = new Intent(context, IcoCoinsDetailActivity.class);
-        it.putExtra("coinVo",vo);
+        it.putExtra("coinVo", vo);
         context.startActivity(it);
     }
 }

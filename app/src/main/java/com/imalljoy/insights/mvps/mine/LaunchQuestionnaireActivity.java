@@ -62,7 +62,7 @@ public class LaunchQuestionnaireActivity extends BaseActivity implements View.On
         recyclerview.setLayoutManager(linearManager);
         recyclerview.addItemDecoration(divider);
         listData = getData();
-        recyclerview.setAdapter(new EnterpriseAdapter(this, listData, 1, 0));
+        recyclerview.setAdapter(new EnterpriseAdapter(this, ConstantData.questionnaireVos, 1, 0));
 
     }
 

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.entity.QuestionnaireVo;
+import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class EnterpriseAdapter extends RecyclerView.Adapter<EnterpriseAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         QuestionnaireVo vo = listData.get(position);
-        Glide.with(mContext).load(vo.getUserVo().getHeadPic()).into(holder.headPic);
+        Glide.with(mContext).load(CommonUtils.getHeadCoverFromString(vo.getUserVo().getHeadPic())).into(holder.headPic);
         holder.name.setText(vo.getName());
         holder.intro.setText(vo.getContent());
         holder.reward.setText("INB: " + vo.getReward() + "");

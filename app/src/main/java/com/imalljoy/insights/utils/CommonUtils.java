@@ -99,7 +99,7 @@ public class CommonUtils {
     /***
      * //格式化数字，用逗号分割
      * @param number 12345678.12345
-     * @return 123,456,78.12345
+     * @return 123, 456, 78.12345
      */
     public static String formatNumberWithCommaSplit(double number) {
         NumberFormat numberFormat = NumberFormat.getInstance();
@@ -107,10 +107,11 @@ public class CommonUtils {
         return numberFormat.format(number);
 
     }
+
     /***
      * //格式化数字，用逗号分割
      * @param number 12345678.12345
-     * @return 123,456,78.12345
+     * @return 123, 456, 78.12345
      */
     public static String formatNumberWithCommaSplit(float number) {
         NumberFormat numberFormat = NumberFormat.getInstance();
@@ -118,40 +119,92 @@ public class CommonUtils {
         return numberFormat.format(number);
 
     }
-    public static int getLogoIdFromString(String iconName){
-        if("ABYSS.png".equals(iconName)){
+
+    public static int getLogoIdFromString(String iconName) {
+        if ("ABYSS.png".equals(iconName)) {
             return R.mipmap.abyss;
-        }else if("ACT.png".equals(iconName)){
+        } else if ("ACT.png".equals(iconName)) {
             return R.mipmap.act;
-        }else if("ADA.png".equals(iconName)){
+        } else if ("ADA.png".equals(iconName)) {
             return R.mipmap.ada;
-        }else if("BTC.png".equals(iconName)){
+        } else if ("BTC.png".equals(iconName)) {
             return R.mipmap.btc;
-        }else if("CMT.png".equals(iconName)){
+        } else if ("CMT.png".equals(iconName)) {
             return R.mipmap.cmt;
-        }else if("ECOM.png".equals(iconName)){
+        } else if ("ECOM.png".equals(iconName)) {
             return R.mipmap.ecom;
-        }else if("ELI.png".equals(iconName)){
+        } else if ("ELI.png".equals(iconName)) {
             return R.mipmap.eli;
-        }else if("EOS.png".equals(iconName)){
+        } else if ("EOS.png".equals(iconName)) {
             return R.mipmap.eos;
-        }else if("ETH.png".equals(iconName)){
+        } else if ("ETH.png".equals(iconName)) {
             return R.mipmap.eth;
-        }else if("FC.png".equals(iconName)){
+        } else if ("FC.png".equals(iconName)) {
             return R.mipmap.fc;
-        }else if("GES.png".equals(iconName)){
+        } else if ("GES.png".equals(iconName)) {
             return R.mipmap.ges;
-        }else if("LTC.png".equals(iconName)){
+        } else if ("LTC.png".equals(iconName)) {
             return R.mipmap.ltc;
-        }else if("SWTC.png".equals(iconName)){
+        } else if ("SWTC.png".equals(iconName)) {
             return R.mipmap.swtc;
-        }else if("TBD.png".equals(iconName)){
+        } else if ("TBD.png".equals(iconName)) {
             return R.mipmap.tbd;
-        }else if("UGC.png".equals(iconName)){
+        } else if ("UGC.png".equals(iconName)) {
             return R.mipmap.ugc;
-        }else if("XRP.png".equals(iconName)){
+        } else if ("XRP.png".equals(iconName)) {
             return R.mipmap.xrp;
+        } else if("erc".equals(iconName)){
+            return R.mipmap.erc;
+        } else if("snrg".equals(iconName)){
+            return R.mipmap.snrg;
+        } else if("fdz".equals(iconName)){
+            return R.mipmap.fdz;
+        } else if("vib".equals(iconName)){
+            return R.mipmap.vib;
         }
         return R.mipmap.dog_logo;
+    }
+
+    public static int getNewCoverFromString(String cover) {
+        if ("new_cover1".equals(cover)) {
+            return R.mipmap.new_cover1;
+        } else if ("new_cover2".equals(cover)) {
+            return R.mipmap.new_cover2;
+        } else if ("new_cover3".equals(cover)) {
+            return R.mipmap.new_cover3;
+        } else if ("new_cover4".equals(cover)) {
+            return R.mipmap.new_cover4;
+        } else if ("new_cover5".equals(cover)) {
+            return R.mipmap.new_cover5;
+        } else if ("new_cover6".equals(cover)) {
+            return R.mipmap.new_cover6;
+        } else if ("new_cover7".equals(cover)) {
+            return R.mipmap.new_cover7;
+        }
+        return R.mipmap.default_news_cover;
+    }
+    public static int getHeadCoverFromString(String cover) {
+        if ("head1".equals(cover)) {
+            return R.mipmap.head1;
+        } else if ("head2".equals(cover)) {
+            return R.mipmap.head2;
+        } else if ("head3".equals(cover)) {
+            return R.mipmap.head3;
+        } else if ("head4".equals(cover)) {
+            return R.mipmap.head4;
+        } else if ("head5".equals(cover)) {
+            return R.mipmap.head5;
+        } else if ("head6".equals(cover)) {
+            return R.mipmap.head6;
+        } else if ("head7".equals(cover)) {
+            return R.mipmap.head7;
+        } else if ("head8".equals(cover)) {
+            return R.mipmap.head8;
+        } else if ("head9".equals(cover)) {
+            return R.mipmap.head9;
+        }else if ("head10".equals(cover)) {
+            return R.mipmap.head10;
+        }
+        return R.mipmap.default_head;
     }
 }

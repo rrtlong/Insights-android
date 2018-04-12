@@ -3,10 +3,12 @@ package com.imalljoy.insights.mvps.research;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -28,6 +30,7 @@ import com.imalljoy.insights.mvps.EditType2Activity;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 import com.imalljoy.insights.utils.ScreenUtils;
+import com.imalljoy.insights.widgets.CustomPopupWindow;
 import com.imalljoy.insights.widgets.TopBarCommon;
 
 import org.greenrobot.eventbus.EventBus;
@@ -44,10 +47,14 @@ import butterknife.ButterKnife;
  */
 
 public class BuildRequestActivity extends BaseActivity implements View.OnClickListener {
+    @BindView(R.id.root_view)
+    RelativeLayout mRootView;
     @BindView(R.id.top_bar)
     TopBarCommon mTopBar;
     @BindView(R.id.enterprise_layout)
     RelativeLayout mEnterpriseLayout;
+    @BindView(R.id.enterprise_name)
+    TextView enterpriseName;
     @BindView(R.id.coin_name_layout)
     LinearLayout mCoinNameLayout;
     @BindView(R.id.coin_logo)
@@ -152,7 +159,9 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
         disableEdit();
         if (mVo != null) {
             mTopBar.top_bar_title_text.setText(mVo.getName()+"");
+            enterpriseName.setText(mVo.getEnterpriseName());
             mCoinName.setText(mVo.getCoin() == null ? "比特币" : mVo.getCoin().getName());
+            Glide.with(this).load(CommonUtils.getLogoIdFromString(mVo.getCoin().getLogoUrl())).error(R.mipmap.dog_logo).into(mCoinLogo);
             mRequireName.setText(mVo.getName());
             mReward.setText(mVo.getReward() + "");
             mStartTime.setText(DateUtils.dateToString(new Date(mVo.getStartTime().getTime()), "yyyy-MM-dd :HH:mm"));
@@ -276,11 +285,38 @@ public class BuildRequestActivity extends BaseActivity implements View.OnClickLi
                 if (mVo == null) {
                     mVo = new RequestVo();
                 }
-                BuildCoinInfoActivity.toActivityForResult(this, mVo.getCoin(), mStatus, 0);
+                if(mStatus ==0){
+                    //选择要调查的币
+                    if(selectPopup == null){
+                        selectPopup = new CustomPopupWindow();
+                    }
+                    selectPopup.createCoinSelectedPopup(this, ConstantData.currencyCoinVos, new SelectCoinAdapter.OnCustomClickListener() {
+                        @Override
+                        public void onCustomClick(View view, int position) {
+                            CoinVo coinVo = ConstantData.currencyCoinVos.get(position);
+                            Glide.with(BuildRequestActivity.this).load(CommonUtils.getLogoIdFromString(coinVo.getLogoUrl())).error(R.mipmap.dog_logo).into(mCoinLogo);
+                            mCoinName.setText(coinVo.getName());
+                            mVo.setCoin(coinVo);
+                            selectPopup.dismiss();
+                        }
+                    }, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            selectPopup.dismiss();
+                        }
+                    });
+                    if(!selectPopup.isShowing()){
+                        Log.e("pop","show");
+                        selectPopup.showAtLocation(mRootView, Gravity.CENTER,0,0);
+                    }
+                }else{
+                    //查看币信息
+                    BuildCoinInfoActivity.toActivityForResult(this, mVo.getCoin(), mStatus, 0);
+                }
                 break;
         }
     }
-
+CustomPopupWindow selectPopup;
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

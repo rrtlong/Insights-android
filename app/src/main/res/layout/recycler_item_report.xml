@@ -90,6 +90,8 @@
             android:text="名称"
             android:textColor="#333333"
             android:textSize="11sp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textStyle="bold" />
 
         <TextView

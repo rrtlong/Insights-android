@@ -61,7 +61,7 @@ public class AcceptQuestionnaireActivity extends BaseActivity implements View.On
         recyclerview.addItemDecoration(divider);
         listData = getData();
         //展示已答问卷列表，点进去直接显示答题结果
-        recyclerview.setAdapter(new EnterpriseAdapter(this, listData,0,1));
+        recyclerview.setAdapter(new EnterpriseAdapter(this, ConstantData.questionnaireVos,0,1));
     }
 
     @Override

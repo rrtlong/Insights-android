@@ -5,12 +5,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseRecyclerAdapter;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.UserVo;
+import com.imalljoy.insights.utils.CommonUtils;
 
 import java.util.List;
 
@@ -21,10 +25,10 @@ import butterknife.ButterKnife;
  * Created by lijilong on 03/30.
  */
 
-public class CoinDetailTeamAdapter extends BaseRecyclerAdapter<CoinVo, CoinDetailTeamAdapter.TeamHolder> {
+public class CoinDetailTeamAdapter extends BaseRecyclerAdapter<UserVo, CoinDetailTeamAdapter.TeamHolder> {
 
 
-    public CoinDetailTeamAdapter(Context context, List<CoinVo> list, int type) {
+    public CoinDetailTeamAdapter(Context context, List<UserVo> list, int type) {
         super(context, list, type);
     }
 
@@ -45,6 +49,10 @@ public class CoinDetailTeamAdapter extends BaseRecyclerAdapter<CoinVo, CoinDetai
 //                }
 //            });
 //        }
+        UserVo vo = listData.get(position);
+        holder.name.setText(vo.getName());
+        Glide.with(context).load(CommonUtils.getHeadCoverFromString(vo.getHeadPic())).error(R.mipmap.default_head).into(holder.cover);
+        holder.professional.setText(vo.getExtraInfo());
         holder.rootView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -59,6 +67,8 @@ public class CoinDetailTeamAdapter extends BaseRecyclerAdapter<CoinVo, CoinDetai
         LinearLayout rootView;
         @BindView(R.id.name)
         TextView name;
+        @BindView(R.id.cover)
+        ImageView cover;
         @BindView(R.id.professional)
         TextView professional;
 

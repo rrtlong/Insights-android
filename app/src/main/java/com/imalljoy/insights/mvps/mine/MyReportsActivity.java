@@ -63,7 +63,7 @@ public class MyReportsActivity extends BaseActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         listData = getData();
-        mAdapter = new ReportRecyclerAdapter(this, listData);
+        mAdapter = new ReportRecyclerAdapter(this, ConstantData.reportVos);
         recyclerview.setAdapter(mAdapter);
     }
 

@@ -66,18 +66,18 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/range"
+                    android:id="@+id/range_value"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="+678.41"
+                    android:text="+2223%"
                     android:textColor="@color/c_5ab67d"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/range_value"
+                    android:id="@+id/range"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+8.163%"

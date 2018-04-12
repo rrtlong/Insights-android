@@ -52,7 +52,33 @@ public class CoinVo implements Serializable {
     private float turnover;//流通量
     private String softcap;
     private String hardcap;
+    private String privatePrice;//私募价格
+    private String preIcoPrice;//私募价格
+    private String icoMarketValue;//私募价格
 
+    public String getIcoMarketValue() {
+        return icoMarketValue;
+    }
+
+    public void setIcoMarketValue(String icoMarketValue) {
+        this.icoMarketValue = icoMarketValue;
+    }
+
+    public String getPreIcoPrice() {
+        return preIcoPrice;
+    }
+
+    public void setPreIcoPrice(String preIcoPrice) {
+        this.preIcoPrice = preIcoPrice;
+    }
+
+    public String getPrivatePrice() {
+        return privatePrice;
+    }
+
+    public void setPrivatePrice(String privatePrice) {
+        this.privatePrice = privatePrice;
+    }
 
     public long getId() {
         return id;

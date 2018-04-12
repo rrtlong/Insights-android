@@ -58,7 +58,7 @@ public class LaunchResearchActivity extends BaseActivity implements View.OnClick
         recyclerview.setLayoutManager(linearManager);
         recyclerview.addItemDecoration(divider);
         listData = getData();
-        recyclerview.setAdapter(new RequireRecyclerAdapter(this, listData));
+        recyclerview.setAdapter(new RequireRecyclerAdapter(this, ConstantData.requestVos));
 
     }
 

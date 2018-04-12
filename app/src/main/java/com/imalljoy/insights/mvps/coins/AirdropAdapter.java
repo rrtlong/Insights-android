@@ -62,12 +62,13 @@ public class AirdropAdapter extends BaseRecyclerAdapter<CoinVo, AirdropAdapter.A
 //            holder.price.setText(String.valueOf(vo.getPrice()));
 //        }
         holder.status.setText("正在进行中");
-        holder.price.setText(CommonUtils.formatNumberWithCommaSplit(vo.getPrice()));
+        holder.price.setText("￥"+ CommonUtils.formatNumberWithCommaSplit(vo.getPrice()));
         holder.num.setText(vo.getAirDropNum() + "个");
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IcoCoinsDetailActivity.toActivity(context, listData.get(position));
+                //IcoCoinsDetailActivity.toActivity(context, listData.get(position));
+                AirDropCoinsDetailActivity.toActivity(context,listData.get(position));
             }
         });
     }

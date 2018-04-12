@@ -17,9 +17,12 @@ import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.base.WebViewActivity;
+import com.imalljoy.insights.data.http.FileDownloadManager;
 import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.ObservableScrollView;
+
+import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -117,10 +120,22 @@ public class CoinDetailIntroFragment extends BaseFragment implements View.OnClic
         if (mVo != null) {
             name.setText(mVo.getName());
             Glide.with(this).load(CommonUtils.getLogoIdFromString(mVo.getLogoUrl())).error(R.mipmap.dog_logo).into(logo);
+            onlineExchange.setText(mVo.getOnlineExchange());
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
+            if(mVo.getIcoTime() != null){
+                icoTime.setText(sf.format(mVo.getIcoTime()));
+            }
+            if(mVo.getOnlineExchangeTime() != null){
+                onlineExchangeTime.setText(sf.format(mVo.getOnlineExchangeTime()));
+            }
+
+            location.setText(mVo.getLocation());
             website.setText(mVo.getWebsiteUrl());
             location.setText(mVo.getLocation());
             telegraphGroup.setText(mVo.getTelegraphGroup() ==null? "":mVo.getTelegraphGroup() + "人");
             twitterFans.setText(mVo.getTwitterFans() == null ? "":mVo.getTwitterFans() + "人");
+            intro.setText(mVo.getIntro());
+            title.setText(mVo.getName());
         }
     }
 
@@ -152,6 +167,8 @@ public class CoinDetailIntroFragment extends BaseFragment implements View.OnClic
                 WebViewActivity.toActivity(getContext(), "白皮书", mVo != null ? mVo.getWhiteBookUrl() : "http://7xqn4j.com1.z0.glb.clouddn.com/Engine%20V2.2.3%20-%20Chinese%20Version.pdf");
                 break;
             case R.id.block_station_layout:
+                WebViewActivity.toActivity(getContext(),"区块站", mVo != null? mVo.getBlockStationUrl(): null);
+//                FileDownloadManager.startDownloadFile("http://7xqn4j.com1.z0.glb.clouddn.com/Engine%20V2.2.3%20-%20Chinese%20Version.pdf");
                 break;
             case R.id.telegraph_group_layout:
                 WebViewActivity.toActivity(getContext(), "电报", mVo != null ? mVo.getTelegraphGroupUrl() : "https://t.me/joinchat/IEbn1knC_iMb2cX16Dut3A");

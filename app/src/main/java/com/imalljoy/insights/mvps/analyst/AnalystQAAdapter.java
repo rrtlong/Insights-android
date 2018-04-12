@@ -10,9 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseRecyclerAdapter;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.QaVo;
+import com.imalljoy.insights.utils.CommonUtils;
 
 import java.util.List;
 
@@ -23,10 +26,10 @@ import butterknife.ButterKnife;
  * Created by lijilong on 04/08.
  */
 
-public class AnalystQAAdapter extends BaseRecyclerAdapter<CoinVo, AnalystQAAdapter.AnalystQAHolder> {
+public class AnalystQAAdapter extends BaseRecyclerAdapter<QaVo, AnalystQAAdapter.AnalystQAHolder> {
 
 
-    public AnalystQAAdapter(Context context, List<CoinVo> list, int type) {
+    public AnalystQAAdapter(Context context, List<QaVo> list, int type) {
         super(context, list, type);
     }
 
@@ -39,12 +42,20 @@ public class AnalystQAAdapter extends BaseRecyclerAdapter<CoinVo, AnalystQAAdapt
     @Override
     public void onBindViewHolder(AnalystQAHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        if(position%2==0){
+        QaVo vo = listData.get(position);
+        Glide.with(context).load(CommonUtils.getHeadCoverFromString(vo.getLaunchUser().getHeadPic())).error(R.mipmap.default_head).into(holder.cover);
+        holder.name.setText(vo.getLaunchUser().getName());
+        holder.publishTime.setText(vo.getPublishTime());
+        holder.question.setText(vo.getqContent());
+
+        if(!vo.isAnser()){
             holder.noAnswerLayout.setVisibility(View.VISIBLE);
             holder.answeredLayout.setVisibility(View.GONE);
         }else{
             holder.noAnswerLayout.setVisibility(View.GONE);
             holder.answeredLayout.setVisibility(View.VISIBLE);
+            holder.replyName.setText(vo.getReplyName()+":");
+            holder.replyContent.setText(vo.getReplyContent());
         }
     }
 

@@ -68,7 +68,7 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
         }else{
             Glide.with(mContext).load(R.mipmap.dog_logo).error(R.mipmap.dog_logo).into(holder.headPic);
         }
-        holder.name.setText(vo.getName());
+        holder.name.setText(vo.getName() == null? "我的报告":vo.getName());
         holder.content.setText(vo.getContent());
         if(vo.getPublishTime() != null){
             holder.publishTime.setText(DateUtils.dateToString(new Date(vo.getPublishTime().getTime()), "yyyy年MM月dd日 HH:mm"));
@@ -76,23 +76,23 @@ public class ReportRecyclerAdapter extends RecyclerView.Adapter<ReportRecyclerAd
             holder.publishTime.setText("1970年1月1日");
         }
         holder.reward.setText("INB: " + vo.getCost() + "");
-        if (vo.getGrade() == 0) {
+        if (vo.getEvalLevel() == 0) {
 
-        } else if (vo.getGrade() <= 20) {
+        } else if (vo.getEvalLevel() == 1) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getGrade() <= 40) {
+        } else if (vo.getEvalLevel() ==2) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getGrade() <= 60) {
+        } else if (vo.getEvalLevel() ==3) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
             holder.star3.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getGrade() <= 80) {
+        } else if (vo.getEvalLevel() ==4) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
             holder.star3.setImageResource(R.mipmap.icon_star_yes);
             holder.star4.setImageResource(R.mipmap.icon_star_yes);
-        } else if (vo.getGrade() <= 100) {
+        } else if (vo.getEvalLevel() ==5) {
             holder.star1.setImageResource(R.mipmap.icon_star_yes);
             holder.star2.setImageResource(R.mipmap.icon_star_yes);
             holder.star3.setImageResource(R.mipmap.icon_star_yes);

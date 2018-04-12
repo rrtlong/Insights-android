@@ -35,7 +35,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="right|center_vertical"
-            android:text="INB数量"
+            android:text="30000INB"
             android:textColor="@color/text_short_name"
             android:textSize="11sp" />
 

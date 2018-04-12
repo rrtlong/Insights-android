@@ -10,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseRecyclerAdapter;
 import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.entity.UserVo;
+import com.imalljoy.insights.utils.CommonUtils;
 
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class AnalystRankAdapter extends BaseRecyclerAdapter<UserVo, AnalystRankA
     public void onBindViewHolder(AnalystRankHolder holder, int position, List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
         final UserVo vo = listData.get(position);
+        Glide.with(context).load(CommonUtils.getHeadCoverFromString(vo.getHeadPic())).error(R.mipmap.default_head).into(holder.cover);
         holder.name.setText(vo.getName());
         holder.sex.setText(vo.getGender() ==0?"男":"女");
         if(vo.getAnalytsLevel() ==1){

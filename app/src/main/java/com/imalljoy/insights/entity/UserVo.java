@@ -27,6 +27,7 @@ public class UserVo implements Serializable{
     private List<QuestionnaireVo> acceptQuestionnaires;        //参与过的调查问卷
     private int analytsLevel;//分析师级别1，2，3级
     private int analytsStars;//分析师星星
+    private String extraInfo;//存放额外信息;如团队中成员专业
 
     /**
      *
@@ -152,6 +153,8 @@ public class UserVo implements Serializable{
     }
 
     public List<QuestionnaireVo> getAcceptQuestionnaires() {
+        if(acceptQuestionnaires == null)
+            acceptQuestionnaires = new ArrayList<>();
         return acceptQuestionnaires;
     }
 
@@ -184,5 +187,13 @@ public class UserVo implements Serializable{
 
     public void setAnalytsStars(int analytsStars) {
         this.analytsStars = analytsStars;
+    }
+
+    public String getExtraInfo() {
+        return extraInfo;
+    }
+
+    public void setExtraInfo(String extraInfo) {
+        this.extraInfo = extraInfo;
     }
 }

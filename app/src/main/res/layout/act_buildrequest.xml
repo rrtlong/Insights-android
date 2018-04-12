@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/f1f1f1"
-        android:orientation="vertical"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:background="@color/f1f1f1"
+        android:orientation="vertical">
 
         <com.imalljoy.insights.widgets.TopBarCommon
             android:id="@+id/top_bar"
@@ -75,8 +75,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
                     android:background="@color/white"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingLeft="14dp"
                     android:paddingRight="14dp">
 
@@ -106,6 +106,7 @@
                         android:layout_height="16dp"
                         android:layout_marginLeft="10dp"
                         android:src="@mipmap/dog_logo" />
+
                     <ImageView
                         android:id="@+id/coin_more"
                         android:layout_width="wrap_content"
@@ -123,11 +124,11 @@
                     android:id="@+id/require_name_layout"
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
-                    android:gravity="center_vertical"
                     android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingLeft="14dp"
-                    android:paddingRight="14dp"
-                    android:orientation="horizontal">
+                    android:paddingRight="14dp">
 
                     <TextView
                         android:id="@+id/require_name_text"
@@ -142,11 +143,11 @@
                     <TextView
                         android:id="@+id/require_name"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@null"
                         android:gravity="center_vertical|right"
-                        android:text="投资喜好调查"
+                        android:text="engine数币分析报告"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
 
@@ -167,11 +168,11 @@
                     android:id="@+id/reward_layout"
                     android:layout_width="match_parent"
                     android:layout_height="43dp"
-                    android:gravity="center_vertical"
                     android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingLeft="14dp"
-                    android:paddingRight="14dp"
-                    android:orientation="horizontal">
+                    android:paddingRight="14dp">
 
                     <TextView
                         android:id="@+id/reward_text"
@@ -186,8 +187,8 @@
                     <TextView
                         android:id="@+id/reward"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@null"
                         android:gravity="center_vertical|right"
                         android:text="100"
@@ -317,6 +318,7 @@
                         android:gravity="left|top"
                         android:hint="请输入要求!"
                         android:minHeight="267dp"
+                        android:text="请求关于Engine Tele公司的数币engine的分析报告"
                         android:textColor="#7b7b7b"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -333,7 +335,5 @@
         android:text="接受请求"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:textStyle="bold">
-
-    </Button>
+        android:textStyle="bold"></Button>
 </RelativeLayout>

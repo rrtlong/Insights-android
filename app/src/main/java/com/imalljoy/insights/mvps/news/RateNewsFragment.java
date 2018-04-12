@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseFragment;
 import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.NewRateVo;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsAdapter;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,18 +69,26 @@ public class RateNewsFragment extends BaseFragment {
     }
 
 
-    public List<CoinVo> getListData() {
-        List<CoinVo> vos = new ArrayList<>();
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
-        vos.add(new CoinVo());
+    public List<NewRateVo> getListData() {
+        List<NewRateVo> vos = new ArrayList<>();
+        NewRateVo vo = new NewRateVo();
+        vo.setName("李显东");
+        vo.setCover("head1");
+        vo.setTitle("项目评测丨深脑链（DBC）评级");
+        vo.setPublishTime(new Timestamp(1520092800000l));//2018-3-4
+        vos.add(vo);
+        vo = new NewRateVo();
+        vo.setName("陈斯利");
+        vo.setCover("head2");
+        vo.setTitle("项目评测丨SHIVOM - 全球区块链 评级");
+        vo.setPublishTime(new Timestamp(1522598400000l));//2018-04-02
+        vos.add(vo);
+        vo = new NewRateVo();
+        vo.setName("链世界");
+        vo.setCover("head3");
+        vo.setTitle("项目评测丨Mira项目 评级");
+        vo.setPublishTime(new Timestamp(1522598400000l));//2018-04-02
+        vos.add(vo);
         return vos;
     }
 

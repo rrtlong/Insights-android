@@ -27,6 +27,7 @@ import com.imalljoy.insights.entity.PersonasVo;
 import com.imalljoy.insights.entity.QuestionnaireVo;
 import com.imalljoy.insights.entity.UserVo;
 import com.imalljoy.insights.mvps.EditType2Activity;
+import com.imalljoy.insights.mvps.analyst.AnalystInfoActivity;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.utils.DateUtils;
 import com.imalljoy.insights.widgets.TopBarCommon;
@@ -123,7 +124,7 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
         CommonUtils.tryShowStatusBar(this, R.color.colorPrimary);
         mStatus = getIntent().getIntExtra("status", 0);
         mVo = (QuestionnaireVo) getIntent().getSerializableExtra("questionnaireVo");
-        mType = getIntent().getIntExtra("type",-1);
+        mType = getIntent().getIntExtra("type", -1);
 
         topBar.top_bar_left_layout.setVisibility(View.VISIBLE);
         topBar.top_bar_left_layout.setOnClickListener(this);
@@ -167,6 +168,7 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             ageLayout.setVisibility(View.GONE);
             locationLayout.setVisibility(View.GONE);
             analystLayout.setVisibility(View.VISIBLE);
+            analystLayout.setOnClickListener(this);
             finishNumberLayout.setVisibility(View.VISIBLE);
             btnProcess.setVisibility(View.VISIBLE);
             topBar.top_bar_right_layout.setOnClickListener(null);
@@ -187,6 +189,7 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             ageLayout.setVisibility(View.GONE);
             locationLayout.setVisibility(View.GONE);
             analystLayout.setVisibility(View.VISIBLE);
+            analystLayout.setOnClickListener(this);
             finishNumberLayout.setVisibility(View.VISIBLE);
             btnProcess.setVisibility(View.VISIBLE);
             topBar.top_bar_right_layout.setOnClickListener(null);
@@ -196,10 +199,10 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
 
         }
         if (mStatus != 0) {
-            if(mVo.getUserVo() != null){
+            if (mVo.getUserVo() != null) {
                 UserVo userVo = mVo.getUserVo();
                 analyst.setText(userVo.getName());
-                Glide.with(this).load(userVo.getHeadPic()).into(analystImg);
+                Glide.with(this).load(CommonUtils.getHeadCoverFromString(userVo.getHeadPic())).error(R.mipmap.default_head).into(analystImg);
             }
 
             name.setText(mVo.getName());
@@ -208,7 +211,7 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             totalNumber.setEnabled(false);
             reward.setText(mVo.getReward() + "");
             reward.setEnabled(false);
-            questions.setText(mVo.getQuestions() == null ? "12个" : mVo.getQuestions().size() + "个");
+            questions.setText(mVo.getQuestions() == null ? "0个" : mVo.getQuestions().size() + "个");
             gender.setText(mVo.getPersonas() == null ? "未设置" : mVo.getPersonas().getGender() == 0 ? "男" : "女");
             age.setText(mVo.getPersonas() == null ? "未设置" : mVo.getPersonas().getAge() + "");
             location.setText(mVo.getPersonas() == null ? "未设置" : mVo.getPersonas().getArea() + "");
@@ -238,20 +241,23 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             case R.id.top_bar_right_layout:
                 save();
                 break;
+            case R.id.analyst_layout:
+                AnalystInfoActivity.toActivity(this, mVo.getUserVo());
+                break;
             case R.id.name_layout:
-                EditType2Activity.toActivityForResult(this, "名称", mVo.getName(),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_NAME_CODE);
+                EditType2Activity.toActivityForResult(this, "名称", mVo.getName(), ConstantData.buildQuestionnaireRequestCode, EditType2Activity.BUILD_QUESTIONNAIRE_NAME_CODE);
                 break;
             case R.id.total_number_layout:
-                EditType2Activity.toActivityForResult(this, "总份数", String.valueOf(mVo.getTotalNumber()),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_TOTALNUM_CODE);
+                EditType2Activity.toActivityForResult(this, "总份数", String.valueOf(mVo.getTotalNumber()), ConstantData.buildQuestionnaireRequestCode, EditType2Activity.BUILD_QUESTIONNAIRE_TOTALNUM_CODE);
                 break;
             case R.id.reward_layout:
-                EditType2Activity.toActivityForResult(this, "奖励", String.valueOf(mVo.getReward()),ConstantData.buildQuestionnaireRequestCode, EditType2Activity.BUILD_QUESTIONNAIRE_REWARD_CODE);
+                EditType2Activity.toActivityForResult(this, "奖励", String.valueOf(mVo.getReward()), ConstantData.buildQuestionnaireRequestCode, EditType2Activity.BUILD_QUESTIONNAIRE_REWARD_CODE);
                 break;
             case R.id.age_layout:
-                EditType2Activity.toActivityForResult(this, "年纪", String.valueOf(mVo.getPersonas().getAge()),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_AGE_CODE);
+                EditType2Activity.toActivityForResult(this, "年纪", String.valueOf(mVo.getPersonas().getAge()), ConstantData.buildQuestionnaireRequestCode, EditType2Activity.BUILD_QUESTIONNAIRE_AGE_CODE);
                 break;
             case R.id.location_layout:
-                EditType2Activity.toActivityForResult(this, "地域", String.valueOf(mVo.getPersonas().getArea()),ConstantData.buildQuestionnaireRequestCode,EditType2Activity.BUILD_QUESTIONNAIRE_LOCATION_CODE);
+                EditType2Activity.toActivityForResult(this, "地域", String.valueOf(mVo.getPersonas().getArea()), ConstantData.buildQuestionnaireRequestCode, EditType2Activity.BUILD_QUESTIONNAIRE_LOCATION_CODE);
                 break;
             case R.id.start_time_layout:
                 showTimePickerView(true);
@@ -260,12 +266,12 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
                 showTimePickerView(false);
                 break;
             case R.id.questions_layout:
-                BuildQuestionActivity.toActivity(this,mStatus);
+                BuildQuestionActivity.toActivity(this, mStatus, mVo);
                 break;
             case R.id.btn_process:
                 //参与调查
                 if (mStatus == 1) {
-                    BuildQuestionActivity.toActivityForResult(this, mStatus,0, ConstantData.buildQuestionnaireRequestCode);
+                    BuildQuestionActivity.toActivityForResult(this, mStatus, 0, ConstantData.buildQuestionnaireRequestCode, mVo);
                 }
                 break;
         }
@@ -348,50 +354,50 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == ConstantData.buildQuestionnaireRequestCode && mStatus ==0 && data != null){
+        if (requestCode == ConstantData.buildQuestionnaireRequestCode && mStatus == 0 && data != null) {
             String value = data.getStringExtra("value");
             int valueInt = 0;
             double valueDouble = 0.0;
             boolean right = true;
-            if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_NAME_CODE){
+            if (resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_NAME_CODE) {
                 mVo.setName(value);
-                name.setText(value+"");
-            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_TOTALNUM_CODE){
-                try{
+                name.setText(value + "");
+            } else if (resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_TOTALNUM_CODE) {
+                try {
                     valueInt = Integer.parseInt(value);
-                }catch(Exception e){
+                } catch (Exception e) {
                     right = false;
                 }
-                if(right){
+                if (right) {
                     mVo.setTotalNumber(valueInt);
-                    totalNumber.setText(mVo.getTotalNumber()+"");
+                    totalNumber.setText(mVo.getTotalNumber() + "");
                 }
-            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_REWARD_CODE){
-                try{
+            } else if (resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_REWARD_CODE) {
+                try {
                     valueDouble = Double.parseDouble(value);
-                }catch(Exception e){
+                } catch (Exception e) {
                     right = false;
                 }
-                if(right){
+                if (right) {
                     mVo.setReward(valueDouble);
-                    reward.setText(mVo.getReward()+"");
+                    reward.setText(mVo.getReward() + "");
                 }
 
-            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_AGE_CODE){
-                try{
+            } else if (resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_AGE_CODE) {
+                try {
                     valueInt = Integer.parseInt(value);
-                }catch(Exception e){
+                } catch (Exception e) {
                     right = false;
                 }
-                if(right){
+                if (right) {
                     mVo.getPersonas().setAge(valueInt);
-                    age.setText(mVo.getPersonas().getAge()+"");
+                    age.setText(mVo.getPersonas().getAge() + "");
                 }
-            }else if(resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_LOCATION_CODE){
+            } else if (resultCode == EditType2Activity.BUILD_QUESTIONNAIRE_LOCATION_CODE) {
                 mVo.getPersonas().setArea(value);
                 location.setText(value);
             }
-        }else if (requestCode == ConstantData.buildQuestionnaireRequestCode && resultCode == BuildQuestionActivity.ANSWER_QUESTION){
+        } else if (requestCode == ConstantData.buildQuestionnaireRequestCode && resultCode == BuildQuestionActivity.ANSWER_QUESTION) {
             //完成答题
             updateStatusView(2);
             mVo.setStatus(2);
@@ -401,7 +407,7 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
             //将完成问卷数据添加到用户数据中
             ConstantData.mUserVo.getAcceptQuestionnaires().add(mVo);
         }
-        Log.e(TAG,"requestCode=" + requestCode + ", resultCode=" +resultCode);
+        Log.e(TAG, "requestCode=" + requestCode + ", resultCode=" + resultCode);
     }
 
     /**
@@ -415,40 +421,45 @@ public class BuildQuestionnaireActivity extends BaseActivity implements View.OnC
         rewardMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
         ageMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
         locationMore.setVisibility(isShow ? View.VISIBLE : View.GONE);
-        nameLayout.setOnClickListener(isShow ? this:null);
-        totalNumberLayout.setOnClickListener(isShow ? this:null);
-        rewardLayout.setOnClickListener(isShow ? this:null);
-        ageLayout.setOnClickListener(isShow ? this:null);
-        locationLayout.setOnClickListener(isShow ? this:null);
+        nameLayout.setOnClickListener(isShow ? this : null);
+        totalNumberLayout.setOnClickListener(isShow ? this : null);
+        rewardLayout.setOnClickListener(isShow ? this : null);
+        ageLayout.setOnClickListener(isShow ? this : null);
+        locationLayout.setOnClickListener(isShow ? this : null);
     }
 
 
-    public static void toActivity(Context context, QuestionnaireVo questionnaireVo, int status,int type) {
+    public static void toActivity(Context context, QuestionnaireVo questionnaireVo, int status, int type) {
         Intent it = new Intent(context, BuildQuestionnaireActivity.class);
         it.putExtra("questionnaireVo", questionnaireVo);
         it.putExtra("status", status);
-        it.putExtra("type",type);
+        it.putExtra("type", type);
         context.startActivity(it);
     }
 
     //当活动未开始或则已结束时，禁用下方按钮
-    public void checkActivityBeforeOrEnd(){
-        if(mVo != null){
-        if (mVo.getStatus() == 2) {
-        //已完成
+    public void checkActivityBeforeOrEnd() {
+        if (mVo != null) {
+            if (mVo.getStatus() == 2) {
+                //已完成
 
-    }else if (mVo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < mVo.getEndTime().getTime()) {
-        //在活动期
+            } else if (mVo.getStartTime() != null && mVo.getEndTime() != null) {
 
-    } else if (System.currentTimeMillis() < mVo.getStartTime().getTime()) {
-        //活动未开始
-       btnProcess.setOnClickListener(null);
-            btnProcess.setBackgroundColor(ContextCompat.getColor(this, R.color.cccccc));
-    } else if (mVo.getEndTime().getTime() <= System.currentTimeMillis()) {
-        //活动已结束
-            btnProcess.setOnClickListener(null);
-            btnProcess.setBackgroundColor(ContextCompat.getColor(this, R.color.cccccc));
-    }
+                if (mVo.getStartTime().getTime() <= System.currentTimeMillis() && System.currentTimeMillis() < mVo.getEndTime().getTime()) {
+                    //在活动期
+
+                } else if (System.currentTimeMillis() < mVo.getStartTime().getTime()) {
+                    //活动未开始
+                    btnProcess.setOnClickListener(null);
+                    btnProcess.setBackgroundColor(ContextCompat.getColor(this, R.color.cccccc));
+                } else if (mVo.getEndTime().getTime() <= System.currentTimeMillis()) {
+                    //活动已结束
+                    btnProcess.setOnClickListener(null);
+                    btnProcess.setBackgroundColor(ContextCompat.getColor(this, R.color.cccccc));
+                }
+            }
+
+
         }
 
     }

@@ -19,11 +19,13 @@ import com.imalljoy.insights.base.BaseActivity;
 import com.imalljoy.insights.entity.CoinVo;
 import com.imalljoy.insights.mvps.adapter.CommonFragmentAdapter;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailCommentFragment;
+import com.imalljoy.insights.mvps.coins.detail.CoinDetailEnterpriseExposeFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailIcoInfoFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailIntroFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailNewsFragment;
 import com.imalljoy.insights.mvps.coins.detail.CoinDetailTeamFragment;
 import com.imalljoy.insights.mvps.coins.detail.VoteStep1ListActivity;
+import com.imalljoy.insights.mvps.coins.detail.VoteStep2Activity;
 import com.imalljoy.insights.mvps.research.ReportFragment;
 import com.imalljoy.insights.utils.CommonUtils;
 import com.imalljoy.insights.widgets.CustomPopupWindow;
@@ -128,13 +130,13 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         } else {
             range.setText(rate + "%");
         }
-        rangeValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getMarketValue()*mVo.getRange()));
+        rangeValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getPrice()*mVo.getRange()));
         high24.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getHigh24()));
         low24.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getLow24()));
         vol24.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getVol24()) + "("+mVo.getPrice2()+")");
         marketValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getMarketValue()));
         rank.setText("#"+mVo.getRank());
-        turnover.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getTurnover()) +"M");
+        turnover.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getTurnover()));
     }
 
     public void initViewPager() {
@@ -148,6 +150,7 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         mFragmentList.add(CoinDetailCommentFragment.newInstance());
         mFragmentList.add(ReportFragment.newInstance());
         mFragmentList.add(CoinDetailNewsFragment.newInstance());
+        mFragmentList.add(CoinDetailEnterpriseExposeFragment.newInstance());
         //交易所
         mFragmentList.add(CoinsChildFragment.newInstance(CoinsChildFragment.CURRENCY, 1));
         //ICO信息
@@ -158,6 +161,7 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
         mFragmentTitleList.add(CoinDetailCommentFragment.TITLE);
         mFragmentTitleList.add(ReportFragment.TITLE);
         mFragmentTitleList.add(CoinDetailNewsFragment.TITLE);
+        mFragmentTitleList.add(CoinDetailEnterpriseExposeFragment.TITLE);
         mFragmentTitleList.add("交易所");
         mFragmentTitleList.add(CoinDetailIcoInfoFragment.TITLE);
 
@@ -256,7 +260,11 @@ public class CurrencyCoinsDetailActivity extends BaseActivity implements View.On
                                     break;
                                 case R.id.vote_layout:
                                     popupWindow.dismiss();
-                                    VoteStep1ListActivity.toActivity(CurrencyCoinsDetailActivity.this, 0);
+                                    //VoteStep1ListActivity.toActivity(CurrencyCoinsDetailActivity.this, 0);
+                                    VoteStep2Activity.toActivity(CurrencyCoinsDetailActivity.this);
+                                    break;
+                                case R.id.root_view:
+                                    popupWindow.dismiss();
                                     break;
                             }
                         }

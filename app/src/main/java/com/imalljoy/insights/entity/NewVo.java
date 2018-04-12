@@ -14,7 +14,9 @@ public class NewVo {
     private Timestamp publishTime;      //发布时间
     private long fromId;        //新闻发布者id
     private int type;       //新闻类型,如企业新闻/数币新闻/
+    private String cover;//封面
 
+    public NewVo(){}
     public NewVo(long id, String name, String intro, String content, Timestamp publishTime, long fromId, int type) {
         this.id = id;
         this.name = name;
@@ -79,6 +81,14 @@ public class NewVo {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
     @Override

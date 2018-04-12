@@ -111,9 +111,10 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
         websiteLayout.setOnClickListener(this);
         telegraphGroupLayout.setOnClickListener(this);
         twitterFansLayout.setOnClickListener(this);
-     /*   name.setText(mCoinVo.getName());
+
+        name.setText(mCoinVo.getName());
         if (!TextUtils.isEmpty(mCoinVo.getLogoUrl())) {
-            Glide.with(this).load(mCoinVo.getLogoUrl()).into(logo);
+            Glide.with(this).load(CommonUtils.getLogoIdFromString(mCoinVo.getLogoUrl())).error(R.mipmap.dog_logo).into(logo);
         }
         website.setText(mCoinVo.getWebsiteUrl());
         if (mCoinVo.getIcoTime() != null) {
@@ -125,13 +126,13 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
         onlineExchange.setText(mCoinVo.getOnlineExchange());
         location.setText(mCoinVo.getLocation());
         telegraphGroup.setText(mCoinVo.getTelegraphGroup());
-        twitterFans.setText(mCoinVo.getTwitterFans());*/
+        twitterFans.setText(mCoinVo.getTwitterFans());
     }
 
-    public static void toActivityForResult(Activity activity, CoinVo vo, int status,int requestCode) {
+    public static void toActivityForResult(Activity activity, CoinVo vo, int status, int requestCode) {
         //暂时该页面不能编辑，都用默认数据
         Intent it = new Intent(activity, BuildCoinInfoActivity.class);
-//        it.putExtra("coinVo", vo);
+        it.putExtra("coinVo", vo);
         it.putExtra("status", 1);
         activity.startActivityForResult(it, requestCode);
 
@@ -153,13 +154,13 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
                 showTimePickerView(false);
                 break;
             case R.id.website_layout:
-                WebViewActivity.toActivity(this,"官网","https://www.egcchain.com/");
+                WebViewActivity.toActivity(this, "官网", mCoinVo != null ? mCoinVo.getWebsiteUrl() : null);
                 break;
             case R.id.telegraph_group_layout:
-                WebViewActivity.toActivity(this,"电报","https://t.me/joinchat/IEbn1knC_iMb2cX16Dut3A");
+                WebViewActivity.toActivity(this, "电报", mCoinVo != null ? mCoinVo.getTelegraphGroupUrl() : null);
                 break;
             case R.id.twitter_fans_layout:
-                WebViewActivity.toActivity(this,"推特","https://twitter.com/enginechainegcc");
+                WebViewActivity.toActivity(this, "推特", mCoinVo != null ? mCoinVo.getTwitterFanUrl() : null);
                 break;
         }
     }
@@ -171,28 +172,28 @@ public class BuildCoinInfoActivity extends BaseActivity implements View.OnClickL
     }
 
     public void save() {
-        if(mCoinVo.getId() == 0l){
-            mCoinVo.setId(System.currentTimeMillis()/1000);
+        if (mCoinVo.getId() == 0l) {
+            mCoinVo.setId(System.currentTimeMillis() / 1000);
         }
         mCoinVo.setName(name.getText().toString());
         mCoinVo.setWebsiteUrl(website.getText().toString());
-        if(TextUtils.isEmpty(icoTime.getText().toString())){
+        if (TextUtils.isEmpty(icoTime.getText().toString())) {
             mCoinVo.setIcoTime(null);
-        }else {
-            mCoinVo.setIcoTime(new Timestamp(DateUtils.stringToDate(icoTime.getText().toString(),"yyyy年MM月dd日").getTime()));
+        } else {
+            mCoinVo.setIcoTime(new Timestamp(DateUtils.stringToDate(icoTime.getText().toString(), "yyyy年MM月dd日").getTime()));
         }
-        if(TextUtils.isEmpty(onlineExchangeTime.getText().toString())){
+        if (TextUtils.isEmpty(onlineExchangeTime.getText().toString())) {
             mCoinVo.setOnlineExchangeTime(null);
-        }else {
-            mCoinVo.setOnlineExchangeTime(new Timestamp(DateUtils.stringToDate(onlineExchangeTime.getText().toString(),"yyyy年MM月dd日").getTime()));
+        } else {
+            mCoinVo.setOnlineExchangeTime(new Timestamp(DateUtils.stringToDate(onlineExchangeTime.getText().toString(), "yyyy年MM月dd日").getTime()));
         }
         mCoinVo.setOnlineExchange(onlineExchange.getText().toString());
         mCoinVo.setLocation(location.getText().toString());
         mCoinVo.setTelegraphGroup(telegraphGroup.getText().toString());
         mCoinVo.setTwitterFans(twitterFans.getText().toString());
         Intent it = new Intent();
-        it.putExtra("coinVo",mCoinVo);
-        setResult(2,it);
+        it.putExtra("coinVo", mCoinVo);
+        setResult(2, it);
 
     }
 

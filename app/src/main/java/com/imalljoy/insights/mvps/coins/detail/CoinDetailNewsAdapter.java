@@ -5,19 +5,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.imalljoy.insights.R;
 import com.imalljoy.insights.base.BaseRecyclerAdapter;
-import com.imalljoy.insights.entity.CoinVo;
+import com.imalljoy.insights.entity.NewVo;
+import com.imalljoy.insights.utils.CommonUtils;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by lijilong on 03/30.
  */
 
-public class CoinDetailNewsAdapter extends BaseRecyclerAdapter<CoinVo, CoinDetailNewsAdapter.NewsHolder> {
-    public CoinDetailNewsAdapter(Context context, List<CoinVo> list, int type) {
+public class CoinDetailNewsAdapter extends BaseRecyclerAdapter<NewVo, CoinDetailNewsAdapter.NewsHolder> {
+
+
+    public CoinDetailNewsAdapter(Context context, List<NewVo> list, int type) {
         super(context, list, type);
     }
 
@@ -27,10 +35,28 @@ public class CoinDetailNewsAdapter extends BaseRecyclerAdapter<CoinVo, CoinDetai
         return new NewsHolder(itemView);
     }
 
-    class NewsHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onBindViewHolder(NewsHolder holder, int position) {
+        super.onBindViewHolder(holder, position);
+        NewVo vo = listData.get(position);
+        holder.title.setText(vo.getName());
+        holder.cover.setImageResource(CommonUtils.getNewCoverFromString(vo.getCover()));
+    }
 
+    class NewsHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.title)
+        TextView title;
+        @BindView(R.id.publish_time)
+        TextView publishTime;
+        @BindView(R.id.author)
+        TextView author;
+        @BindView(R.id.readers)
+        TextView readers;
+        @BindView(R.id.cover)
+        ImageView cover;
         public NewsHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

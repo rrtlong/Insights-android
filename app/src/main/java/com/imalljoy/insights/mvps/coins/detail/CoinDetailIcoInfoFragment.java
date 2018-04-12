@@ -77,10 +77,13 @@ public class CoinDetailIcoInfoFragment extends BaseFragment {
             softCap.setText(mVo.getSoftcap());
             hardCap.setText(mVo.getHardcap());
             roi.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getRoni()));
-            icoMarketValue.setText(CommonUtils.formatNumberWithCommaSplit(mVo.getMarketValue()));
+            icoMarketValue.setText(mVo.getIcoMarketValue());
+            privatePrice.setText(mVo.getPrivatePrice());
+            preIcoPrice.setText(mVo.getPreIcoPrice());
+
             SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日:HH:mm:ss");
             startTime.setText(mVo.getIcoTime() != null ? format.format(new Date(mVo.getIcoTime().getTime())):"");
-            endTime.setText(mVo.getIcoEndTime() != null ? format.format(new Date(mVo.getIcoEndTime().getTime())):"");
+            endTime.setText(mVo.getIcoEndTime() != null ? format.format(new Date(mVo.getIcoEndTime().getTime())):"待定");
             //0:空投   1:新上  2:即将ico  3:正在ico  4:ico结束 5：币市
             switch (mVo.getType()){
                 case 0:

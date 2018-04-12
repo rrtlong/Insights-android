@@ -8,6 +8,7 @@
     android:paddingTop="7dp"
     android:paddingBottom="7dp">
     <ImageView
+        android:id="@+id/cover"
         android:layout_width="57dp"
         android:layout_height="57dp"
         android:scaleType="centerCrop"
