@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.imalljoy.insights.widgets.TopBarCommon
+    <com.imalljoy.insightdemo.widgets.TopBarCommon
         android:id="@+id/top_bar"
         android:layout_width="368dp"
         android:layout_height="50dp"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp">
 
-    </com.imalljoy.insights.widgets.TopBarCommon>
+    </com.imalljoy.insightdemo.widgets.TopBarCommon>
 
     <com.ogaclejapan.smarttablayout.SmartTabLayout
         android:id="@+id/tab_layout"

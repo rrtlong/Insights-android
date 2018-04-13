@@ -5,10 +5,10 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.imalljoy.insights.widgets.TopBarCommon
+    <com.imalljoy.insightdemo.widgets.TopBarCommon
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"></com.imalljoy.insights.widgets.TopBarCommon>
+        android:layout_height="50dp"></com.imalljoy.insightdemo.widgets.TopBarCommon>
 
     <View
         android:layout_width="match_parent"

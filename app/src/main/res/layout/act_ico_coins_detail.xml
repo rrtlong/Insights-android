@@ -8,13 +8,13 @@
     android:background="@color/f1f1f1"
     android:orientation="vertical">
 
-    <com.imalljoy.insights.widgets.TopBarCommon
+    <com.imalljoy.insightdemo.widgets.TopBarCommon
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPrimary"></com.imalljoy.insights.widgets.TopBarCommon>
+        android:background="@color/colorPrimary"></com.imalljoy.insightdemo.widgets.TopBarCommon>
 
-    <com.imalljoy.insights.widgets.PullToRefreshScrollableLayout
+    <com.imalljoy.insightdemo.widgets.PullToRefreshScrollableLayout
         android:id="@+id/pull_refresh_scrollable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -386,6 +386,6 @@
             </android.support.v4.view.ViewPager>
         </FrameLayout>
 
-    </com.imalljoy.insights.widgets.PullToRefreshScrollableLayout>
+    </com.imalljoy.insightdemo.widgets.PullToRefreshScrollableLayout>
 
 </LinearLayout>

@@ -1,18 +1,10 @@
 [
     {
-        "merged": "E:\\Users\\lijilong\\Documents\\as301\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_bottom.xml",
-        "source": "E:\\Users\\lijilong\\Documents\\as301\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_bottom.xml"
+        "merged": "E:\\lijilong\\wishWorkSpace\\insight_demo_android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_top.xml",
+        "source": "E:\\lijilong\\wishWorkSpace\\insight_demo_android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_top.xml"
     },
     {
-        "merged": "E:\\Users\\lijilong\\Documents\\as301\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_top.xml",
-        "source": "E:\\Users\\lijilong\\Documents\\as301\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_top.xml"
-    },
-    {
-        "merged": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_top.xml",
-        "source": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_top.xml"
-    },
-    {
-        "merged": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_bottom.xml",
-        "source": "E:\\lijilong\\googlesamples\\Insights-android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_bottom.xml"
+        "merged": "E:\\lijilong\\wishWorkSpace\\insight_demo_android\\libraries\\Android-PullToRefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_bottom.xml",
+        "source": "E:\\lijilong\\wishWorkSpace\\insight_demo_android\\libraries\\Android-PullToRefresh\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_bottom.xml"
     }
 ]

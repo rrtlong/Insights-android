@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.imalljoy.insights.widgets.TopBarSearch
+    <com.imalljoy.insightdemo.widgets.TopBarSearch
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp">
-    </com.imalljoy.insights.widgets.TopBarSearch>
+    </com.imalljoy.insightdemo.widgets.TopBarSearch>
 
     <TextView
         android:id="@+id/search_history"

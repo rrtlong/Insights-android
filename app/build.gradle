@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "com.imalljoy.insights"
+        applicationId "com.imalljoy.insightdemo"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -31,7 +31,7 @@ configurations.all {
 
 greendao {
     schemaVersion 5
-    daoPackage 'com.imalljoy.insights.greendao.gen'
+    daoPackage 'com.imalljoy.insight.greendao.gen'
     targetGenDir 'src/main/java'
 }
 

@@ -5,7 +5,7 @@
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.imalljoy.insights.mvps.main.MainActivity">
+    tools:context="com.imalljoy.insightdemo.mvps.main.MainActivity">
 
     <FrameLayout
         android:id="@+id/container"
@@ -24,7 +24,7 @@
         android:background="@color/c_e0e0e0"
         app:layout_constraintBottom_toTopOf="@android:id/tabhost" />
 
-    <com.imalljoy.insights.widgets.FragmentTabHost
+    <com.imalljoy.insightdemo.widgets.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -37,6 +37,6 @@
             android:layout_height="0dp"
             android:layout_weight="0" />
 
-    </com.imalljoy.insights.widgets.FragmentTabHost>
+    </com.imalljoy.insightdemo.widgets.FragmentTabHost>
 
 </android.support.constraint.ConstraintLayout>
